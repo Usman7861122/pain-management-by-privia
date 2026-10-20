@@ -1,9 +1,105 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Check from '@/components/ui/Check.astro';
 import { site } from '@/data/site';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
+
+const steps = [
+  { t: 'Choose a virtual visit', d: 'Use Find-A-Doctor to pick your provider and look for a virtual visit time. You can also call us to ask.' },
+  { t: 'Get ready', d: 'Check that your device and internet work. Find a quiet, private spot and have your medicine list and questions nearby.' },
+  { t: 'Join at your time', d: 'Follow the instructions in your appointment reminder to join the video visit.' },
+  { t: 'Talk with your provider', d: 'Share how you are feeling, ask questions and agree on your next steps together.' },
+];
+const needs = [
+  { t: 'A phone, tablet or computer', d: 'With a camera and a speaker or headphones.', icon: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>' },
+  { t: 'A good internet connection', d: 'Wi-Fi is usually best for a smooth video call.', icon: '<path d="M5 12a10 10 0 0114 0M8.5 15.5a5 5 0 017 0"/><circle cx="12" cy="19" r="1"/>' },
+  { t: 'A quiet, private room', d: 'Somewhere you can talk freely and comfortably.', icon: '<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/>' },
+];
+const faqs = [
+  { q: 'Is a virtual visit right for every appointment?', a: 'Not always. Some visits, such as procedures, need to happen in the office. Your care team can tell you which type of visit fits.' },
+  { q: 'Can I switch to an in-office visit?', a: 'Yes. If you or your provider feel an in-person visit is better, call the office and we will help.' },
+  { q: 'What if I have trouble joining?', a: 'Call our main line and our team will help you get connected.' },
+  { q: 'Will my information stay private?', a: 'Please join from a private place. Ask the office if you have questions about how your health information is protected.' },
+];
 ---
 
-<PageLayout title="Virtual Visits" eyebrow="Resources">
-  <div class="max-w-3xl space-y-4"><p class="lead">Virtual visits are a convenient and safe option for many follow-up appointments. TODO: add details from the old website.</p><a href={FIND_A_DOCTOR_URL} class="btn btn-dark">Schedule a virtual visit</a></div>
+<!-- VERIFY with practice: which visit types are offered virtually, and which video platform and reminder method are used. -->
+<!-- VERIFY with practice: whether virtual visits are available with every provider and at both offices. -->
+<PageLayout title="Virtual visits from the comfort of home." crumb="Virtual Visits" highlight={['Virtual']} eyebrow="Resources" lead="Meet with your care team by video, without the drive. A virtual visit is a convenient and safe option for many follow-up appointments." image="/images/sections/virtual-visit.jpg" imageAlt="A patient having a video visit with a clinician" description="Learn what a virtual visit is, who it suits and how to get ready for a video appointment with Pain Management Specialists.">
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">What it is</p>
+        <h2 class="h2 mt-4">A visit with your provider, by video.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">A virtual visit is an appointment held over a secure video call instead of in the office. You talk with your provider face to face on your phone, tablet or computer.</p>
+        <p class="lead mt-4">It can save travel time and make it easier to stay on track with your care plan.</p>
+        <a href={FIND_A_DOCTOR_URL} class="btn btn-gold mt-8">Schedule a virtual visit</a>
+      </div>
+      <div class="lg:col-span-6" data-reveal style="--d:120ms">
+        <div class="rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10">
+          <p class="eyebrow">Who it suits</p>
+          <ul class="mt-5 space-y-3 text-lg text-charcoal-800">
+            <li class="flex gap-3"><Check /><span>Follow-up visits to check how you are doing</span></li>
+            <li class="flex gap-3"><Check /><span>Talking through results and next steps</span></li>
+            <li class="flex gap-3"><Check /><span>Medicine and care plan questions</span></li>
+            <li class="flex gap-3"><Check /><span>Patients who find travel hard or are feeling unwell</span></li>
+          </ul>
+          <p class="mt-5 text-charcoal-600">Your provider will let you know if a visit needs to be in person.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">How it works</p>
+        <h2 class="h2 mt-4">Four simple steps.</h2>
+      </div>
+      <ol class="relative mx-auto mt-14 max-w-3xl space-y-10 before:absolute before:bottom-4 before:left-6 before:top-4 before:w-px before:bg-gold-400/50">
+        {steps.map((s, i) => (
+          <li class="relative flex gap-6" data-reveal style={`--d:${i * 80}ms`}>
+            <span class="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-lg font-semibold text-gold-300" aria-hidden="true">{i + 1}</span>
+            <div class="pt-1"><h3 class="font-display text-xl font-semibold"><span class="sr-only">Step {i + 1}: </span>{s.t}</h3><p class="mt-2 text-lg text-charcoal-600">{s.d}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">What you need</p>
+        <h2 class="h2 mt-4">Just three things.</h2>
+      </div>
+      <ul class="mt-12 grid gap-5 md:grid-cols-3">
+        {needs.map((n, i) => (
+          <li data-reveal style={`--d:${i * 100}ms`} class="group rounded-md border border-charcoal-900/10 bg-cream-50 p-8 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+            <span class="flex h-12 w-12 items-center justify-center rounded-md bg-cream-100 text-gold-700 transition duration-500 group-hover:bg-charcoal-950 group-hover:text-gold-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={n.icon}></svg></span>
+            <h3 class="mt-6 font-display text-xl font-semibold">{n.t}</h3>
+            <p class="mt-3 text-charcoal-600">{n.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="on-dark relative overflow-hidden bg-charcoal-950 py-24">
+    <img src="/images/sections/parallax.jpg" alt="" loading="lazy" width="2000" height="1200" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/85 to-charcoal-950/40" aria-hidden="true"></div>
+    <div class="container-x relative" data-reveal>
+      <p class="eyebrow">Common questions</p>
+      <h2 class="mt-4 font-display text-[clamp(1.9rem,1.3rem+2vw,3rem)] font-semibold leading-tight text-cream-50">Good to know.</h2>
+      <div class="rule-gold mt-6"></div>
+      <dl class="mt-10 grid max-w-4xl gap-8 md:grid-cols-2">
+        {faqs.map((f) => (<div><dt class="font-display text-lg font-semibold text-gold-300">{f.q}</dt><dd class="mt-2 leading-relaxed text-cream-200">{f.a}</dd></div>))}
+      </dl>
+      <p class="mt-10 text-cream-200">More questions? Call <a class="font-semibold text-gold-300 underline underline-offset-4" href={`tel:${site.phone.tel}`}>{site.phone.display}</a> or read our <a class="font-semibold text-gold-300 underline underline-offset-4" href="/patient-resources/faq">FAQ</a>.</p>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="Ready for a virtual visit?" text="Choose your provider and look for a virtual visit time, or call our team." />
 </PageLayout>

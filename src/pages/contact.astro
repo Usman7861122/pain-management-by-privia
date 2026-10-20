@@ -1,9 +1,70 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import { site } from '@/data/site';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Check from '@/components/ui/Check.astro';
+import { site, mapsUrl } from '@/data/site';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
+
+const addr = (l: (typeof site.locations)[number]) => `${l.street}, ${l.city}, ${l.state} ${l.zip}`;
+const embed = (l: (typeof site.locations)[number]) => `https://www.google.com/maps?q=${encodeURIComponent(addr(l))}&output=embed`;
+const photos: Record<string, string> = { rockville: '/images/locations/rockville.jpg', frederick: '/images/locations/frederick.jpg' };
 ---
 
-<PageLayout title="Contact" eyebrow="Contact">
-  <div class="max-w-3xl space-y-4"><p class="lead">Call us at <a class="font-semibold underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p><ul class="space-y-6">{site.locations.map((l) => (<li><p class="font-display font-semibold">{l.name}</p><p>{l.street}, {l.city}, {l.state} {l.zip}</p><p><a href={`tel:${l.phone.tel}`}>{l.phone.display}</a></p></li>))}</ul><p class="text-sm text-charcoal-600">To schedule online, use <a class="underline" href={FIND_A_DOCTOR_URL}>Find-A-Doctor</a>.</p></div>
+<!-- VERIFY with practice: office phone numbers in site.ts have area codes that differ from the office addresses. Confirm each line. -->
+<!-- VERIFY with practice: office hours are not shown because they were not available. Add them when confirmed. -->
+<PageLayout title="Contact our Rockville and Frederick offices." crumb="Contact" highlight={['Rockville', 'Frederick']} eyebrow="Contact" lead="Call us, get directions or book online. We are glad to help you find the right next step." image="/images/about/team-smile.jpg" imageAlt="Smiling members of our care team" description="Addresses, phone numbers, directions and maps for Pain Management Specialists in Rockville and Frederick, Maryland.">
+  <section class="section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Our offices</p>
+        <h2 class="h2 mt-4">Two offices, one caring team.</h2>
+        <div class="rule-gold mx-auto mt-6"></div>
+      </div>
+      <ul class="mt-14 grid gap-8 lg:grid-cols-2">
+        {site.locations.map((l, i) => (
+          <li data-reveal style={`--d:${i * 100}ms`} class="overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50">
+            <div class="aspect-[16/8] overflow-hidden bg-charcoal-900"><img src={photos[l.slug]} alt="" width="900" height="450" loading="lazy" class="h-full w-full object-cover" /></div>
+            <div class="p-8">
+              <h3 class="font-display text-2xl font-semibold">{l.name} office</h3>
+              <address class="mt-3 text-lg not-italic text-charcoal-600">{l.street}<br />{l.city}, {l.state} {l.zip}</address>
+              <p class="mt-4"><a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center font-display text-xl font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4 hover:text-gold-700">{l.phone.display}</a></p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a href={`tel:${l.phone.tel}`} class="btn btn-dark">Call {l.name}</a>
+                <a href={mapsUrl(l)} class="btn btn-ghost" target="_blank" rel="noopener">Directions<span class="sr-only"> to the {l.name} office (opens in a new tab)</span></a>
+              </div>
+            </div>
+            <iframe title={`Map showing the ${l.name} office at ${addr(l)}`} src={embed(l)} loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="block h-72 w-full border-0 bg-cream-100" allowfullscreen></iframe>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">How to reach us</p>
+        <h2 class="h2 mt-4">The easiest way to book.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">You can choose your provider and schedule online, or call the team. Either way, we will help you get started.</p>
+        <ul class="mt-8 space-y-3 text-lg text-charcoal-800">
+          <li class="flex gap-3"><Check /><span>Book online with Find-A-Doctor, any time of day</span></li>
+          <li class="flex gap-3"><Check /><span>Call the main line with questions about your visit</span></li>
+          <li class="flex gap-3"><Check /><span>Existing patients can also use the patient portal</span></li>
+        </ul>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={FIND_A_DOCTOR_URL} class="btn btn-gold">See My Provider</a>
+          <a href={`tel:${site.phone.tel}`} class="btn btn-dark">Call {site.phone.display}</a>
+        </div>
+      </div>
+      <div class="lg:col-span-6" data-reveal style="--d:120ms">
+        <div class="relative">
+          <div class="absolute -bottom-4 -left-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
+          <div class="relative aspect-[4/3] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/tunnel/clinic-2.jpg" alt="A calm, modern clinic reception area" width="1000" height="750" loading="lazy" class="h-full w-full object-cover" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="We are here to help." text="Choose your provider and schedule online, or call our team." />
 </PageLayout>

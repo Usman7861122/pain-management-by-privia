@@ -74,7 +74,13 @@ export const mainNav: NavItem[] = [
       { label: 'Request Appointment', href: FIND_A_DOCTOR_URL, external: true },
     ],
   },
-  { label: 'Locations', href: '/locations' },
+  {
+    label: 'Locations', href: '/locations', columns: 1,
+    children: [
+      { label: 'Rockville, MD', href: '/locations/rockville' },
+      { label: 'Frederick, MD', href: '/locations/frederick' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
 ];
 

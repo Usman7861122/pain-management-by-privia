@@ -1,7 +1,73 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { site } from '@/data/site';
+
+const groups = [
+  { title: 'Your first visit', items: [
+    { q: 'What happens at my first visit?', a: 'You will meet your provider, talk about your pain and health history, and have an exam. Together you will plan next steps.' },
+    { q: 'What should I bring?', a: 'Bring your insurance card, a photo ID, a list of your medicines and any records or imaging you have. Complete your forms ahead of time if you can.' },
+    { q: 'How do I become a patient?', a: 'Choose your provider with Find-A-Doctor, create a patient portal account and complete your forms. See our Become a patient page for details.' },
+  ] },
+  { title: 'Our approach', items: [
+    { q: 'Do you prescribe opioids?', a: 'We try safer options first and use opioids only when clearly needed. Read more on our Treatment without opioids page.' },
+    { q: 'What kinds of treatment do you offer?', a: 'Care plans can include medicine, procedures, exercise and healthy habits. Your plan is built around your history and goals.' },
+  ] },
+  { title: 'Procedures and recovery', items: [
+    { q: 'How should I prepare for a procedure?', a: 'Your care team will give you instructions for your procedure. Please follow them closely and call us if you have questions, especially about your medicines.' },
+    { q: 'What is recovery like?', a: 'Recovery is different for each person and each procedure. Your provider will explain what to expect and what to avoid afterward.' },
+    { q: 'Who do I call if something worries me after a procedure?', a: 'Call your office right away. If you think you have an emergency, call 911.' },
+  ] },
+  { title: 'Virtual visits', items: [
+    { q: 'Can I have a visit by video?', a: 'Many follow-up visits can be done by video. Some visits need to be in person. See our Virtual visits page or ask the office.' },
+  ] },
+  { title: 'Billing and insurance', items: [
+    { q: 'Is my insurance accepted?', a: 'Please call the office before your visit to check. Bring your card and photo ID. See our Insurance page for how to check.' },
+    { q: 'I have a question about a bill.', a: 'Please call your office and our team will help. Phone numbers are below.' },
+  ] },
+];
 ---
 
-<PageLayout title="Frequently Asked Questions" eyebrow="Patient resources">
-  <div class="max-w-3xl space-y-4"><p class="lead">TODO: add the Frequently Asked Questions content from the old website (https://www.painmanagespecialists.com/).</p></div>
+<!-- VERIFY with practice: all answers are general. Replace or add practice-specific answers from the old FAQ when available. -->
+<PageLayout title="Frequently asked questions." crumb="FAQ" highlight={['questions']} eyebrow="Patient resources" lead="Quick, plain answers about visits, care and billing. Still have a question? Just call us." image="/images/tunnel/consult-senior.jpg" imageAlt="A doctor answering a patient's questions" description="Answers to common questions about first visits, procedures, recovery, virtual visits and billing at Pain Management Specialists.">
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-8">
+        {groups.map((g) => (
+          <div class="mb-12" data-reveal>
+            <h2 class="h2 !text-2xl">{g.title}</h2>
+            <div class="rule-gold mt-4"></div>
+            <div class="mt-6 divide-y divide-charcoal-900/10 border-y border-charcoal-900/10">
+              {g.items.map((it) => (
+                <details class="group">
+                  <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 py-5 font-display text-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-700 [&::-webkit-details-marker]:hidden">
+                    <span>{it.q}</span>
+                    <svg class="shrink-0 text-gold-700 transition-transform duration-300 group-open:rotate-45" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+                  </summary>
+                  <p class="pb-6 pr-10 text-lg leading-relaxed text-charcoal-600">{it.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <aside class="lg:col-span-4 lg:sticky lg:top-28" data-reveal style="--d:120ms">
+        <div class="rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)]">
+          <p class="eyebrow">Still wondering?</p>
+          <p class="mt-4 font-display text-2xl font-semibold leading-snug text-charcoal-950">We are happy to help.</p>
+          <ul class="mt-5 space-y-1 text-lg">
+            <li><a href={`tel:${site.phone.tel}`} class="inline-flex min-h-11 items-center font-semibold underline decoration-gold-400 underline-offset-4 hover:text-gold-700">Main: {site.phone.display}</a></li>
+            {site.locations.map((l) => (<li><a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center font-semibold underline decoration-gold-400 underline-offset-4 hover:text-gold-700">{l.name}: {l.phone.display}</a></li>))}
+          </ul>
+          <div class="mt-5 flex flex-col gap-1">
+            <a href="/become-a-patient" class="link-arrow text-gold-700">Become a patient</a>
+            <a href="/virtual-visits" class="link-arrow text-gold-700">Virtual visits</a>
+            <a href="/insurance" class="link-arrow text-gold-700">Insurance</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="Ready to take the next step?" />
 </PageLayout>

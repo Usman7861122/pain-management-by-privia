@@ -38,6 +38,7 @@ const storeBtn = 'inline-flex min-h-11 items-center rounded-md border border-whi
               <span class="font-semibold text-cream-50">{l.name}</span><br />{l.street}<br />{l.city}, {l.state} {l.zip}
             </a>
             <a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center">{l.phone.display}</a>
+            <a href={`/locations/${l.slug}`} class="ml-4 inline-flex min-h-11 items-center underline decoration-gold-400/60 underline-offset-4 transition hover:text-cream-50">Office page</a>
           </li>
         ))}
       </ul>

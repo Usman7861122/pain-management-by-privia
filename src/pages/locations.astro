@@ -1,9 +1,0 @@
----
-import PageLayout from '@/layouts/PageLayout.astro';
-import { site } from '@/data/site';
-import { FIND_A_DOCTOR_URL } from '@/data/privia';
----
-
-<PageLayout title="Our Locations" eyebrow="Locations">
-  <div class="max-w-3xl space-y-4"><ul class="space-y-6">{site.locations.map((l) => (<li><p class="font-display text-xl font-semibold">{l.name}, {l.state}</p><p>{l.street}, {l.city}, {l.state} {l.zip}</p><p><a href={`tel:${l.phone.tel}`}>{l.phone.display}</a></p></li>))}</ul></div>
-</PageLayout>

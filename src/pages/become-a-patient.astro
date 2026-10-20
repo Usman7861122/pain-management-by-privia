@@ -1,14 +1,52 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import FormsList from '@/components/ui/FormsList.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { site } from '@/data/site';
 import { FIND_A_DOCTOR_URL, portal } from '@/data/privia';
 ---
 
-<PageLayout title="Become a Patient" eyebrow="New patients" description="How to become a patient and the forms you need.">
-  <ol class="max-w-3xl space-y-6">
-    <li><h2 class="font-display text-xl font-semibold">1. Find your provider</h2><p class="mt-1 text-charcoal-600">Use Find-A-Doctor to choose a provider and schedule online.</p><a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-3">See My Provider</a></li>
-    <li><h2 class="font-display text-xl font-semibold">2. Create your portal account</h2><p class="mt-1 text-charcoal-600">{portal.intro}</p><a href={portal.createAccount.href} class="btn btn-dark mt-3">{portal.createAccount.label}</a></li>
-    <li><h2 class="font-display text-xl font-semibold">3. Complete your forms</h2></li>
-  </ol>
-  <div class="mt-6"><FormsList /></div>
+<PageLayout title="Become a patient in three easy steps." crumb="Become a Patient" highlight={['three easy steps']} eyebrow="New patients" lead="Getting started is simple. Choose your provider, set up your portal account and complete your forms." image="/images/about/team-tablet.jpg" imageAlt="A care team member using a tablet" description="How to become a patient at Pain Management Specialists, with a patient portal sign-up and the forms you need.">
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-7">
+        <div data-reveal>
+          <p class="eyebrow">Getting started</p>
+          <h2 class="h2 mt-4">Your first visit, step by step.</h2>
+          <div class="rule-gold mt-6"></div>
+        </div>
+        <ol class="relative mt-12 space-y-12 before:absolute before:bottom-4 before:left-6 before:top-4 before:w-px before:bg-gold-400/50">
+          <li class="relative flex gap-6" data-reveal>
+            <span class="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-lg font-semibold text-gold-300" aria-hidden="true">1</span>
+            <div class="pt-1"><h3 class="font-display text-2xl font-semibold"><span class="sr-only">Step 1: </span>Find your provider</h3><p class="mt-2 text-lg text-charcoal-600">Use Find-A-Doctor to choose a provider and schedule online.</p><a href={FIND_A_DOCTOR_URL} class="btn btn-gold mt-5">See My Provider</a></div>
+          </li>
+          <li class="relative flex gap-6" data-reveal>
+            <span class="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-lg font-semibold text-gold-300" aria-hidden="true">2</span>
+            <div class="pt-1"><h3 class="font-display text-2xl font-semibold"><span class="sr-only">Step 2: </span>Create your portal account</h3><p class="mt-2 text-lg text-charcoal-600">{portal.intro}</p><a href={portal.createAccount.href} class="btn btn-dark mt-5">{portal.createAccount.label}</a></div>
+          </li>
+          <li class="relative flex gap-6" data-reveal>
+            <span class="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-lg font-semibold text-gold-300" aria-hidden="true">3</span>
+            <div class="pt-1"><h3 class="font-display text-2xl font-semibold"><span class="sr-only">Step 3: </span>Complete your forms</h3><p class="mt-2 text-lg text-charcoal-600">Review and complete the forms below before your visit. English and Spanish versions are provided when available.</p></div>
+          </li>
+        </ol>
+      </div>
+      <div class="relative lg:col-span-5" data-reveal style="--d:120ms">
+        <div class="absolute -bottom-4 -right-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
+        <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/tunnel/consult-senior.jpg" alt="A doctor talking with an older patient" width="800" height="1000" loading="lazy" class="h-full w-full object-cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Patient forms</p>
+        <h2 class="h2 mt-4">Forms for your first visit.</h2>
+        <p class="lead mt-4">Questions about a form? Call us at <a class="font-semibold underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+      </div>
+      <div class="mt-10" data-reveal><FormsList /></div>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="Ready to get started?" text="Choose your provider and schedule online, or call our team." />
 </PageLayout>

@@ -1,7 +1,50 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Check from '@/components/ui/Check.astro';
+import { site } from '@/data/site';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
 ---
 
-<PageLayout title="COVID-19" eyebrow="Patient resources">
-  <div class="max-w-3xl space-y-4"><p class="lead">TODO: add the COVID-19 content from the old website (https://www.painmanagespecialists.com/).</p></div>
+<!-- VERIFY with practice: current COVID-19 visit policies (masks, screening, visitors). No specific rules are stated on this page on purpose. -->
+<PageLayout title="COVID-19 and your visit." crumb="COVID-19" highlight={['COVID-19']} eyebrow="Patient resources" lead="Your health and the health of others matter to us. Here is simple guidance for your visit." image="/images/tunnel/clinic-4.jpg" imageAlt="A clean, quiet clinic hallway" description="General COVID-19 guidance for patients of Pain Management Specialists, and how to reach the office for current information.">
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">If you feel sick</p>
+        <h2 class="h2 mt-4">Please stay home and call us.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">If you feel unwell on the day of your visit, please do not come in. Call the office and we will help you reschedule.</p>
+        <ul class="mt-8 space-y-3 text-lg text-charcoal-800">
+          <li class="flex gap-3"><Check /><span>Call the office to reschedule your visit</span></li>
+          <li class="flex gap-3"><Check /><span>Ask if a virtual visit is a good option for you</span></li>
+          <li class="flex gap-3"><Check /><span>If you have an emergency, call 911</span></li>
+        </ul>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={`tel:${site.phone.tel}`} class="btn btn-dark">Call {site.phone.display}</a>
+          <a href="/virtual-visits" class="btn btn-ghost">About virtual visits</a>
+        </div>
+      </div>
+      <div class="relative lg:col-span-6" data-reveal style="--d:120ms">
+        <div class="absolute -bottom-4 -right-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
+        <div class="relative aspect-[4/3] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/tunnel/clinic-2.jpg" alt="" width="1000" height="750" loading="lazy" class="h-full w-full object-cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark relative overflow-hidden bg-charcoal-950 py-24">
+    <img src="/images/sections/parallax.jpg" alt="" loading="lazy" width="2000" height="1200" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/85 to-charcoal-950/40" aria-hidden="true"></div>
+    <div class="container-x relative" data-reveal>
+      <p class="eyebrow">Current guidance</p>
+      <h2 class="mt-4 font-display text-[clamp(1.9rem,1.3rem+2vw,3rem)] font-semibold leading-tight text-cream-50">Our policies may change.</h2>
+      <div class="rule-gold mt-6"></div>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-cream-200">Health guidance can change over time. Please call your office for the most current information before you visit.</p>
+      <ul class="mt-6 space-y-2 text-lg text-cream-100">
+        {site.locations.map((l) => (<li>{l.name}: <a class="font-semibold text-gold-300 underline underline-offset-4" href={`tel:${l.phone.tel}`}>{l.phone.display}</a></li>))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="Need to schedule or reschedule?" text="Choose your provider and schedule online, or call our team." />
 </PageLayout>

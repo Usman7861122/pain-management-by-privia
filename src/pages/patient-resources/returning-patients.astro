@@ -1,7 +1,70 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Check from '@/components/ui/Check.astro';
+import { site } from '@/data/site';
+import { FIND_A_DOCTOR_URL, portal } from '@/data/privia';
+
+const cards = [
+  { t: 'Use the patient portal', d: 'Message your care team, see test results, request renewals and pay invoices, any time of day.', icon: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>' },
+  { t: 'Book your next visit', d: 'Use Find-A-Doctor to see your provider’s openings and schedule online.', icon: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>' },
+  { t: 'Plan your refills', d: 'Refills need an appointment, so plan them around your visits.', icon: '<path d="M12 21c-4 0-7-3-7-7 0-5 7-11 7-11s7 6 7 11c0 4-3 7-7 7z"/>' },
+];
 ---
 
-<PageLayout title="Returning Patients" eyebrow="Patient resources">
-  <div class="max-w-3xl space-y-4"><p class="lead">TODO: add the Returning Patients content from the old website (https://www.painmanagespecialists.com/).</p></div>
+<!-- VERIFY with practice: any specific returning patient instructions (arrival time, forms to update, check-in steps) from the old website. -->
+<PageLayout title="Welcome back to your care team." crumb="Returning Patients" highlight={['Welcome back']} eyebrow="Patient resources" lead="Everything you need for your next visit, in one place." image="/images/about/team-smile.jpg" imageAlt="Smiling care team members welcoming a patient" description="Tips and tools for returning patients of Pain Management Specialists, including the patient portal and booking.">
+  <section class="section">
+    <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="relative lg:col-span-5" data-reveal>
+        <div class="absolute -bottom-4 -left-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
+        <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/tunnel/doctor-patient.jpg" alt="" width="800" height="1000" loading="lazy" class="h-full w-full object-cover" /></div>
+      </div>
+      <div class="lg:col-span-7" data-reveal style="--d:100ms">
+        <p class="eyebrow">Before your visit</p>
+        <h2 class="h2 mt-4">A few things that help your next visit go smoothly.</h2>
+        <div class="rule-gold mt-6"></div>
+        <ul class="mt-8 space-y-3 text-lg text-charcoal-800">
+          <li class="flex gap-3"><Check /><span>Bring your insurance card and a photo ID</span></li>
+          <li class="flex gap-3"><Check /><span>Make a list of your current medicines</span></li>
+          <li class="flex gap-3"><Check /><span>Note any changes in your pain since your last visit</span></li>
+          <li class="flex gap-3"><Check /><span>Write down questions you want to ask</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Stay connected</p>
+        <h2 class="h2 mt-4">Tools for returning patients.</h2>
+      </div>
+      <ul class="mt-12 grid gap-5 md:grid-cols-3">
+        {cards.map((c, i) => (
+          <li data-reveal style={`--d:${i * 100}ms`} class="group rounded-md border border-charcoal-900/10 bg-cream-50 p-8 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+            <span class="flex h-12 w-12 items-center justify-center rounded-md bg-cream-100 text-gold-700 transition duration-500 group-hover:bg-charcoal-950 group-hover:text-gold-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={c.icon}></svg></span>
+            <h3 class="mt-6 font-display text-xl font-semibold">{c.t}</h3>
+            <p class="mt-3 text-charcoal-600">{c.d}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
+        <a href={portal.signIn.href} class="btn btn-dark">Patient portal sign in</a>
+        <a href={FIND_A_DOCTOR_URL} class="btn btn-gold">See My Provider</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl rounded-md border border-charcoal-900/10 bg-cream-50 p-8 sm:p-10" data-reveal>
+        <p class="eyebrow">Other options</p>
+        <h2 class="mt-3 font-display text-2xl font-semibold">Can’t come in? Ask about a virtual visit.</h2>
+        <p class="mt-4 text-charcoal-600">Many follow-up visits can be done by video. Learn more on our <a href="/virtual-visits" class="font-semibold text-gold-700 underline underline-offset-4">virtual visits page</a>, or call <a href={`tel:${site.phone.tel}`} class="font-semibold text-gold-700 underline underline-offset-4">{site.phone.display}</a>. You can also read our <a href="/patient-resources/faq" class="font-semibold text-gold-700 underline underline-offset-4">FAQ</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand slot="after" title="Ready for your next visit?" />
 </PageLayout>
