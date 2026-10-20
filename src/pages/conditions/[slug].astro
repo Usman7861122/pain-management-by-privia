@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
+import OfficesSection from '@/components/ui/OfficesSection.astro';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
 
 export async function getStaticPaths() {
@@ -12,6 +13,11 @@ const { Content } = await render(entry);
 ---
 
 <PageLayout title={entry.data.title} eyebrow="Condition" description={entry.data.summary}>
-  <div class="max-w-3xl"><Content /></div>
-  <a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-10">See My Provider</a>
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-3xl space-y-4 text-lg leading-relaxed text-charcoal-600"><Content /></div>
+      <a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-10">See My Provider</a>
+    </div>
+  </section>
+  <OfficesSection tint />
 </PageLayout>

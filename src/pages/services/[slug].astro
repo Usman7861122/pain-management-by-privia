@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import CtaBand from '@/components/ui/CtaBand.astro';
 import Check from '@/components/ui/Check.astro';
+import OfficesSection from '@/components/ui/OfficesSection.astro';
 import CarveOutDisclaimer from '@/components/ui/CarveOutDisclaimer.astro';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
 
@@ -31,11 +32,14 @@ const title = d.title + (d.carveOut ? ' *' : '');
         </div>
         {d.facts.length > 0 && (
           <aside class="lg:col-span-5" data-reveal style="--d:120ms">
-            <dl class="on-dark rounded-md bg-charcoal-950 p-8 sm:p-10">
+            <dl class="relative overflow-hidden rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10">
+              <span class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-cream-200/80 blur-3xl" aria-hidden="true"></span>
+              <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent" aria-hidden="true"></span>
+              <p class="eyebrow relative mb-6">At a glance</p>
               {d.facts.map((f, i) => (
-                <div class={i > 0 ? 'mt-6 border-t border-white/10 pt-6' : ''}>
-                  <dt class="font-display text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-gold-300">{f.k}</dt>
-                  <dd class="mt-2 font-display text-xl font-semibold leading-snug text-cream-50">{f.v}</dd>
+                <div class={'relative ' + (i > 0 ? 'mt-5 border-t border-charcoal-900/10 pt-5' : '')}>
+                  <dt class="font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold-700">{f.k}</dt>
+                  <dd class="mt-1.5 font-display text-xl font-semibold leading-snug text-charcoal-950">{f.v}</dd>
                 </div>
               ))}
             </dl>
@@ -172,13 +176,19 @@ const title = d.title + (d.carveOut ? ' *' : '');
       </section>
     )}
 
+    <OfficesSection />
     {d.carveOut && <div class="container-x"><CarveOutDisclaimer /></div>}
     <CtaBand slot="after" title={`Ready to talk about ${d.title.replace(/ Procedure$/, '')}?`} />
   </PageLayout>
 ) : (
   <PageLayout title={title} eyebrow="Service" description={d.summary}>
-    <div class="prose max-w-3xl text-charcoal-800"><Content /></div>
-    <a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-10">See My Provider</a>
-    {d.carveOut && <CarveOutDisclaimer />}
+    <section class="section">
+      <div class="container-x">
+        <div class="max-w-3xl space-y-4 text-lg leading-relaxed text-charcoal-600"><Content /></div>
+        <a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-10">See My Provider</a>
+        {d.carveOut && <CarveOutDisclaimer />}
+      </div>
+    </section>
+    <OfficesSection tint />
   </PageLayout>
 )}
