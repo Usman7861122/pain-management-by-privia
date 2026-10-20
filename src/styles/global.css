@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Playfair Display Variable', Georgia, 'Times New Roman', serif;
   --font-display: 'DM Sans Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
   /* Luxury palette: charcoal + warm cream + soft gold (fits the charcoal/yellow Privia logo) */
@@ -134,3 +135,6 @@
 .mega-cta:hover { background: var(--color-charcoal-800); }
 @keyframes megaIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .mega-main [data-pane] { animation: none; } .mega-tab, .mega-link, .mega-feature img { transition: none; } }
+
+/* Headings use the serif (Playfair Display). Menus, buttons and labels keep DM Sans (font-display). */
+h1, h2, h3, h4, .h2 { font-family: var(--font-heading); letter-spacing: -0.01em; }
