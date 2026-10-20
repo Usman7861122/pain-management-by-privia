@@ -19,8 +19,8 @@ const spiral = (n: number) =>
     return { cos: Math.cos(a), sin: Math.sin(a), rx: 0.28 + (i % 3) * 0.08, ry: 0.26 + (i % 2) * 0.09, rot: (i % 2 === 0 ? 1 : -1) * (3 + (i % 5) * 2) };
   });
 
-function Card({ item, i, total, progress, pointer, stage, geo }: {
-  item: Img; i: number; total: number; progress: MotionValue<number>;
+function Card({ item, i, total, progress, pointer, stage, geo, load }: {
+  load: boolean; item: Img; i: number; total: number; progress: MotionValue<number>;
   pointer: { x: MotionValue<number>; y: MotionValue<number> }; stage: Stage; geo: ReturnType<typeof spiral>[number];
 }) {
   const span = 0.55;
@@ -38,7 +38,7 @@ function Card({ item, i, total, progress, pointer, stage, geo }: {
   return (
     <motion.div style={{ width, transform, opacity, zIndex: i + 1 }} className="pointer-events-none absolute left-1/2 top-1/2 aspect-[4/5] will-change-transform">
       <div className="relative h-full w-full overflow-hidden rounded-md bg-charcoal-800 shadow-2xl shadow-black/60 ring-1 ring-white/15">
-        <img src={item.src} alt="" draggable={false} loading="eager" decoding="async" className="h-full w-full object-cover" />
+        {load && <img src={item.src} alt="" draggable={false} decoding="async" className="h-full w-full object-cover" />}
         <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/5 to-transparent p-4">
           <span className="font-display text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white/95">{item.title}</span>
         </div>
@@ -57,6 +57,18 @@ export default function TunnelHero({ images, primary, phone, locations }: Props)
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
+  }, []);
+
+  // Always open at the very top, and only download the photos once the visitor starts to scroll.
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    const start = () => setLoad(true);
+    window.addEventListener('scroll', start, { once: true, passive: true });
+    window.addEventListener('wheel', start, { once: true, passive: true });
+    window.addEventListener('touchmove', start, { once: true, passive: true });
+    return () => { window.removeEventListener('scroll', start); window.removeEventListener('wheel', start); window.removeEventListener('touchmove', start); };
   }, []);
 
   // Progress follows the normal page scroll, so the page is never locked.
@@ -133,7 +145,7 @@ export default function TunnelHero({ images, primary, phone, locations }: Props)
         ) : (
           <div className="pointer-events-none absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
             {images.map((item, i) => (
-              <Card key={item.src} item={item} i={i} total={images.length} progress={progress} pointer={{ x: px, y: py }} stage={stage} geo={geo[i]} />
+              <Card key={item.src} item={item} i={i} total={images.length} progress={progress} pointer={{ x: px, y: py }} stage={stage} geo={geo[i]} load={load} />
             ))}
           </div>
         )}
