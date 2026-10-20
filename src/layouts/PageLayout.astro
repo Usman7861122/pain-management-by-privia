@@ -1,8 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
-interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string }
-const { title, description, eyebrow, lead, image, imageAlt = '' } = Astro.props;
+interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string; highlight?: string[] }
+const { title, description, eyebrow, lead, image, imageAlt = '', highlight = [] } = Astro.props;
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="text-gold-300">${esc(w)}</span>`), esc(title));
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,7 +17,7 @@ const { title, description, eyebrow, lead, image, imageAlt = '' } = Astro.props;
             <a href="/" class="hover:text-gold-300">Home</a><span class="mx-2 opacity-50">/</span><span>{eyebrow ?? title}</span>
           </nav>
           {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
-          <h1 class="font-display text-[clamp(2.1rem,1.4rem+2.8vw,3.6rem)] font-semibold leading-[1.08] tracking-tight text-cream-50">{title}</h1>
+          <h1 class="font-display text-[clamp(2.1rem,1.4rem+2.8vw,3.6rem)] font-semibold leading-[1.08] tracking-tight text-cream-50" set:html={titleHtml}></h1>
           {lead && <p class="mt-6 max-w-xl text-lg leading-relaxed text-cream-200">{lead}</p>}
         </div>
         <div class="relative lg:col-span-5" data-reveal style="--d:120ms">
