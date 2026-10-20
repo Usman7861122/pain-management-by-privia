@@ -36,6 +36,15 @@ const doctors = defineCollection({
     specialties: z.array(z.string()).default([]),
     photo: z.string().optional(),
     order: z.number().default(0),
+    intro: z.string().default(''),
+    certifications: z.array(z.string()).default([]),
+    expertise: z.array(z.string()).default([]),
+    education: z.array(z.object({ year: z.string(), text: z.string() })).default([]),
+    affiliations: z.array(z.string()).default([]),
+    memberships: z.array(z.string()).default([]),
+    leadership: z.array(z.string()).default([]),
+    awards: z.array(z.string()).default([]),
+    languages: z.array(z.string()).default([]),
   }),
 });
 

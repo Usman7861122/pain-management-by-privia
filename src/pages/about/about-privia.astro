@@ -1,0 +1,36 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import AboutSubnav from '@/components/ui/AboutSubnav.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import PriviaSection from '@/components/home/PriviaSection.astro';
+
+const cards = [
+  { t: 'Top doctors', d: 'Our physicians are board certified and trained at respected hospitals.' },
+  { t: 'Proactive care', d: 'We look ahead, so small problems are handled before they grow.' },
+  { t: 'Convenient technology', d: 'Book online, join virtual visits and use the patient portal from home.' },
+  { t: 'Privacy and security', d: 'Your health information is kept private and protected.' },
+];
+---
+
+<PageLayout title="About Privia." eyebrow="Our network" lead="Pain Management Specialists is part of Privia Medical Group, a network of doctors who work together for you." description="Learn how Pain Management Specialists works with Privia Medical Group.">
+  <AboutSubnav />
+  <PriviaSection />
+
+  <section class="section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">What sets us apart</p>
+        <h2 class="h2 mt-4">Care you can count on.</h2>
+      </div>
+      <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((c, i) => (
+          <li data-reveal style={`--d:${i * 90}ms`} class="rounded-md border border-charcoal-900/10 bg-cream-50 p-7 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+            <h3 class="font-display text-lg font-semibold">{c.t}</h3>
+            <p class="mt-3 text-charcoal-600">{c.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <CtaBand slot="after" />
+</PageLayout>

@@ -1,0 +1,22 @@
+---
+const items = [
+  { label: 'About Us', href: '/about' },
+  { label: 'What We Do', href: '/about/what-we-do' },
+  { label: 'Treatment Without Opioids', href: '/about/treatment-without-opioids' },
+  { label: 'Our Team', href: '/doctors' },
+  { label: 'About Privia', href: '/about/about-privia' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (h: string) => path === h || (h === '/doctors' && path.startsWith('/doctors'));
+---
+
+<nav aria-label="About section" class="sticky top-[var(--header-h)] z-30 border-b border-charcoal-900/10 bg-cream-50/95 backdrop-blur">
+  <ul class="container-x flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
+    {items.map((i) => (
+      <li class="shrink-0">
+        <a href={i.href} aria-current={isActive(i.href) ? 'page' : undefined}
+          class="inline-flex min-h-11 items-center rounded-md px-4 font-display text-[0.8125rem] font-medium text-charcoal-600 transition-colors hover:bg-cream-100 hover:text-charcoal-950 aria-[current=page]:bg-charcoal-950 aria-[current=page]:text-cream-50">{i.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

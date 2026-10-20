@@ -37,3 +37,10 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 ## Provider photos and award logos (supplied by the user)
 - providers/stuart-hough-md.jpg and providers/ramani-peruvemba-md.jpg: from the user's Doc 01 / Doc 2 files (replaced with the user's larger 1254px photos; Hough = grey hair, brick wall; Peruvemba = dark hair, paisley tie).
 - awards/washingtonian.png, bethesda.png: supplied by the user. awards/checkbook.svg and abanesthesiology.webp: taken from the owners' websites. Confirm licence/permission to use all four.
+
+## About pages (Shutterstock)
+- public/images/about/examine-back.jpg: 2485751169
+- public/images/about/exam-senior.jpg: 2521011127
+- public/images/about/movement.jpg: 2741817537
+- public/images/about/team-tablet.jpg: 2571102439
+- public/images/about/team-smile.jpg: 2537963221

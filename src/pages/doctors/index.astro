@@ -1,16 +1,45 @@
 ---
 import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
+import AboutSubnav from '@/components/ui/AboutSubnav.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
 const docs = (await getCollection('doctors')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<PageLayout title="Our Providers" eyebrow="Providers">
-  <ul class="grid gap-6 sm:grid-cols-2">
-    {docs.map((d) => (
-      <li><a href={`/doctors/${d.id}`} class="block rounded-md bg-cream-100 p-8 transition hover:bg-cream-200">
-        <h2 class="font-display text-xl font-semibold">{d.data.name}</h2>
-        <p class="mt-1 text-charcoal-600">{d.data.title}</p>
-      </a></li>
-    ))}
-  </ul>
+<PageLayout title="Meet our physicians." eyebrow="Our team" lead="Two board certified pain physicians who take the time to listen. Both are accepting new patients and offer virtual visits." image="/images/about/team-tablet.jpg" imageAlt="Healthcare professionals discussing care together" description="Meet the board certified pain physicians at Pain Management Specialists.">
+  <AboutSubnav />
+
+  <section class="section">
+    <div class="container-x">
+      <ul class="mx-auto grid max-w-5xl gap-x-10 gap-y-14 md:grid-cols-2">
+        {docs.map((d, i) => (
+          <li data-reveal style={`--d:${i * 120}ms`}>
+            <article class="group relative">
+              <span class="pointer-events-none absolute inset-0 translate-x-3 translate-y-3 rounded-md border border-gold-400/50 transition duration-500 ease-[var(--ease-lux)] group-hover:translate-x-5 group-hover:translate-y-5" aria-hidden="true"></span>
+              <div class="relative overflow-hidden rounded-md bg-white shadow-[0_24px_50px_-30px_rgba(27,28,31,0.5)] transition duration-500 ease-[var(--ease-lux)] group-hover:-translate-x-1 group-hover:-translate-y-1">
+                <a href={`/doctors/${d.id}`} class="relative block aspect-square overflow-hidden bg-cream-100" aria-label={`${d.data.name}, view profile`}>
+                  <img src={d.data.photo ?? `/images/providers/${d.id}.jpg`} alt={d.data.name} width="800" height="800" loading="lazy" class="h-full w-full object-cover object-top transition-transform duration-[1400ms] ease-[var(--ease-lux)] group-hover:scale-[1.05]" />
+                </a>
+                <div class="p-7">
+                  <h2 class="font-display text-2xl font-semibold">{d.data.name}</h2>
+                  <p class="mt-1 text-sm text-charcoal-600">{d.data.title}</p>
+                  <p class="mt-4 text-charcoal-600">{d.data.intro}</p>
+                  <ul class="mt-4 flex flex-wrap gap-2">
+                    {d.data.expertise.slice(0, 3).map((e) => <li class="rounded-md bg-cream-100 px-3 py-1.5 text-xs text-charcoal-800">{e}</li>)}
+                  </ul>
+                  <div class="mt-6 flex flex-wrap items-center gap-3">
+                    <a href={FIND_A_DOCTOR_URL} class="btn btn-dark !min-h-10 !px-5">Schedule online</a>
+                    <a href={`/doctors/${d.id}`} class="link-arrow text-gold-700">View profile</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand slot="after" />
 </PageLayout>
