@@ -50,3 +50,12 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - public/images/interventional/spine-injection.jpg: 1762137389
 - public/images/interventional/mri-lumbar.jpg: 1390526840
 - public/images/interventional/xray-lumbar.jpg: 360709571
+
+## Service pages, hero photos (Shutterstock), public/images/services/hero/
+- cortisone-injections.jpg: 1419335630
+- epidural-steroid-injections.jpg: 1693283959
+- radiofrequency-ablation.jpg: 791852362
+- nerve-blocks.jpg: 1573947112
+- mild-procedure.jpg: 2537383347
+- intracept-procedure.jpg: 2324191319
+- kyphoplasty.jpg: 1337363225

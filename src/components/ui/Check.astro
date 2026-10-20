@@ -1,0 +1,7 @@
+---
+const { tone = 'ok' } = Astro.props;
+---
+
+{tone === 'ok'
+  ? <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-charcoal-950 text-gold-300"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7.5l3 3 7-7" /></svg></span>
+  : <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-charcoal-900/25 text-charcoal-600"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h8" /></svg></span>}
