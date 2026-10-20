@@ -1,8 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
-interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string; highlight?: string[] }
-const { title, description, eyebrow, lead, image, imageAlt = '', highlight = [] } = Astro.props;
+interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string; highlight?: string[]; nearby?: string }
+const { title, description, eyebrow, lead, image, imageAlt = '', highlight = [], nearby } = Astro.props;
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="text-gold-300">${esc(w)}</span>`), esc(title));
 ---
@@ -27,6 +27,16 @@ const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="
           </div>
         </div>
       </div>
+      {nearby && (
+        <div class="container-x relative mt-14 lg:mt-16" data-reveal>
+          <div class="border-t border-white/15 pt-7">
+            <p class="flex items-start gap-4 text-[1.0625rem] leading-relaxed text-cream-200">
+              <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span set:html={nearby}></span>
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   ) : (
     <section class="on-dark bg-charcoal-950 pb-16 pt-20 lg:pb-24 lg:pt-28">
