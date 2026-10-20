@@ -48,3 +48,5 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 ## Interventional pain management page (Shutterstock)
 - public/images/interventional/frederick-town.jpg: 405084568
 - public/images/interventional/spine-injection.jpg: 1762137389
+- public/images/interventional/mri-lumbar.jpg: 1390526840
+- public/images/interventional/xray-lumbar.jpg: 360709571

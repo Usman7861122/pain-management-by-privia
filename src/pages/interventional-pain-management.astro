@@ -9,14 +9,22 @@ const cityInfo: Record<string, { img: string; text: string }> = {
   frederick: { img: '/images/interventional/frederick-town.jpg', text: 'Our Frederick office serves Frederick, Urbana, Walkersville, Thurmont and the rest of Frederick County.' },
 };
 
-const conditions = ['Osteoarthritis', 'Fibromyalgia', 'Bursitis', 'Spinal stenosis', 'Herniated discs', 'Sciatica', 'Post-surgical pain', 'Degenerative disc disease', 'Complex regional pain syndrome (CRPS)', 'Neuropathic pain'];
+const conditionTiles = [
+  { t: 'Spinal stenosis', img: '/images/conditions/spinal-stenosis.jpg', href: '/conditions/spinal-stenosis' },
+  { t: 'Herniated discs', img: '/images/conditions/herniated-discs.jpg', href: '/conditions/herniated-discs' },
+  { t: 'Sciatica', img: '/images/conditions/sciatica.jpg', href: '/conditions/sciatica' },
+  { t: 'Neuropathic pain', img: '/images/conditions/neuropathy.jpg', href: '/conditions/neuropathy' },
+  { t: 'Degenerative disc disease', img: '/images/conditions/back-pain.jpg', href: '/conditions/back-pain' },
+  { t: 'Complex regional pain syndrome (CRPS)', img: '/images/conditions/neck-pain.jpg', href: '/conditions/complex-regional-pain-syndrome' },
+];
+const alsoHelps = ['Osteoarthritis', 'Fibromyalgia', 'Bursitis', 'Post-surgical pain'];
 
 const treatments = [
-  { t: 'Epidural steroid injections', d: 'Anti-inflammatory medicine placed near irritated nerves. It can help with pinched nerves, spinal stenosis, sciatica and herniated discs.', href: '/services/epidural-steroid-injections' },
-  { t: 'Radiofrequency ablation', d: 'A thin needle uses gentle heat on the small nerves that carry arthritis pain from the facet joints. Relief can last many months.', href: '/services/radiofrequency-ablation' },
-  { t: 'Spinal cord stimulation', d: 'A small implanted device sends mild pulses that interrupt pain signals before they reach the brain.', href: '/services/spinal-cord-stimulation' },
-  { t: 'Dorsal root ganglion (DRG) stimulation', d: 'A newer kind of stimulation aimed at clusters of nerves. It is often used for CRPS and nerve injuries.', href: '/services/neuromodulation' },
-  { t: 'mild® procedure', d: 'A minimally invasive treatment for pain from lumbar spinal stenosis.', href: '/services/mild-procedure' },
+  { t: 'Epidural steroid injections', d: 'Anti-inflammatory medicine placed near irritated nerves. It can help with pinched nerves, spinal stenosis, sciatica and herniated discs.', href: '/services/epidural-steroid-injections', img: '/images/services/epidural-steroid-injections.jpg' },
+  { t: 'Radiofrequency ablation', d: 'A thin needle uses gentle heat on the small nerves that carry arthritis pain from the facet joints. Relief can last many months.', href: '/services/radiofrequency-ablation', img: '/images/services/radiofrequency-ablation.jpg' },
+  { t: 'Spinal cord stimulation', d: 'A small implanted device sends mild pulses that interrupt pain signals before they reach the brain.', href: '/services/spinal-cord-stimulation', img: '/images/services/spinal-cord-stimulation.jpg' },
+  { t: 'Dorsal root ganglion (DRG) stimulation', d: 'A newer kind of stimulation aimed at clusters of nerves. It is often used for CRPS and nerve injuries.', href: '/services/neuromodulation', img: '/images/interventional/xray-lumbar.jpg' },
+  { t: 'mild® procedure', d: 'A minimally invasive treatment for pain from lumbar spinal stenosis.', href: '/services/mild-procedure', img: '/images/interventional/mri-lumbar.jpg' },
 ];
 ---
 
@@ -33,10 +41,22 @@ const treatments = [
       </div>
       <div class="lg:col-span-6" data-reveal style="--d:120ms">
         <p class="eyebrow">Conditions that can benefit</p>
-        <ul class="mt-5 flex flex-wrap gap-2.5">
-          {conditions.map((c) => <li class="rounded-md border border-charcoal-900/15 bg-cream-50 px-4 py-2 text-sm text-charcoal-800 transition duration-300 hover:border-gold-600 hover:bg-white">{c}</li>)}
+        <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {conditionTiles.map((c) => (
+            <li>
+              <a href={c.href} class="group relative block aspect-[4/5] overflow-hidden rounded-md bg-charcoal-900">
+                <img src={c.img} alt="" loading="lazy" width="600" height="750" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.08]" />
+                <span class="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/20 to-transparent transition-opacity duration-500 group-hover:from-charcoal-950/95" aria-hidden="true"></span>
+                <span class="absolute inset-x-0 bottom-0 p-4">
+                  <span class="block h-px w-6 bg-gold-400 transition-all duration-500 group-hover:w-12"></span>
+                  <span class="mt-2 block font-display text-sm font-semibold leading-snug text-cream-50">{c.t}</span>
+                </span>
+              </a>
+            </li>
+          ))}
         </ul>
-        <p class="mt-6 text-charcoal-600">Not sure if your pain is on the list? <a href="/conditions" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">See all conditions we treat</a>.</p>
+        <p class="mt-6 text-sm text-charcoal-600"><span class="font-semibold text-charcoal-950">Also helps with:</span> {alsoHelps.join(', ')}.</p>
+        <p class="mt-3 text-charcoal-600">Not sure if your pain is on the list? <a href="/conditions" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">See all conditions we treat</a>.</p>
       </div>
     </div>
   </section>
@@ -50,10 +70,15 @@ const treatments = [
       <ul class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {treatments.map((t, i) => (
           <li data-reveal style={`--d:${i * 80}ms`}>
-            <a href={t.href} class="group block h-full rounded-md border border-charcoal-900/10 bg-cream-50 p-7 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
-              <h3 class="font-display text-lg font-semibold">{t.t}</h3>
-              <p class="mt-3 text-charcoal-600">{t.d}</p>
-              <span class="link-arrow mt-5 text-gold-700">Learn more</span>
+            <a href={t.href} class="group block h-full overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+              <div class="aspect-[16/10] overflow-hidden bg-charcoal-900">
+                <img src={t.img} alt="" loading="lazy" width="800" height="500" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.06]" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-lg font-semibold">{t.t}</h3>
+                <p class="mt-3 text-charcoal-600">{t.d}</p>
+                <span class="link-arrow mt-5 text-gold-700">Learn more</span>
+              </div>
             </a>
           </li>
         ))}
