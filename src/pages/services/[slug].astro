@@ -202,7 +202,7 @@ const heroTitle = `${d.title}${d.carveOut ? ' *' : ''} in Rockville and Frederic
             </div>
           )}
           {d.risks.length > 0 && (
-            <div class="rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10" data-reveal style="--d:100ms">
+            <div class={'rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10 ' + (d.goodFit.length === 0 ? 'mx-auto w-full max-w-3xl lg:col-span-2' : '')} data-reveal style="--d:100ms">
               <p class="eyebrow">Safety</p>
               <h2 class="mt-3 font-display text-2xl font-semibold">{d.risksTitle}</h2>
               {d.risksIntro && <p class="mt-3 text-charcoal-600">{d.risksIntro}</p>}

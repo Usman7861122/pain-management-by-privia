@@ -90,7 +90,7 @@ export const megaMenus: Record<string, MegaMenu> = {
         items: ['Interventional Pain Management', 'Epidural Steroid Injections', 'Radiofrequency Ablation', 'Nerve Blocks', 'Cortisone Injections', 'Kyphoplasty', 'Intracept Procedure', 'mild Procedure'] },
       { label: 'Neuromodulation & devices', href: '/services/neuromodulation-and-devices', desc: 'Advanced implants and nerve therapies.', icon: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
         items: ['Neuromodulation', 'Spinal Cord Stimulation', 'Reactiv8', 'iovera Treatment'] },
-      { label: 'Medicine & care', desc: 'Whole-person care plans, with and without medication.', icon: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
+      { label: 'Medicine & care', href: '/services/medicine-and-care', desc: 'Whole-person care plans, with and without medication.', icon: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
         items: ['Pain Management', 'Pain Medicine'] },
     ],
     featured: { image: '/images/services/interventional-pain-management.jpg', eyebrow: 'Not sure where to start?', title: 'Find the right treatment', text: 'Our physicians will build a plan around you.' },
