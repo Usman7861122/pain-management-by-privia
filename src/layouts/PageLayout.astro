@@ -1,8 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 
-interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string; highlight?: string[]; nearby?: string }
-const { title, description, eyebrow, lead, image, imageAlt = '', highlight = [], nearby } = Astro.props;
+interface Props { title: string; description?: string; eyebrow?: string; lead?: string; image?: string; imageAlt?: string; highlight?: string[]; nearby?: string; crumb?: string; crumbs?: { label: string; href?: string }[] }
+const { title, description, eyebrow, lead, image, imageAlt = '', highlight = [], nearby, crumb, crumbs } = Astro.props;
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="text-gold-300">${esc(w)}</span>`), esc(title));
 ---
@@ -13,9 +14,7 @@ const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="
       <div class="pointer-events-none absolute inset-0 opacity-50 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_80%_80%_at_70%_40%,#000_40%,transparent_100%)]" aria-hidden="true"></div>
       <div class="container-x relative grid items-center gap-12 lg:grid-cols-12">
         <div class="lg:col-span-7" data-reveal>
-          <nav aria-label="Breadcrumb" class="mb-6 font-display text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream-200">
-            <a href="/" class="hover:text-gold-300">Home</a><span class="mx-2 opacity-50">/</span><span>{eyebrow ?? title}</span>
-          </nav>
+          <Breadcrumbs title={title} crumb={crumb} crumbs={crumbs} />
           {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
           <h1 class="font-display text-[clamp(2.1rem,1.4rem+2.8vw,3.6rem)] font-semibold leading-[1.08] tracking-tight text-cream-50" set:html={titleHtml}></h1>
           {lead && <p class="mt-6 max-w-xl text-lg leading-relaxed text-cream-200">{lead}</p>}
@@ -41,6 +40,7 @@ const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="
   ) : (
     <section class="on-dark bg-charcoal-950 pb-16 pt-20 lg:pb-24 lg:pt-28">
       <div class="container-x">
+        <Breadcrumbs title={title} crumb={crumb} crumbs={crumbs} />
         {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
         <h1 class="h2 max-w-3xl !text-[clamp(2rem,1.4rem+2.2vw,3.2rem)]">{title}</h1>
       </div>
