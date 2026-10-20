@@ -22,6 +22,47 @@ const treatments = [
 
 <PageLayout title="Interventional pain management in Rockville and Frederick, MD." eyebrow="Interventional pain management" lead="Board certified pain physicians offer precise, minimally invasive treatments at two Maryland offices, close to where you live." image="/images/interventional/spine-injection.jpg" imageAlt="A doctor giving a targeted injection to a patient with back pain" description="Interventional pain management in Rockville and Frederick, Maryland with board certified physicians Stuart Hough, MD and Ramani Peruvemba, MD.">
   <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">The basics</p>
+        <h2 class="h2 mt-4">What is interventional pain management?</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">It is a way to find and treat the source of acute or long-term pain using small, precise procedures. These are part of a wider care plan that can also include therapy, education and medicine.</p>
+        <p class="lead mt-4">Many primary care visits rely on medicine alone. Interventional care can lower or even remove the need for pain pills, along with their side effects and risk of dependence.</p>
+        <p class="lead mt-4">Dr. Stuart Hough and Dr. Ramani Peruvemba are board certified by the American Board of Anesthesiology. They have many years of experience and want you to take an active part in your own recovery.</p>
+      </div>
+      <div class="lg:col-span-6" data-reveal style="--d:120ms">
+        <p class="eyebrow">Conditions that can benefit</p>
+        <ul class="mt-5 flex flex-wrap gap-2.5">
+          {conditions.map((c) => <li class="rounded-md border border-charcoal-900/15 bg-cream-50 px-4 py-2 text-sm text-charcoal-800 transition duration-300 hover:border-gold-600 hover:bg-white">{c}</li>)}
+        </ul>
+        <p class="mt-6 text-charcoal-600">Not sure if your pain is on the list? <a href="/conditions" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">See all conditions we treat</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Treatments</p>
+        <h2 class="h2 mt-4">Common interventional treatments.</h2>
+      </div>
+      <ul class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {treatments.map((t, i) => (
+          <li data-reveal style={`--d:${i * 80}ms`}>
+            <a href={t.href} class="group block h-full rounded-md border border-charcoal-900/10 bg-cream-50 p-7 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+              <h3 class="font-display text-lg font-semibold">{t.t}</h3>
+              <p class="mt-3 text-charcoal-600">{t.d}</p>
+              <span class="link-arrow mt-5 text-gold-700">Learn more</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-10 text-center text-charcoal-600" data-reveal>Every treatment plan is personal. Your physician will explain which options fit you and why.</p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container-x">
       <div class="mx-auto max-w-2xl text-center" data-reveal>
         <p class="eyebrow">Where we are</p>
@@ -49,47 +90,6 @@ const treatments = [
           </li>
         ))}
       </ul>
-    </div>
-  </section>
-
-  <section class="bg-cream-100 section">
-    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
-      <div class="lg:col-span-6" data-reveal>
-        <p class="eyebrow">The basics</p>
-        <h2 class="h2 mt-4">What is interventional pain management?</h2>
-        <div class="rule-gold mt-6"></div>
-        <p class="lead mt-6">It is a way to find and treat the source of acute or long-term pain using small, precise procedures. These are part of a wider care plan that can also include therapy, education and medicine.</p>
-        <p class="lead mt-4">Many primary care visits rely on medicine alone. Interventional care can lower or even remove the need for pain pills, along with their side effects and risk of dependence.</p>
-        <p class="lead mt-4">Dr. Stuart Hough and Dr. Ramani Peruvemba are board certified by the American Board of Anesthesiology. They have many years of experience and want you to take an active part in your own recovery.</p>
-      </div>
-      <div class="lg:col-span-6" data-reveal style="--d:120ms">
-        <p class="eyebrow">Conditions that can benefit</p>
-        <ul class="mt-5 flex flex-wrap gap-2.5">
-          {conditions.map((c) => <li class="rounded-md border border-charcoal-900/15 bg-cream-50 px-4 py-2 text-sm text-charcoal-800 transition duration-300 hover:border-gold-600 hover:bg-white">{c}</li>)}
-        </ul>
-        <p class="mt-6 text-charcoal-600">Not sure if your pain is on the list? <a href="/conditions" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">See all conditions we treat</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-x">
-      <div class="mx-auto max-w-2xl text-center" data-reveal>
-        <p class="eyebrow">Treatments</p>
-        <h2 class="h2 mt-4">Common interventional treatments.</h2>
-      </div>
-      <ul class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {treatments.map((t, i) => (
-          <li data-reveal style={`--d:${i * 80}ms`}>
-            <a href={t.href} class="group block h-full rounded-md border border-charcoal-900/10 bg-cream-50 p-7 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
-              <h3 class="font-display text-lg font-semibold">{t.t}</h3>
-              <p class="mt-3 text-charcoal-600">{t.d}</p>
-              <span class="link-arrow mt-5 text-gold-700">Learn more</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="mt-10 text-center text-charcoal-600" data-reveal>Every treatment plan is personal. Your physician will explain which options fit you and why.</p>
     </div>
   </section>
 
