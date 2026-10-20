@@ -91,7 +91,7 @@
 .topbar-btn { @apply inline-flex min-h-8 items-center justify-center rounded-md border border-white/25 px-4 font-display text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-cream-100 transition duration-300 hover:border-gold-300 hover:bg-white/10 hover:text-gold-300; }
 
 /* Desktop dropdowns (pure CSS: hover + keyboard focus) */
-.dd { position: absolute; left: 50%; top: 100%; z-index: 60; padding-top: .6rem; translate: -50% 0; visibility: hidden; opacity: 0; transform: translateY(10px); transition: opacity .3s var(--ease-lux), transform .3s var(--ease-lux), visibility .3s; }
+.dd { position: absolute; left: 50%; top: 100%; z-index: 60; padding-top: .6rem; margin-left: -8.5rem; visibility: hidden; opacity: 0; transform: translateY(10px); transition: opacity .3s var(--ease-lux), transform .3s var(--ease-lux), visibility .3s; }
 .nav-item:hover > .dd, .nav-item:focus-within > .dd { visibility: visible; opacity: 1; transform: none; }
 .dd-panel { min-width: 17rem; max-height: calc(100vh - 9rem); overflow-y: auto; border-radius: .5rem; border-top: 2px solid var(--color-gold-400); background: #fff; padding: .6rem; color: var(--color-charcoal-800); box-shadow: 0 30px 60px -20px rgba(27,28,31,.45), 0 0 0 1px rgba(27,28,31,.06); }
 .dd-2 { min-width: 35rem; }
@@ -106,7 +106,7 @@
 
 /* Mega menu (Services, Conditions) */
 .nav-item.has-mega { position: static; }
-.dd-mega { width: min(62rem, calc(100vw - 3rem)); }
+.dd-mega { left: 0; right: 0; margin-left: auto; margin-right: auto; width: min(62rem, calc(100vw - 3rem)); }
 .mega { display: grid; grid-template-columns: 15.5rem 1fr 14rem; overflow: hidden; border-radius: .625rem; border-top: 2px solid var(--color-gold-400); background: var(--color-cream-50); color: var(--color-charcoal-800); box-shadow: 0 40px 80px -24px rgba(27,28,31,.5), 0 0 0 1px rgba(27,28,31,.06); }
 .mega-rail { background: var(--color-cream-100); padding: 1.25rem .9rem; }
 .mega-label { padding: 0 .6rem .6rem; font-family: var(--font-display); font-size: .6875rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--color-gold-700); }
