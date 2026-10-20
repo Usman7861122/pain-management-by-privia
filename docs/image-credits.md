@@ -59,3 +59,9 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - mild-procedure.jpg: 2537383347
 - intracept-procedure.jpg: 2324191319
 - kyphoplasty.jpg: 1337363225
+
+## Neuromodulation & devices pages (Shutterstock), public/images/services/hero/
+- neuromodulation.jpg: 2189203103
+- spinal-cord-stimulation.jpg: 2359622151
+- reactiv8.jpg: 2324060061
+- iovera-treatment.jpg: 2648821251

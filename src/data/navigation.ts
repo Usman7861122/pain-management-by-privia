@@ -88,7 +88,7 @@ export const megaMenus: Record<string, MegaMenu> = {
     groups: [
       { label: 'Interventional procedures', href: '/services/interventional-procedures', desc: 'Targeted, image-guided treatments for lasting relief.', icon: '<circle cx="12" cy="12" r="7"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
         items: ['Interventional Pain Management', 'Epidural Steroid Injections', 'Radiofrequency Ablation', 'Nerve Blocks', 'Cortisone Injections', 'Kyphoplasty', 'Intracept Procedure', 'mild Procedure'] },
-      { label: 'Neuromodulation & devices', desc: 'Advanced implants and nerve therapies.', icon: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
+      { label: 'Neuromodulation & devices', href: '/services/neuromodulation-and-devices', desc: 'Advanced implants and nerve therapies.', icon: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
         items: ['Neuromodulation', 'Spinal Cord Stimulation', 'Reactiv8', 'iovera Treatment'] },
       { label: 'Medicine & care', desc: 'Whole-person care plans, with and without medication.', icon: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
         items: ['Pain Management', 'Pain Medicine'] },

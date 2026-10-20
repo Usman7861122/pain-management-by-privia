@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import OfficesSection from '@/components/ui/OfficesSection.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { nearbyAreasHtml } from '@/data/site';
+
+const all = await getCollection('services');
+const byId = (id: string) => all.find((x) => x.id === id)!;
+const ids = ['neuromodulation', 'spinal-cord-stimulation', 'reactiv8', 'iovera-treatment'];
+---
+
+<PageLayout title="Neuromodulation & Devices in Rockville and Frederick, MD." crumb="Neuromodulation & Devices" highlight={['Rockville', 'Frederick']} eyebrow="Services" lead="Advanced implants and nerve therapies that work with your nervous system, so pain signals are quieted at the source." image="/images/services/hero/spinal-cord-stimulation.jpg" imageAlt="A clinician holding a handheld controller for a nerve stimulation device" description="Neuromodulation, spinal cord stimulation, Reactiv8 and iovera at Pain Management Specialists in Rockville and Frederick, Maryland." nearby={nearbyAreasHtml}>
+  <section class="section">
+    <div class="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-7" data-reveal>
+        <p class="eyebrow">Start here</p>
+        <h2 class="h2 mt-4">What is neuromodulation?</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">Neuromodulation uses gentle electrical stimulation, or cold, to change how nerves work. It can calm pain that medicine and other treatments have not helped.</p>
+        <p class="lead mt-4">You always start with a trial or a careful exam, so you know it works for you before anything permanent is done. One team guides you from your first visit through the procedure and long-term care.</p>
+      </div>
+      <aside class="lg:col-span-5" data-reveal style="--d:120ms">
+        <div class="relative overflow-hidden rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10">
+          <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent" aria-hidden="true"></span>
+          <p class="eyebrow">Good to know</p>
+          <ul class="mt-5 space-y-3 text-charcoal-800">
+            <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Try before you commit</li>
+            <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Often a way to use less pain medicine</li>
+            <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Done as outpatient visits</li>
+            <li class="flex gap-3"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"></span>Experienced physicians, in two offices</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="max-w-2xl" data-reveal>
+        <p class="eyebrow">Our treatments</p>
+        <h2 class="h2 mt-4">Four ways we use technology to ease pain.</h2>
+      </div>
+      <ul class="mt-10 grid gap-5 sm:grid-cols-2">
+        {ids.map((id, i) => {
+          const e = byId(id);
+          return (
+            <li data-reveal style={`--d:${(i % 2) * 90}ms`}>
+              <a href={`/services/${e.id}`} class="group block h-full overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+                <div class="aspect-[16/10] overflow-hidden bg-charcoal-900">
+                  <img src={e.data.heroImage} alt="" loading="lazy" width="800" height="500" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.06]" />
+                </div>
+                <div class="p-7">
+                  <h3 class="font-display text-xl font-semibold">{e.data.title}</h3>
+                  <p class="mt-3 text-charcoal-600">{e.data.summary}</p>
+                  <span class="link-arrow mt-5 text-gold-700">Learn more</span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <OfficesSection />
+  <CtaBand slot="after" title="Wondering if neuromodulation could help you?" text="Our physicians will explain your options. Choose your provider and schedule online, or call our team." />
+</PageLayout>
