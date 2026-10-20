@@ -79,14 +79,14 @@ export const mainNav: NavItem[] = [
 ];
 
 // Mega menu content (desktop). Groups pick items from the lists above by label.
-export interface MegaGroup { label: string; desc: string; icon: string; items: string[] }
+export interface MegaGroup { label: string; desc: string; icon: string; items: string[]; href?: string }
 export interface MegaMenu { heading: string; viewAll: { label: string; href: string }; groups: MegaGroup[]; featured: { image: string; eyebrow: string; title: string; text: string } }
 export const megaMenus: Record<string, MegaMenu> = {
   Services: {
     heading: 'Treatments',
     viewAll: { label: 'View all services', href: '/services' },
     groups: [
-      { label: 'Interventional procedures', desc: 'Targeted, image-guided treatments for lasting relief.', icon: '<circle cx="12" cy="12" r="7"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
+      { label: 'Interventional procedures', href: '/services/interventional-procedures', desc: 'Targeted, image-guided treatments for lasting relief.', icon: '<circle cx="12" cy="12" r="7"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
         items: ['Interventional Pain Management', 'Epidural Steroid Injections', 'Radiofrequency Ablation', 'Nerve Blocks', 'Cortisone Injections', 'Kyphoplasty', 'Intracept Procedure', 'mild Procedure'] },
       { label: 'Neuromodulation & devices', desc: 'Advanced implants and nerve therapies.', icon: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
         items: ['Neuromodulation', 'Spinal Cord Stimulation', 'Reactiv8', 'iovera Treatment'] },

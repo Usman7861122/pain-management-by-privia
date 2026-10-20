@@ -51,7 +51,9 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
                   <div class="mega-main">
                     {m.groups.map((g, k) => (
                       <div data-pane={k} hidden={k !== 0}>
-                        <p class="mega-label">{g.label}</p>
+                        {g.href
+                          ? <a href={g.href} class="mega-label block transition-colors hover:text-charcoal-950">{g.label} <span aria-hidden="true">→</span></a>
+                          : <p class="mega-label">{g.label}</p>}
                         <ul class="mega-list">
                           {g.items.map((label) => <li><a href={hrefOf(i, label)} class="mega-link"><span class="mega-dot"></span>{label}</a></li>)}
                         </ul>
