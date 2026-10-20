@@ -6,6 +6,7 @@ import Check from '@/components/ui/Check.astro';
 import OfficesSection from '@/components/ui/OfficesSection.astro';
 import CarveOutDisclaimer from '@/components/ui/CarveOutDisclaimer.astro';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
+import { nearbyAreasHtml } from '@/data/site';
 
 export async function getStaticPaths() {
   const items = await getCollection('services');
@@ -16,12 +17,11 @@ const d = entry.data;
 const { Content } = await render(entry);
 const rich = Boolean(d.lead);
 const related = d.related.map((id) => all.find((x) => x.id === id)).filter(Boolean);
-const nearby = 'Offered at both of our offices in <strong class="font-semibold text-gold-300">Rockville</strong> and <strong class="font-semibold text-gold-300">Frederick</strong>, Maryland.';
-const title = d.title + (d.carveOut ? ' *' : '');
+const heroTitle = `${d.title}${d.carveOut ? ' *' : ''} in Rockville and Frederick, MD.`;
 ---
 
 {rich ? (
-  <PageLayout title={title} eyebrow="Service" lead={d.lead} image={d.heroImage} imageAlt={d.heroAlt} description={d.summary} nearby={nearby}>
+  <PageLayout title={heroTitle} crumb={d.title} highlight={['Rockville', 'Frederick']} eyebrow="Service" lead={d.lead} image={d.heroImage} imageAlt={d.heroAlt} description={d.summary} nearby={nearbyAreasHtml}>
     <section class="section">
       <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
         <div class="lg:col-span-7" data-reveal>
@@ -181,7 +181,7 @@ const title = d.title + (d.carveOut ? ' *' : '');
     <CtaBand slot="after" title={`Ready to talk about ${d.title.replace(/ Procedure$/, '')}?`} />
   </PageLayout>
 ) : (
-  <PageLayout title={title} eyebrow="Service" description={d.summary}>
+  <PageLayout title={heroTitle} crumb={d.title} highlight={['Rockville', 'Frederick']} eyebrow="Service" description={d.summary} nearby={nearbyAreasHtml}>
     <section class="section">
       <div class="container-x">
         <div class="max-w-3xl space-y-4 text-lg leading-relaxed text-charcoal-600"><Content /></div>

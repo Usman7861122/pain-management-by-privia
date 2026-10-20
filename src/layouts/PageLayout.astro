@@ -16,7 +16,7 @@ const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="
         <div class="lg:col-span-7" data-reveal>
           <Breadcrumbs title={title} crumb={crumb} crumbs={crumbs} />
           {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
-          <h1 class="font-display text-[clamp(2.1rem,1.4rem+2.8vw,3.6rem)] font-semibold leading-[1.08] tracking-tight text-cream-50" set:html={titleHtml}></h1>
+          <h1 class="text-balance font-display text-[clamp(2.1rem,1.4rem+2.8vw,3.6rem)] font-semibold leading-[1.08] tracking-tight text-cream-50" set:html={titleHtml}></h1>
           {lead && <p class="mt-6 max-w-xl text-lg leading-relaxed text-cream-200">{lead}</p>}
         </div>
         <div class="relative lg:col-span-5" data-reveal style="--d:120ms">
@@ -42,7 +42,15 @@ const titleHtml = highlight.reduce((h, w) => h.replaceAll(esc(w), `<span class="
       <div class="container-x">
         <Breadcrumbs title={title} crumb={crumb} crumbs={crumbs} />
         {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
-        <h1 class="h2 max-w-3xl !text-[clamp(2rem,1.4rem+2.2vw,3.2rem)]">{title}</h1>
+        <h1 class="h2 text-balance max-w-3xl !text-[clamp(2rem,1.4rem+2.2vw,3.2rem)]" set:html={titleHtml}></h1>
+        {nearby && (
+          <div class="mt-12 border-t border-white/15 pt-7">
+            <p class="flex items-start gap-4 text-[1.0625rem] leading-relaxed text-cream-200">
+              <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span set:html={nearby}></span>
+            </p>
+          </div>
+        )}
       </div>
     </section>
   )}

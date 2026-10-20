@@ -35,3 +35,7 @@ export const mapsUrl = (l: (typeof site.locations)[number]) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${l.street}, ${l.city}, ${l.state} ${l.zip}`,
   )}`;
+
+// Hero strip: towns near each office (shown on service pages). VERIFY the town lists with the practice.
+export const nearbyAreasHtml =
+  'Patients are welcome from across <strong class="font-semibold text-gold-300">Rockville</strong>, Bethesda, Gaithersburg, Potomac and Montgomery County, and from <strong class="font-semibold text-gold-300">Frederick</strong>, Urbana, Walkersville, Thurmont and the greater Frederick County area.';
