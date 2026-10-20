@@ -1,18 +1,95 @@
 ---
 import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
-import ImageCard from '@/components/ui/ImageCard.astro';
+import OfficesSection from '@/components/ui/OfficesSection.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
 import CarveOutDisclaimer from '@/components/ui/CarveOutDisclaimer.astro';
-const items = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
-const hasCarveOut = items.some((s) => s.data.carveOut);
+import { nearbyAreasHtml } from '@/data/site';
+
+const all = await getCollection('services');
+const get = (id: string) => all.find((x) => x.id === id)!;
+const img = (id: string) => get(id).data.heroImage || `/images/services/${id}.jpg`;
+const hasCarveOut = all.some((s) => s.data.carveOut);
+
+const groups = [
+  { id: 'interventional', title: 'Interventional procedures', href: '/services/interventional-procedures', text: 'Targeted, image-guided treatments that calm pain at its source, with little or no downtime.', image: '/images/interventional/spine-injection.jpg', items: ['interventional-pain-management', 'epidural-steroid-injections', 'radiofrequency-ablation', 'nerve-blocks', 'cortisone-injections', 'kyphoplasty', 'intracept-procedure', 'mild-procedure'] },
+  { id: 'neuromodulation', title: 'Neuromodulation & devices', href: '/services/neuromodulation-and-devices', text: 'Advanced implants and nerve therapies that quiet pain signals when other care has not helped.', image: '/images/services/hero/spinal-cord-stimulation.jpg', items: ['neuromodulation', 'spinal-cord-stimulation', 'reactiv8', 'iovera-treatment'] },
+  { id: 'medicine', title: 'Medicine & care', href: '/services/medicine-and-care', text: 'Whole-person care plans, with a focus on safe, non-opioid options.', image: '/images/about/movement.jpg', items: ['pain-management', 'pain-medicine'] },
+];
+const total = groups.reduce((n, g) => n + g.items.length, 0);
 ---
 
-<PageLayout title="Our Services" eyebrow="What we offer" description="Interventional pain management services in Rockville and Frederick, MD.">
-  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-    {items.map((s) => (
-      <ImageCard href={`/services/${s.id}`} title={s.data.title} summary={s.data.summary} image={s.data.image ?? `/images/services/${s.id}.jpg`} carveOut={s.data.carveOut} />
-    ))}
-  </div>
-  {/* PRIVIA RULE: carve-out disclaimer at the bottom of the services page */}
-  {hasCarveOut && <CarveOutDisclaimer />}
+<PageLayout title="Our Services in Rockville and Frederick, MD." crumb="Services" highlight={['Rockville', 'Frederick']} eyebrow="What we offer" lead="From injections to advanced implants, our board-certified physicians offer the full range of treatments for acute and chronic pain, in two offices." image="/images/services/hero/epidural-steroid-injections.jpg" imageAlt="A physician performing a spine procedure" description="Interventional pain management services in Rockville and Frederick, MD." nearby={nearbyAreasHtml}>
+
+  <section class="section overflow-hidden">
+    <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-7" data-reveal>
+        <p class="eyebrow">Find your treatment</p>
+        <h2 class="h2 mt-4">{total} ways to ease pain, one caring team.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">Every plan starts with an exam and a talk about your goals. We choose the safest option that can work for you, and we can often help without strong medicine.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {groups.map((g) => <a href={`#${g.id}`} class="rounded-full border border-charcoal-900/15 bg-cream-50 px-5 py-2.5 font-display text-sm font-semibold text-charcoal-900 transition hover:border-gold-400 hover:bg-white">{g.title}</a>)}
+        </div>
+      </div>
+      <div class="relative lg:col-span-5" data-reveal style="--d:120ms">
+        <div class="absolute -bottom-4 -right-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
+        <div class="relative aspect-[4/3] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/about/team-tablet.jpg" alt="" width="1200" height="900" loading="lazy" class="h-full w-full object-cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  {groups.map((g, gi) => (
+    <section id={g.id} class={(gi % 2 === 0 ? 'bg-cream-100 ' : '') + 'section scroll-mt-28'}>
+      <div class="container-x">
+        <div class="relative overflow-hidden rounded-md bg-charcoal-950" data-reveal>
+          <img src={g.image} alt="" loading="lazy" width="1600" height="600" class="absolute inset-0 h-full w-full object-cover opacity-40" />
+          <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/80 to-transparent" aria-hidden="true"></div>
+          <div class="on-dark relative flex flex-col gap-6 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="eyebrow">Category {String(gi + 1).padStart(2, '0')}</p>
+              <h2 class="mt-3 font-display text-[clamp(1.7rem,1.2rem+1.6vw,2.6rem)] font-semibold leading-tight text-cream-50">{g.title}</h2>
+              <p class="mt-3 text-lg text-cream-200">{g.text}</p>
+            </div>
+            <a href={g.href} class="btn btn-gold shrink-0">View all {g.title.toLowerCase()}</a>
+          </div>
+        </div>
+        <ul class={'mt-8 grid gap-5 sm:grid-cols-2 ' + (g.items.length > 2 ? 'lg:grid-cols-4' : '')}>
+          {g.items.map((id, i) => {
+            const e = get(id);
+            return (
+              <li data-reveal style={`--d:${(i % 4) * 70}ms`}>
+                <a href={`/services/${e.id}`} class="group flex h-full flex-col overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+                  <div class="aspect-[4/3] overflow-hidden bg-charcoal-900"><img src={img(id)} alt="" loading="lazy" width="700" height="525" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.07]" /></div>
+                  <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-lg font-semibold">{e.data.title}{e.data.carveOut ? ' *' : ''}</h3>
+                    <p class="mt-2 flex-1 text-charcoal-600">{e.data.summary}</p>
+                    <span class="link-arrow mt-4 text-gold-700">Learn more</span>
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="on-dark relative overflow-hidden bg-charcoal-950 py-24">
+    <img src="/images/sections/parallax.jpg" alt="" loading="lazy" width="2000" height="1200" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/85 to-charcoal-950/40" aria-hidden="true"></div>
+    <div class="container-x relative grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7" data-reveal>
+        <p class="eyebrow">Not sure where to start?</p>
+        <h2 class="mt-4 font-display text-[clamp(1.9rem,1.3rem+2vw,3rem)] font-semibold leading-tight text-cream-50">You do not need to choose alone.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-cream-200">Book a visit and our physicians will find the cause of your pain and explain your options in plain words.</p>
+        <div class="mt-8 flex flex-wrap gap-3"><a href="/conditions" class="btn btn-gold">Browse conditions</a><a href="/about/treatment-without-opioids" class="btn btn-ghost !text-cream-50">Treatment without opioids</a></div>
+      </div>
+    </div>
+  </section>
+
+  <OfficesSection />
+  {hasCarveOut && <div class="container-x"><CarveOutDisclaimer /></div>}
+  <CtaBand slot="after" title="Ready to find relief?" text="Choose your provider and schedule online, or call our team." />
 </PageLayout>
