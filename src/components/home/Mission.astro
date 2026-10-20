@@ -1,0 +1,46 @@
+---
+import { img } from '@/data/images';
+const values = [
+  ['Listen first', 'Your story guides every decision we make.'],
+  ['Treat the source', 'Precise care aimed at the cause, not only the symptom.'],
+  ['Care for the long term', 'Safe options that support how you move and live.'],
+];
+---
+
+<section id="mission" class="on-dark relative isolate overflow-hidden bg-charcoal-950 text-cream-50 section">
+  <!-- depth: soft gold glow + fine grid lines -->
+  <div class="pointer-events-none absolute -right-40 -top-40 -z-10 h-[34rem] w-[34rem] rounded-full bg-white/5 blur-[120px]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-52 -left-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-white/5 blur-[120px]" aria-hidden="true"></div>
+  <div class="absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px)] [background-size:96px_100%]" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/70 to-transparent" aria-hidden="true"></div>
+
+  <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+    <!-- image with offset gold frame -->
+    <div class="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none" data-reveal>
+      <div class="absolute -bottom-4 -right-4 h-full w-full rounded-md border border-gold-400/60" aria-hidden="true"></div>
+      <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br from-charcoal-800 to-charcoal-900">
+        <img src={img.mission} alt="A doctor gently holding an elderly patient's hand" width="1400" height="1130" loading="lazy" class="h-full w-full object-cover object-[55%_60%]" onerror="this.remove()" />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent" aria-hidden="true"></div>
+        <p class="absolute bottom-0 left-0 right-0 p-6 font-display text-lg font-semibold leading-snug !text-cream-50">Care built around you.</p>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7" data-reveal style="--d:120ms">
+      <p class="eyebrow">Our mission</p>
+      <h2 class="h2 mt-4 max-w-xl">Less pain. More freedom to live your life.</h2>
+      <div class="rule-gold mt-6"></div>
+      <p class="lead mt-6 max-w-xl">Our mission is to help every patient live with less pain, through care that is safe, personal and built around you.</p>
+
+      <ol class="mt-10 grid gap-4 sm:grid-cols-3">
+        {values.map(([t, d], i) => (
+          <li class="group relative rounded-md border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1 hover:border-gold-400/60 hover:bg-white/[0.07]">
+            <span class="font-display text-3xl font-semibold text-gold-300/90">0{i + 1}</span>
+            <div class="my-4 h-px w-8 bg-gold-400 transition-all duration-500 group-hover:w-14"></div>
+            <h3 class="font-display text-lg font-semibold leading-snug !text-cream-50">{t}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream-200">{d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

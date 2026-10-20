@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+const docs = (await getCollection('doctors')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<PageLayout title="Our Providers" eyebrow="Providers">
+  <ul class="grid gap-6 sm:grid-cols-2">
+    {docs.map((d) => (
+      <li><a href={`/doctors/${d.id}`} class="block rounded-md bg-cream-100 p-8 transition hover:bg-cream-200">
+        <h2 class="font-display text-xl font-semibold">{d.data.name}</h2>
+        <p class="mt-1 text-charcoal-600">{d.data.title}</p>
+      </a></li>
+    ))}
+  </ul>
+</PageLayout>

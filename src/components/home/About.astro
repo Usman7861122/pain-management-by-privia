@@ -1,0 +1,63 @@
+---
+import { img } from '@/data/images';
+const facts = [
+  {
+    t: 'Board certified physicians',
+    d: 'Interventional pain management specialists.',
+    icon: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  },
+  {
+    t: 'A non-opioid focus',
+    d: 'Safe, modern options built around you.',
+    icon: '<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',
+  },
+  {
+    t: 'Two Maryland offices',
+    d: 'Rockville and Frederick, plus virtual visits.',
+    icon: '<path d="M12 21s-6-5.4-6-10.5a6 6 0 0112 0C18 15.6 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/>',
+  },
+];
+---
+
+<section id="about" class="section overflow-hidden">
+  <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+    <!-- image: offset tone block + floating credential card -->
+    <div class="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none" data-reveal>
+      <div class="absolute -bottom-5 -left-5 h-3/4 w-3/4 rounded-md bg-cream-200" aria-hidden="true"></div>
+      <div class="absolute -right-3 -top-3 h-24 w-24 rounded-md border border-gold-400/70" aria-hidden="true"></div>
+      <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br from-cream-200 to-cream-100">
+        <img src={img.about} alt="A physician speaking with a patient" width="1400" height="945" loading="lazy" class="h-full w-full object-cover transition-transform duration-[1400ms] ease-[var(--ease-lux)] hover:scale-[1.04]" onerror="this.remove()" />
+      </div>
+      <div class="absolute -bottom-6 right-4 max-w-[15rem] rounded-md bg-charcoal-950 p-5 text-cream-50 shadow-[0_24px_50px_-18px_rgba(0,0,0,.5)] sm:right-8">
+        <p class="eyebrow !text-gold-300">Our promise</p>
+        <p class="mt-2 font-display text-[0.95rem] font-semibold leading-snug">Clear answers. Careful treatment. Real relief.</p>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7" data-reveal style="--d:120ms">
+      <p class="eyebrow flex items-center gap-3"><span class="h-px w-10 bg-gold-600"></span>About us</p>
+      <h2 class="h2 mt-4 max-w-xl">Specialized pain care, delivered with calm and clarity.</h2>
+      <div class="rule-gold mt-6"></div>
+      <p class="lead mt-6 max-w-xl">At Pain Management Specialists, we treat the source of your pain, not only the symptoms. Our board certified physicians use modern, image-guided treatments and clear explanations, so you always know what comes next.</p>
+      <p class="lead mt-4 max-w-xl">We take time to listen, build a plan with you, and focus on safe options that help you move and live more comfortably.</p>
+
+      <ul class="mt-10 grid gap-4 sm:grid-cols-3">
+        {facts.map((f) => (
+          <li class="group relative cursor-default overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 p-5 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-gradient-to-b hover:from-white hover:to-cream-100 hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)] focus-within:-translate-y-1.5">
+            <span class="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gold-400 transition-transform duration-500 ease-[var(--ease-lux)] group-hover:scale-x-100" aria-hidden="true"></span>
+            <span class="flex h-11 w-11 items-center justify-center rounded-md bg-cream-100 text-gold-700 transition duration-500 group-hover:bg-charcoal-950 group-hover:text-gold-300">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={f.icon}></svg>
+            </span>
+            <p class="mt-4 font-display text-[0.95rem] font-semibold text-charcoal-950 transition-colors duration-500">{f.t}</p>
+            <p class="mt-1 text-sm text-charcoal-600 transition-colors duration-500">{f.d}</p>
+          </li>
+        ))}
+      </ul>
+
+      <a href="/about" class="group mt-9 inline-flex min-h-11 items-center gap-3 font-display text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-gold-700">
+        <span class="relative">Learn more about us<span class="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold-600 transition-transform duration-500 group-hover:scale-x-100"></span></span>
+        <svg class="transition-transform duration-500 group-hover:translate-x-1.5" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" /></svg>
+      </a>
+    </div>
+  </div>
+</section>

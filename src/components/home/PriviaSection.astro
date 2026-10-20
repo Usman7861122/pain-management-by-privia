@@ -1,0 +1,40 @@
+---
+// Privia text + patient portal block are REQUIRED and must stay word for word. Edit them in src/data/privia.ts only.
+import { brand, priviaBlock, portal, links } from '@/data/privia';
+const b = priviaBlock[brand];
+---
+
+<section id="privia" class="bg-cream-100 section">
+  <div class="container-x grid gap-6 lg:grid-cols-12 lg:gap-8">
+    <div class="rounded-md border border-gold-400/50 bg-cream-50 p-8 sm:p-12 lg:col-span-7" data-reveal>
+      <p class="eyebrow">Our network</p>
+      <h2 class="h2 mt-4 max-w-lg">{b.heading}</h2>
+      <div class="rule-gold mt-6"></div>
+      <div class="mt-6 space-y-4">
+        {b.paragraphs.map((p) => <p class="lead">{p}</p>)}
+        {b.learnMore && (
+          <p class="lead">{b.learnMore} <a href={links.priviaMedicalGroupSite} class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">website</a>.</p>
+        )}
+      </div>
+    </div>
+
+    <div class="relative flex flex-col overflow-hidden rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-12 lg:col-span-5" data-reveal style="--d:120ms">
+            <span class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cream-200/70 blur-3xl" aria-hidden="true"></span>
+      <p class="eyebrow relative">{portal.title}</p>
+      <p class="relative mt-4 text-[1.0625rem] leading-relaxed text-charcoal-800">{portal.intro}</p>
+      <ul class="relative mt-6 space-y-3 text-sm text-charcoal-600">
+        {portal.bullets.map((t) => (
+          <li class="flex gap-3">
+            <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-charcoal-950 text-gold-300">
+              <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7.5l3 3 7-7" /></svg>
+            </span>{t}
+          </li>
+        ))}
+      </ul>
+      <div class="relative mt-auto flex flex-wrap gap-3 pt-8">
+        <a href={portal.signIn.href} class="btn btn-gold">{portal.signIn.label}</a>
+        <a href={portal.createAccount.href} class="btn border border-charcoal-950/30 text-charcoal-950 hover:border-gold-600 hover:bg-cream-200">{portal.createAccount.label}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+---
+import { site } from '@/data/site';
+interface Props { title: string; description?: string }
+const { title, description = site.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<title>{title} | {site.name}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />

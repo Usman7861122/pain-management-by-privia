@@ -1,0 +1,19 @@
+---
+import { patientForms } from '@/data/forms';
+---
+
+<ul class="divide-y divide-charcoal-900/10 border-y border-charcoal-900/10">
+  {patientForms.map((f) => (
+    <li class="grid gap-4 py-6 md:grid-cols-12 md:items-center">
+      <div class="md:col-span-8">
+        <h3 class="font-display text-lg font-semibold">{f.title}</h3>
+        <p class="mt-1 text-sm text-charcoal-600">{f.description}</p>
+      </div>
+      <div class="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
+        {f.en && <a href={f.en} class="btn btn-dark" download>English (PDF)</a>}
+        {f.es && <a href={f.es} class="btn btn-ghost" download>Español (PDF)</a>}
+        {f.href && <a href={f.href} class="btn btn-dark">Open</a>}
+      </div>
+    </li>
+  ))}
+</ul>

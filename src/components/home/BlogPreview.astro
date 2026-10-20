@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog', (p) => !p.data.draft)).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<section id="blog" class="section">
+  <div class="container-x">
+    <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+      <div>
+        <p class="eyebrow">From our blog</p>
+        <h2 class="h2 mt-4">Helpful reading on pain care.</h2>
+      </div>
+      <a href="/blog" class="link-arrow text-gold-700">View all articles</a>
+    </div>
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {posts.map((p, i) => (
+        <a href={`/blog/${p.id}`} data-reveal style={`--d:${i * 80}ms`} class="group block">
+          <div class="relative aspect-[4/3] overflow-hidden rounded-md bg-gradient-to-br from-cream-200 to-cream-100">
+            <img src={p.data.image ?? `/images/blog/${p.id}.jpg`} alt="" width="800" height="600" loading="lazy" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.05]" onerror="this.remove()" />
+          </div>
+          <p class="mt-5 text-xs uppercase tracking-[0.14em] text-charcoal-600">{fmt(p.data.date)}</p>
+          <h3 class="mt-2 font-display text-xl font-semibold leading-snug transition-colors group-hover:text-gold-700">{p.data.title}</h3>
+          <p class="mt-2 text-sm text-charcoal-600">{p.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

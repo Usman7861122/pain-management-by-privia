@@ -1,0 +1,9 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { site } from '@/data/site';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
+---
+
+<PageLayout title="Contact" eyebrow="Contact">
+  <div class="max-w-3xl space-y-4"><p class="lead">Call us at <a class="font-semibold underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p><ul class="space-y-6">{site.locations.map((l) => (<li><p class="font-display font-semibold">{l.name}</p><p>{l.street}, {l.city}, {l.state} {l.zip}</p><p><a href={`tel:${l.phone.tel}`}>{l.phone.display}</a></p></li>))}</ul><p class="text-sm text-charcoal-600">To schedule online, use <a class="underline" href={FIND_A_DOCTOR_URL}>Find-A-Doctor</a>.</p></div>
+</PageLayout>

@@ -1,0 +1,9 @@
+---
+import { carveOutDisclaimer as d } from '@/data/privia';
+const { verb = d.verb, items = d.items } = Astro.props;
+---
+
+<aside class="mt-12 border-t border-current/15 pt-6 text-sm" aria-label={d.title}>
+  <p class="font-display text-xs font-semibold uppercase tracking-[0.14em]">{d.title}</p>
+  <p class="mt-2 max-w-4xl italic">{d.text(verb, items)}</p>
+</aside>

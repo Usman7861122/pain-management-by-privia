@@ -1,0 +1,31 @@
+---
+import { site, mapsUrl } from '@/data/site';
+import { img } from '@/data/images';
+---
+
+<section id="locations" class="on-dark bg-charcoal-950 text-cream-50 section">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="eyebrow">Visit us</p>
+      <h2 class="h2 mt-4">Two convenient locations in Maryland.</h2>
+    </div>
+    <div class="mt-14 grid gap-6 md:grid-cols-2">
+      {site.locations.map((l, i) => (
+        <article data-reveal style={`--d:${i * 100}ms`} class="overflow-hidden rounded-md bg-charcoal-900">
+          <div class="relative aspect-[16/9] bg-gradient-to-br from-charcoal-800 to-charcoal-950">
+            <img src={img.locations[l.slug as 'rockville' | 'frederick']} alt={`${l.name} office`} width="1000" height="560" loading="lazy" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()" />
+          </div>
+          <div class="p-7 sm:p-9">
+            <h3 class="font-display text-2xl font-semibold !text-cream-50">{l.name}, {l.state}</h3>
+            <address class="mt-3 not-italic text-cream-200">{l.street}<br />{l.city}, {l.state} {l.zip}</address>
+            <p class="mt-3"><a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center font-display font-semibold text-gold-300">{l.phone.display}</a></p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a href={mapsUrl(l)} class="btn btn-gold">Get directions</a>
+              <a href={`tel:${l.phone.tel}`} class="btn btn-ghost">Call</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

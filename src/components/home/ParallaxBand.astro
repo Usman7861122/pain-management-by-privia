@@ -1,0 +1,14 @@
+---
+import { img } from '@/data/images';
+---
+
+<section class="parallax-window on-dark bg-charcoal-950 text-cream-50" aria-label="Our approach">
+  <img class="parallax-img" src={img.parallax} alt="" width="1920" height="1080" loading="lazy" onerror="this.remove()" />
+  <div class="absolute inset-0 z-[1] bg-charcoal-950/60"></div>
+  <div class="relative z-[2] flex min-h-[100svh] items-center justify-center px-5 text-center">
+    <div class="max-w-xl" data-reveal>
+      <p class="eyebrow">Our approach</p>
+      <p class="mt-4 font-display text-[clamp(1.6rem,1.1rem+1.8vw,2.5rem)] font-semibold leading-snug !text-cream-50">Calm, precise care for a life with less pain.</p>
+    </div>
+  </div>
+</section>

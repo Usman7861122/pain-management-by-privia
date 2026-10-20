@@ -1,0 +1,127 @@
+---
+import { mainNav, headerUtility, getCareNow, megaMenus } from '@/data/navigation';
+import { site } from '@/data/site';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
+import PriviaLogo from './PriviaLogo.astro';
+import GetCareNow from '@/components/islands/GetCareNow';
+import MobileMenu from '@/components/islands/MobileMenu';
+
+const { overlay = false } = Astro.props;
+const current = Astro.url.pathname;
+const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.label === label)?.href;
+---
+
+<header id="site-header" data-state={overlay ? 'transparent' : 'solid'} data-overlay={overlay} class="on-dark sticky top-0 z-50 w-full">
+  <div class="hidden border-b border-gold-400/25 bg-charcoal-950 xl:block" style="height:var(--topbar-h)">
+    <div class="container-x flex h-full items-center justify-between">
+      <a href={`tel:${site.phone.tel}`} class="topbar-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        {site.phone.display}
+      </a>
+      <div class="flex items-center gap-3">
+        {headerUtility.map((i) => (
+          <a href={i.href} class="topbar-btn">{i.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="container-x flex h-[var(--header-main-h)] items-center justify-between gap-6">
+    <PriviaLogo />
+
+    <nav aria-label="Main" class="hidden xl:block">
+      <ul class="flex items-center gap-5 2xl:gap-7">
+        {mainNav.map((i) => (
+          <li class={`nav-item ${megaMenus[i.label] ? 'has-mega' : 'relative'}`}>
+            <a href={i.href} aria-current={i.href && (i.href === '/' ? current === '/' : current.startsWith(i.href)) ? 'page' : undefined} class="nav-link" aria-haspopup={i.children ? 'true' : undefined}>
+              {i.label}
+              {i.children && <svg class="nav-chev ml-1.5" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 3.5l3 3 3-3" /></svg>}
+            </a>
+            {i.children && megaMenus[i.label] && (() => { const m = megaMenus[i.label]; return (
+              <div class="dd dd-mega">
+                <div class="mega" data-mega>
+                  <div class="mega-rail">
+                    <p class="mega-label">{i.label}</p>
+                    {m.groups.map((g, k) => (
+                      <button type="button" class="mega-tab" data-tab={k} aria-selected={k === 0 ? 'true' : 'false'}>
+                        <span class="mega-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={g.icon}></svg></span>
+                        <span><span class="mega-tab-t">{g.label}</span><span class="mega-tab-d">{g.desc}</span></span>
+                      </button>
+                    ))}
+                  </div>
+                  <div class="mega-main">
+                    {m.groups.map((g, k) => (
+                      <div data-pane={k} hidden={k !== 0}>
+                        <p class="mega-label">{g.label}</p>
+                        <ul class="mega-list">
+                          {g.items.map((label) => <li><a href={hrefOf(i, label)} class="mega-link"><span class="mega-dot"></span>{label}</a></li>)}
+                        </ul>
+                      </div>
+                    ))}
+                    <div class="mega-foot">
+                      <div><p class="font-display text-sm font-semibold text-charcoal-950">Need help choosing?</p><p class="text-xs text-charcoal-600">Call us at {site.phone.display}</p></div>
+                      <a href={m.viewAll.href} class="mega-all">{m.viewAll.label} <span aria-hidden="true">→</span></a>
+                    </div>
+                  </div>
+                  <aside class="mega-feature">
+                    <img src={m.featured.image} alt="" width="400" height="300" loading="lazy" />
+                    <div class="p-4">
+                      <p class="mega-label !pb-1">{m.featured.eyebrow}</p>
+                      <p class="font-display text-base font-semibold leading-snug text-charcoal-950">{m.featured.title}</p>
+                      <p class="mt-1 text-xs text-charcoal-600">{m.featured.text}</p>
+                      <a href={FIND_A_DOCTOR_URL} class="mega-cta">Find a provider</a>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            ); })()}
+            {i.children && !megaMenus[i.label] && (
+              <div class="dd">
+                <div class={`dd-panel ${i.columns === 2 ? 'dd-2' : ''}`}>
+                  <ul class={i.columns === 2 ? 'grid grid-cols-2 gap-x-2' : ''}>
+                    {i.children.map((c) => (
+                      <li>
+                        {c.children ? (
+                          <>
+                            {c.href ? <a href={c.href} class="dd-head">{c.label}</a> : <span class="dd-head">{c.label}</span>}
+                            <ul class="mb-1 ml-3 border-l border-gold-400/60 pl-2">
+                              {c.children.map((g) => <li><a href={g.href} class="dd-link">{g.label}</a></li>)}
+                            </ul>
+                          </>
+                        ) : (
+                          <a href={c.href} class="dd-link" target={c.external ? '_blank' : undefined} rel={c.external ? 'noopener' : undefined}>{c.label}</a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="hidden items-center gap-6 xl:flex">
+      <GetCareNow client:idle options={getCareNow} />
+    </div>
+
+    <div class="xl:hidden">
+      <MobileMenu client:idle nav={mainNav} utility={headerUtility} options={getCareNow} />
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mega]').forEach((m) => {
+    const tabs = [...m.querySelectorAll<HTMLElement>('[data-tab]')];
+    const panes = [...m.querySelectorAll<HTMLElement>('[data-pane]')];
+    const set = (i: number) => { tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i))); panes.forEach((p, k) => (p.hidden = k !== i)); };
+    tabs.forEach((t, k) => { t.addEventListener('mouseenter', () => set(k)); t.addEventListener('focus', () => set(k)); t.addEventListener('click', () => set(k)); });
+  });
+  const header = document.getElementById('site-header');
+  if (header?.dataset.overlay === 'true') {
+    const set = () => header.setAttribute('data-state', window.scrollY > 24 ? 'solid' : 'transparent');
+    set();
+    window.addEventListener('scroll', set, { passive: true });
+  }
+</script>

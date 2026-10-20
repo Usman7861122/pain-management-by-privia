@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import ImageCard from '@/components/ui/ImageCard.astro';
+const items = (await getCollection('conditions')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<PageLayout title="Conditions We Treat" eyebrow="Conditions" description="Back, neck, nerve and joint pain conditions we treat in Maryland.">
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {items.map((c) => (
+      <ImageCard href={`/conditions/${c.id}`} title={c.data.title} summary={c.data.summary} image={c.data.image ?? `/images/conditions/${c.id}.jpg`} ctaLabel="Learn more" />
+    ))}
+  </div>
+</PageLayout>

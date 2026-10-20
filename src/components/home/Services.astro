@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import ImageCard from '@/components/ui/ImageCard.astro';
+import CarveOutDisclaimer from '@/components/ui/CarveOutDisclaimer.astro';
+const all = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const items = all.filter((s) => s.data.featured).slice(0, 6);
+const hasCarveOut = items.some((s) => s.data.carveOut);
+---
+
+<section id="services" class="section">
+  <div class="container-x">
+    <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end" data-reveal>
+      <div>
+        <p class="eyebrow">What we offer</p>
+        <h2 class="h2 mt-4 max-w-xl">Treatments designed around you.</h2>
+      </div>
+      <p class="lead max-w-md">Modern, image-guided options for acute and long-lasting pain. Explore a few of our most requested services.</p>
+    </div>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((s, i) => (
+        <div data-reveal style={`--d:${i * 70}ms`}>
+          <ImageCard href={`/services/${s.id}`} title={s.data.title} summary={s.data.summary} image={s.data.image ?? `/images/services/${s.id}.jpg`} carveOut={s.data.carveOut} class="h-full" />
+        </div>
+      ))}
+    </div>
+    <div class="mt-12 text-center" data-reveal>
+      <a href="/services" class="btn btn-dark">View all services</a>
+    </div>
+    {hasCarveOut && <CarveOutDisclaimer />}
+  </div>
+</section>

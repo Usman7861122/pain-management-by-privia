@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import ImageCard from '@/components/ui/ImageCard.astro';
+import CarveOutDisclaimer from '@/components/ui/CarveOutDisclaimer.astro';
+const items = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const hasCarveOut = items.some((s) => s.data.carveOut);
+---
+
+<PageLayout title="Our Services" eyebrow="What we offer" description="Interventional pain management services in Rockville and Frederick, MD.">
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {items.map((s) => (
+      <ImageCard href={`/services/${s.id}`} title={s.data.title} summary={s.data.summary} image={s.data.image ?? `/images/services/${s.id}.jpg`} carveOut={s.data.carveOut} />
+    ))}
+  </div>
+  {/* PRIVIA RULE: carve-out disclaimer at the bottom of the services page */}
+  {hasCarveOut && <CarveOutDisclaimer />}
+</PageLayout>

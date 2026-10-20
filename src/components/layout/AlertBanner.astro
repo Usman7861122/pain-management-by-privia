@@ -1,0 +1,44 @@
+---
+import { alerts } from '@/data/alerts';
+const now = new Date();
+const live = alerts.filter(
+  (a) => a.active && (!a.start || new Date(a.start) <= now) && (!a.end || new Date(a.end) >= now),
+);
+const tone = {
+  info: 'bg-charcoal-800 text-cream-50',
+  warning: 'bg-gold-400 text-charcoal-950',
+  urgent: 'bg-[#8f2d2d] text-white',
+};
+---
+
+{live.length > 0 && (
+  <div id="alert-banners">
+    {live.map((a) => (
+      <div data-alert-id={a.id} data-level={a.level} role={a.level === 'urgent' ? 'alert' : 'status'} class={`${tone[a.level]} text-sm`}>
+        <div class="container-x flex items-center justify-between gap-4 py-2.5">
+          <p>
+            {a.message}
+            {a.link && <a href={a.link.href} class="ml-2 font-semibold underline underline-offset-4">{a.link.label}</a>}
+          </p>
+          {a.level !== 'urgent' && (
+            <button type="button" data-alert-close class="-mr-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md hover:bg-black/10" aria-label="Dismiss alert">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" /></svg>
+            </button>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+<script>
+  const key = 'dismissed-alerts';
+  const read = (): string[] => { try { return JSON.parse(sessionStorage.getItem(key) || '[]'); } catch { return []; } };
+  const write = (v: string[]) => { try { sessionStorage.setItem(key, JSON.stringify(v)); } catch { /* ignore */ } };
+  const done = read();
+  document.querySelectorAll<HTMLElement>('[data-alert-id]').forEach((el) => {
+    const id = el.dataset.alertId!;
+    if (done.includes(id) && el.dataset.level !== 'urgent') el.remove();
+    el.querySelector('[data-alert-close]')?.addEventListener('click', () => { write([...read(), id]); el.remove(); });
+  });
+</script>

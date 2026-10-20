@@ -1,0 +1,6 @@
+---
+// Structured data (MedicalClinic, Physician, FAQPage). Fill in later.
+const { data } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

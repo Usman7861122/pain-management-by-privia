@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+const posts = (await getCollection('blog', (p) => !p.data.draft)).sort((a, b) => +b.data.date - +a.data.date);
+---
+
+<PageLayout title="Blog" eyebrow="Pain care articles">
+  <ul class="max-w-3xl divide-y divide-charcoal-900/10">
+    {posts.map((p) => (
+      <li class="py-6"><a href={`/blog/${p.id}`} class="group block">
+        <h2 class="font-display text-xl font-semibold group-hover:text-gold-700">{p.data.title}</h2>
+        <p class="mt-1 text-charcoal-600">{p.data.description}</p>
+      </a></li>
+    ))}
+  </ul>
+</PageLayout>

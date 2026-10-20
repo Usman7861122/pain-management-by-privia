@@ -1,0 +1,9 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { site } from '@/data/site';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
+---
+
+<PageLayout title="Virtual Visits" eyebrow="Resources">
+  <div class="max-w-3xl space-y-4"><p class="lead">Virtual visits are a convenient and safe option for many follow-up appointments. TODO: add details from the old website.</p><a href={FIND_A_DOCTOR_URL} class="btn btn-dark">Schedule a virtual visit</a></div>
+</PageLayout>

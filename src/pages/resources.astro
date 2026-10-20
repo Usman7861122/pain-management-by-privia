@@ -1,0 +1,12 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import FormsList from '@/components/ui/FormsList.astro';
+import { links } from '@/data/privia';
+---
+
+<PageLayout title="Patient Resources" eyebrow="Resources" description="Patient forms and office policies.">
+  <h2 class="h2">Patient forms and office policies</h2>
+  <p class="lead mt-3 max-w-2xl">Download the forms below. English and Spanish versions are provided when available.</p>
+  <div class="mt-8"><FormsList /></div>
+  <p class="mt-10"><a href="/become-a-patient" class="link-arrow text-gold-700">Become a patient</a></p>
+</PageLayout>

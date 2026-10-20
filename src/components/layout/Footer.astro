@@ -1,0 +1,76 @@
+---
+import { site, mapsUrl } from '@/data/site';
+import { footerNav } from '@/data/navigation';
+import { links, logos, legalFooter, footerPriviaLinks } from '@/data/privia';
+import fs from 'node:fs';
+const year = new Date().getFullYear();
+const has = (p: string) => fs.existsSync(`${process.cwd()}/public${p}`);
+const hasApple = has(links.appStoreIcon);
+const hasGoogle = has(links.googlePlayIcon);
+const storeBtn = 'inline-flex min-h-11 items-center rounded-md border border-white/30 px-4 text-sm transition hover:border-white/70 hover:text-cream-50';
+---
+
+<footer class="on-dark bg-charcoal-950 text-cream-200">
+  <div class="container-x grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
+    <div class="lg:col-span-4">
+      <p class="font-display text-xl font-semibold text-cream-50">{site.name}</p>
+      <p class="mt-3 max-w-xs text-sm leading-relaxed">{site.tagline}</p>
+      <p class="mt-6">
+        <a href={`tel:${site.phone.tel}`} class="inline-flex min-h-11 items-center font-display text-lg font-semibold text-cream-50">{site.phone.display}</a>
+      </p>
+    </div>
+
+    <nav aria-label="Footer" class="lg:col-span-2">
+      <p class="eyebrow mb-4">Explore</p>
+      <ul>
+        {footerNav.map((i) => (
+          <li><a href={i.href} class="inline-flex min-h-11 items-center text-sm transition hover:text-cream-50">{i.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="lg:col-span-3">
+      <p class="eyebrow mb-4">Locations</p>
+      <ul class="space-y-5 text-sm">
+        {site.locations.map((l) => (
+          <li>
+            <a href={mapsUrl(l)} class="block transition hover:text-cream-50">
+              <span class="font-semibold text-cream-50">{l.name}</span><br />{l.street}<br />{l.city}, {l.state} {l.zip}
+            </a>
+            <a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center">{l.phone.display}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="lg:col-span-3">
+      <a href={links.myPriviaHome} class="inline-flex min-h-11 items-center rounded bg-cream-50 px-4 py-2" aria-label="myPrivia">
+        <img src={logos.myPrivia} width="190" height="44" alt="myPrivia" loading="lazy" />
+      </a>
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <a href={links.appStore} class="inline-flex min-h-11 items-center" aria-label="Download on the App Store">
+          {hasApple ? <img src={links.appStoreIcon} alt="Download on the App Store" height="40" class="h-10 w-auto" loading="lazy" /> : <span class={storeBtn}>Download on the App Store</span>}
+        </a>
+        <a href={links.googlePlay} class="inline-flex min-h-11 items-center" aria-label="Get it on Google Play">
+          {hasGoogle ? <img src={links.googlePlayIcon} alt="Get it on Google Play" height="40" class="h-10 w-auto" loading="lazy" /> : <span class={storeBtn}>Get it on Google Play</span>}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col gap-4 py-6 text-xs lg:flex-row lg:items-center lg:justify-between">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span>©{year} Privia Health, LLC | All Rights Reserved</span>
+        {legalFooter.map((i) => (
+          <a href={i.href} class="inline-flex min-h-11 items-center underline-offset-4 hover:text-cream-50 hover:underline">{i.label}</a>
+        ))}
+      </p>
+      <p class="flex flex-wrap items-center gap-x-5">
+        {footerPriviaLinks.map((i) => (
+          <a href={i.href} class="inline-flex min-h-11 items-center underline-offset-4 hover:text-cream-50 hover:underline">{i.label}</a>
+        ))}
+      </p>
+    </div>
+  </div>
+</footer>

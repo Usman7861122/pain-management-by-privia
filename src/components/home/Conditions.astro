@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import ImageCard from '@/components/ui/ImageCard.astro';
+const all = (await getCollection('conditions')).sort((a, b) => a.data.order - b.data.order);
+const items = all.filter((c) => c.data.featured).slice(0, 6);
+// bento rhythm: wide, narrow, narrow / narrow, narrow, wide
+const span = ['lg:col-span-2', '', '', '', '', 'lg:col-span-2'];
+---
+
+<section id="conditions" class="bg-cream-100 section">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="eyebrow">Conditions we treat</p>
+      <h2 class="h2 mt-4">Answers for the pain that slows you down.</h2>
+      <p class="lead mt-5">From the spine to the nerves and joints, we care for many sources of pain. Find your condition below.</p>
+    </div>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map((c, i) => (
+        <div class:list={[span[i]]} data-reveal style={`--d:${i * 70}ms`}>
+          <ImageCard href={`/conditions/${c.id}`} title={c.data.title} summary={c.data.summary} image={c.data.image ?? `/images/conditions/${c.id}.jpg`} class="h-full lg:min-h-[22rem]" ctaLabel="Learn more" />
+        </div>
+      ))}
+    </div>
+    <div class="mt-12 text-center" data-reveal>
+      <a href="/conditions" class="btn btn-dark">See all conditions</a>
+    </div>
+  </div>
+</section>

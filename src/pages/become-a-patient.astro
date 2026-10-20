@@ -1,0 +1,14 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import FormsList from '@/components/ui/FormsList.astro';
+import { FIND_A_DOCTOR_URL, portal } from '@/data/privia';
+---
+
+<PageLayout title="Become a Patient" eyebrow="New patients" description="How to become a patient and the forms you need.">
+  <ol class="max-w-3xl space-y-6">
+    <li><h2 class="font-display text-xl font-semibold">1. Find your provider</h2><p class="mt-1 text-charcoal-600">Use Find-A-Doctor to choose a provider and schedule online.</p><a href={FIND_A_DOCTOR_URL} class="btn btn-dark mt-3">See My Provider</a></li>
+    <li><h2 class="font-display text-xl font-semibold">2. Create your portal account</h2><p class="mt-1 text-charcoal-600">{portal.intro}</p><a href={portal.createAccount.href} class="btn btn-dark mt-3">{portal.createAccount.label}</a></li>
+    <li><h2 class="font-display text-xl font-semibold">3. Complete your forms</h2></li>
+  </ol>
+  <div class="mt-6"><FormsList /></div>
+</PageLayout>

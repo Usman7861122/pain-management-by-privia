@@ -1,0 +1,24 @@
+---
+import { img } from '@/data/images';
+import { FIND_A_DOCTOR_URL } from '@/data/privia';
+---
+
+<section id="virtual-visit" class="section">
+  <div class="container-x">
+    <div class="grid overflow-hidden rounded-md bg-charcoal-900 lg:grid-cols-2" data-reveal>
+      <div class="on-dark flex flex-col justify-center p-8 text-cream-50 sm:p-14">
+        <p class="eyebrow">Virtual visits</p>
+        <h2 class="h2 mt-4 max-w-md">Make your next appointment a virtual visit.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6 max-w-md">Meet with your provider from home. Virtual visits are a convenient and safe option for many follow-up appointments, with no travel and no waiting room.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={FIND_A_DOCTOR_URL} class="btn btn-gold">Schedule a virtual visit</a>
+          <a href="/virtual-visits" class="btn btn-ghost">How it works</a>
+        </div>
+      </div>
+      <div class="relative min-h-[18rem] bg-gradient-to-br from-charcoal-800 to-charcoal-950">
+        <img src={img.virtual} alt="A patient attending a virtual visit from home" width="1000" height="900" loading="lazy" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()" />
+      </div>
+    </div>
+  </div>
+</section>
