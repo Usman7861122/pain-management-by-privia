@@ -25,7 +25,7 @@ export const mainNav: NavItem[] = [
       { label: 'Neuromodulation', href: '/services/neuromodulation' },
       { label: 'Pain Medicine', href: '/services/pain-medicine' },
       { label: 'Spinal Cord Stimulation', href: '/services/spinal-cord-stimulation' },
-      { label: 'Interventional Pain Management', href: '/interventional-pain-management' },
+      { label: 'Interventional Pain Management', href: '/services/interventional-pain-management' },
       { label: 'Epidural Steroid Injections', href: '/services/epidural-steroid-injections' },
       { label: 'Radiofrequency Ablation', href: '/services/radiofrequency-ablation' },
       { label: 'Pain Management', href: '/services/pain-management' },

@@ -44,3 +44,7 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - public/images/about/movement.jpg: 2741817537
 - public/images/about/team-tablet.jpg: 2571102439
 - public/images/about/team-smile.jpg: 2537963221
+
+## Interventional pain management page (Shutterstock)
+- public/images/interventional/frederick-town.jpg: 405084568
+- public/images/interventional/spine-injection.jpg: 1762137389
