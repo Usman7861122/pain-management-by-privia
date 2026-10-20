@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Manrope Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'DM Sans Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
   /* Luxury palette: charcoal + warm cream + soft gold (fits the charcoal/yellow Privia logo) */
   --color-charcoal-950: #1b1c1f;
