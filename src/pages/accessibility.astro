@@ -1,0 +1,45 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import { site } from '@/data/site';
+import { links } from '@/data/privia';
+---
+<!-- VERIFY with the practice: the response time we promise for accessibility requests, and the in-office accommodation details (interpreters, wheelchair access, etc.). Run a full audit (WAVE, axe, screen reader) before claiming conformance. -->
+
+<LegalLayout title="Accessibility Statement" crumb="Accessibility" description="Our commitment to making the Pain Management Specialists website and care usable by everyone." lead="Everyone should be able to find care and information easily. We work to make this website usable by people of all abilities.">
+  <h2>Our commitment</h2>
+  <p>We aim for our website to meet the Web Content Accessibility Guidelines (WCAG) 2.1, level AA. We build and review pages with accessibility in mind, and we keep improving them.</p>
+
+  <h2>What we do</h2>
+  <ul>
+    <li>You can use the whole site with a keyboard, and you can always see where the focus is.</li>
+    <li>A “Skip to content” link lets keyboard and screen-reader users jump past the menu.</li>
+    <li>Text and buttons use strong color contrast.</li>
+    <li>Images that carry meaning have text descriptions. Decorative images are hidden from screen readers.</li>
+    <li>Headings, lists and landmarks give each page a clear structure.</li>
+    <li>Menus, accordions and the cookie window work with a keyboard and with assistive technology.</li>
+    <li>Text can be enlarged, and the pages adapt to phones, tablets and large screens.</li>
+    <li>Animations are gentle. Our short videos have no sound. If your device is set to reduce motion, we respect that: videos do not autoplay and show play controls.</li>
+    <li>We write in plain language, and our pages are structured so they are easy to scan.</li>
+  </ul>
+
+  <h2>Known limits</h2>
+  <ul>
+    <li>Some pages we link to are run by others, such as Find-A-Doctor, the patient portal and Privia’s own site. We cannot fix those ourselves, but we pass on what we learn.</li>
+    <li>Some downloadable forms (PDF) may not be fully accessible. If you cannot use a form, call us and we will help you complete it another way.</li>
+    <li>Embedded maps come from Google. If a map is hard to use, use the address and the “Directions” link instead.</li>
+  </ul>
+
+  <h2>Help and other formats</h2>
+  <p>If you have trouble using any part of this website, or you need information in another format, such as large print, or you need help booking, please tell us. We will work with you to give you the information or service in a way that works for you.</p>
+  <ul>
+    <li>Main line: <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></li>
+    {site.locations.map((l) => <li>{l.name} office: <a href={`tel:${l.phone.tel}`}>{l.phone.display}</a></li>)}
+  </ul>
+  <p>Please tell us the page address and what happened, and the assistive technology you use if you can. We will review your message and reply as soon as we can.</p>
+
+  <h2>Help during your visit</h2>
+  <p>If you need an accommodation for your visit, such as help with mobility, hearing, vision, or language, tell us when you book or call ahead. See also Privia’s <a href={links.nondiscrimination} target="_blank" rel="noopener">Notice of Nondiscrimination</a> and language services.</p>
+
+  <h2>Updates to this statement</h2>
+  <p>We review accessibility regularly and update this statement when things change.</p>
+</LegalLayout>

@@ -7,6 +7,7 @@ import SEO from '@/components/seo/SEO.astro';
 import AlertBanner from '@/components/layout/AlertBanner.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import CookieConsent from '@/components/ui/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -33,6 +34,7 @@ const { title, description, overlay = false } = Astro.props;
     <Header overlay={overlay} />
     <main id="main"><slot /></main>
     <Footer />
+    <CookieConsent />
     <script>
       // Scroll reveal
       const els = document.querySelectorAll<HTMLElement>('[data-reveal]');

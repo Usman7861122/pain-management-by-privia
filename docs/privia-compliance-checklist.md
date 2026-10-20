@@ -14,7 +14,9 @@ Privia content lives in `src/data/privia.ts`, `forms.ts`, `alerts.ts`. Updates a
 - [x] myPrivia logo link (placeholder SVG: REPLACE) + App Store / Google Play icons
 - [x] About Privia, Careers, Press Room, Prospective Doctors
 - [x] Notice of Nondiscrimination, HIPAA Privacy Notice, Privacy Policy, Terms of Use
-- [ ] Privacy Policy / Terms pages must not contradict Privia notices (copy is TODO)
+- [x] Privacy Policy / Terms pages written (plain-language drafts). [ ] Privia legal must review so they do not contradict Privia notices
+- [x] Footer HIPAA Privacy Notice still links to Privia's official notice; /hipaa is a summary page that links to it
+- [ ] CONFIRM with Privia that extra footer items (Accessibility, Cookie Preferences) are allowed beside the required legal links
 
 ## Homepage
 - [x] Phone + both locations in the hero

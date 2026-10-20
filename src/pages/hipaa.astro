@@ -1,0 +1,58 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import { site } from '@/data/site';
+import { links } from '@/data/privia';
+---
+<!-- VERIFY with Privia compliance: this page is a plain-language summary only. The official Privia Notice of Privacy Practices (links.hipaa) is the controlling document and must not be contradicted. Add the Privia privacy official's contact details if Privia supplies them. -->
+
+<LegalLayout title="HIPAA and Your Privacy Rights" crumb="HIPAA" description="A plain-language summary of your health information privacy rights under HIPAA, with a link to the official Privia Notice of Privacy Practices." lead="Federal law, called HIPAA, protects your health information and gives you rights over it. This page explains those rights in plain words.">
+  <div class="callout">
+    <p><strong>The official notice is the one that counts.</strong> This page is a summary to help you understand your rights. It does not replace the Privia Notice of Privacy Practices, which explains exactly how your information may be used and shared.</p>
+    <p class="!mt-4"><a href={links.hipaa} target="_blank" rel="noopener" class="btn btn-dark !text-cream-50 no-underline">Read the Privia Notice of Privacy Practices</a></p>
+  </div>
+
+  <h2>What is protected</h2>
+  <p>Protected health information (PHI) is information that can identify you and relates to your health, your care, or payment for your care. This includes your medical records, test results, appointment details and billing information, in any form.</p>
+
+  <h2>How your information may be used</h2>
+  <p>Your care team may use and share your information without extra permission for:</p>
+  <ul>
+    <li><strong>Treatment:</strong> sharing with other providers who care for you, such as your primary care doctor or a hospital.</li>
+    <li><strong>Payment:</strong> billing you or your insurance for your care.</li>
+    <li><strong>Health care operations:</strong> running the practice and improving quality of care.</li>
+  </ul>
+  <p>Some other uses are allowed or required by law, such as public health reporting or court orders. For most other uses, including marketing, we need your written permission first. You may cancel that permission at any time.</p>
+
+  <h2>Your rights</h2>
+  <ul>
+    <li><strong>See and get a copy</strong> of your health records, on paper or electronically.</li>
+    <li><strong>Ask for a correction</strong> if you think something in your record is wrong or incomplete.</li>
+    <li><strong>Ask for private communication</strong>, such as being contacted at a different phone number or address.</li>
+    <li><strong>Ask us to limit</strong> some uses or sharing of your information. We may not always be able to agree, but if you pay for a service in full out of pocket and ask us not to tell your insurer, we will honor that in most cases.</li>
+    <li><strong>Get a list</strong> of certain times we have shared your information.</li>
+    <li><strong>Get a paper copy</strong> of the Notice of Privacy Practices at any time.</li>
+    <li><strong>Choose someone</strong> to act for you, such as a health care agent.</li>
+    <li><strong>File a complaint</strong> if you believe your rights were violated. You will not be treated differently for doing so.</li>
+  </ul>
+
+  <h2>How to use your rights</h2>
+  <p>Call your office and ask for the medical records or privacy team, or use the myPrivia patient portal to see parts of your record.</p>
+  <ul>
+    {site.locations.map((l) => <li>{l.name}: <a href={`tel:${l.phone.tel}`}>{l.phone.display}</a></li>)}
+  </ul>
+  <p>The Privia Notice of Privacy Practices lists the best way to reach the privacy contact for requests and questions.</p>
+
+  <h2>How to file a complaint</h2>
+  <p>You can complain to Privia using the contact details in the Notice of Privacy Practices. You can also complain to the U.S. Department of Health and Human Services, Office for Civil Rights. Visit <a href="https://www.hhs.gov/hipaa/filing-a-complaint/index.html" target="_blank" rel="noopener">hhs.gov/hipaa/filing-a-complaint</a> or call 1-800-368-1019. We will never punish you for filing a complaint.</p>
+
+  <h2>Our duties</h2>
+  <ul>
+    <li>We keep your health information private and secure.</li>
+    <li>We tell you if there is a breach that may have put your information at risk.</li>
+    <li>We follow the duties and privacy practices in the Notice, and we give you a copy.</li>
+    <li>We do not use or share your information in ways not described in the Notice without your written permission.</li>
+  </ul>
+
+  <h2>Using this website</h2>
+  <p>Please do not send health details through this website, by email or on social media. Call your office or use the secure patient portal instead. To learn how the website itself handles information, read our <a href="/privacy-policy">Privacy Policy</a> and <a href="/cookie-policy">Cookie Policy</a>.</p>
+</LegalLayout>

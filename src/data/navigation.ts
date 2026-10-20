@@ -69,6 +69,7 @@ export const mainNav: NavItem[] = [
       ] },
       { label: 'Patient Forms', href: '/resources' },
       { label: 'HIPAA Privacy Notice', href: links.hipaa, external: true },
+      { label: 'Your Privacy Rights (HIPAA)', href: '/hipaa' },
       { label: 'Language Services', href: links.nondiscrimination, external: true },
       { label: 'COVID-19', href: '/patient-resources/covid-19' },
       { label: 'Request Appointment', href: FIND_A_DOCTOR_URL, external: true },

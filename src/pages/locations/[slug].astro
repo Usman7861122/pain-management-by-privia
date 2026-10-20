@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
+import ConsentEmbed from '@/components/ui/ConsentEmbed.astro';
 import CtaBand from '@/components/ui/CtaBand.astro';
 import Check from '@/components/ui/Check.astro';
 import { site, mapsUrl } from '@/data/site';
@@ -97,7 +98,7 @@ const ld = {
       <div class="relative mt-10" data-reveal>
         <div class="absolute -bottom-4 -left-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
         <div class="relative h-72 overflow-hidden sm:h-auto sm:aspect-[16/9] rounded-md bg-cream-200 shadow-[0_24px_50px_-34px_rgba(27,28,31,0.5)]">
-          <iframe src={mapSrc} title={`Map of the ${loc.city} office, ${address}`} loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0 h-full w-full border-0"></iframe>
+          <ConsentEmbed src={mapSrc} title={`Map of the ${loc.city} office, ${address}`} class="absolute inset-0 h-full w-full" linkHref={mapsUrl(loc)} linkLabel="Open in Google Maps" />
         </div>
       </div>
     </div>

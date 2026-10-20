@@ -1,0 +1,41 @@
+---
+// Loads a third-party iframe (like Google Maps) only after the visitor allows "Embedded content".
+interface Props { src: string; title: string; class?: string; linkHref?: string; linkLabel?: string }
+const { src, title, class: cls = '', linkHref, linkLabel = 'Open in Maps' } = Astro.props;
+---
+
+<div class={`consent-embed relative ${cls}`} data-src={src} data-title={title}>
+  <div class="consent-embed-ph absolute inset-0 flex flex-col items-center justify-center gap-4 bg-cream-200 p-6 text-center">
+    <svg class="text-gold-700" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <p class="max-w-md text-charcoal-800">This map is provided by Google. Loading it may set Google cookies, so we ask first.</p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <button type="button" data-embed-allow class="btn btn-dark">Load the map</button>
+      {linkHref && <a href={linkHref} target="_blank" rel="noopener" class="link-arrow text-gold-700">{linkLabel}</a>}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.consent-embed').forEach((box) => {
+    const show = () => {
+      if (box.querySelector('iframe')) return;
+      const f = document.createElement('iframe');
+      f.src = box.dataset.src || '';
+      f.title = box.dataset.title || '';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.className = 'absolute inset-0 h-full w-full border-0';
+      box.querySelector('.consent-embed-ph')?.setAttribute('hidden', '');
+      box.appendChild(f);
+    };
+    const hide = () => {
+      box.querySelector('iframe')?.remove();
+      box.querySelector('.consent-embed-ph')?.removeAttribute('hidden');
+    };
+    const apply = (c: Record<string, boolean>) => (c.functional ? show() : hide());
+    const w = window as any;
+    if (w.pmsConsent) { apply(w.pmsConsent.get()); }
+    document.addEventListener('pms:consent', (e) => apply((e as CustomEvent).detail));
+    box.querySelector('[data-embed-allow]')?.addEventListener('click', () => w.pmsConsent?.set({ functional: true }));
+  });
+</script>

@@ -1,0 +1,45 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import { cookieCategories, cookieItems } from '@/data/cookies';
+const title = (id: string) => cookieCategories.find((c) => c.id === id)!.title;
+---
+<!-- VERIFY: keep the table in sync with src/data/cookies.ts whenever a tool that sets cookies is added (analytics, chat, ads). -->
+
+<LegalLayout title="Cookie Policy" description="The cookies and similar tools this website uses, and how to change your choices." lead="This page lists the cookies and similar tools on our website, and shows you how to change your choices at any time.">
+  <div class="callout">
+    <p><strong>Change your choices any time.</strong></p>
+    <p class="!mt-3"><button type="button" data-open-cookie-prefs class="btn btn-dark">Open Cookie Preferences</button></p>
+  </div>
+
+  <h2>What are cookies?</h2>
+  <p>Cookies are small files a website saves on your device. Similar tools, such as local storage, work in the same way. They can keep the site working, remember your choices, or help measure how a site is used.</p>
+
+  <h2>Our categories</h2>
+  <ul>
+    {cookieCategories.map((c) => <li><strong>{c.title}{c.locked ? ' (always on)' : ''}:</strong> {c.text}</li>)}
+  </ul>
+
+  <h2>What we use right now</h2>
+  <table>
+    <caption class="sr-only">Cookies and similar tools used on this website</caption>
+    <thead><tr><th scope="col">Name</th><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Lasts</th></tr></thead>
+    <tbody>
+      {cookieItems.map((c) => (
+        <tr><th scope="row" class="!border-b !border-charcoal-900/10 !py-3 !font-medium">{c.name}<br /><span class="text-xs font-normal text-charcoal-600">{c.type} · {c.provider}</span></th><td>{title(c.category)}</td><td>{c.purpose}</td><td>{c.duration}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <p>We do not use analytics or advertising cookies at this time. If that changes, we will update this page and ask for your choice first.</p>
+
+  <h2>Maps and other embedded content</h2>
+  <p>Our contact and location pages can show a Google map. We do not load it until you allow “Embedded content.” Until then, you see a placeholder with a button and a directions link. Google’s own privacy policy applies when a map loads.</p>
+
+  <h2>Global Privacy Control</h2>
+  <p>If your browser sends a Global Privacy Control (GPC) signal, we treat it as a request to keep analytics and marketing off.</p>
+
+  <h2>Your browser settings</h2>
+  <p>You can also block or delete cookies in your browser settings. If you do, we may need to ask for your choices again, and some features may not work.</p>
+
+  <h2>Changes</h2>
+  <p>We update this page when our use of cookies changes. We ask for your choice again after 180 days.</p>
+</LegalLayout>

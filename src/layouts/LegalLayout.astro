@@ -1,0 +1,52 @@
+---
+import PageLayout from './PageLayout.astro';
+import { LEGAL_UPDATED } from '@/data/cookies';
+interface Props { title: string; description: string; crumb?: string; lead?: string; updated?: string }
+const { title, description, crumb, lead, updated = LEGAL_UPDATED } = Astro.props;
+const related = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Use', href: '/terms' },
+  { label: 'Cookie Policy', href: '/cookie-policy' },
+  { label: 'Accessibility', href: '/accessibility' },
+  { label: 'HIPAA and Your Privacy Rights', href: '/hipaa' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<PageLayout title={title} crumb={crumb} eyebrow="Legal" description={description}>
+  <section class="section">
+    <div class="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <aside class="lg:col-span-3">
+        <nav aria-label="On this page" class="lg:sticky lg:top-28">
+          <p class="eyebrow">On this page</p>
+          <ol id="legal-toc" class="mt-4 space-y-1 border-l border-charcoal-900/15 text-sm"></ol>
+          <p class="eyebrow mt-10">Other policies</p>
+          <ul class="mt-3 space-y-1 text-sm">
+            {related.filter((r) => r.href !== path).map((r) => (
+              <li><a href={r.href} class="inline-flex min-h-11 items-center text-charcoal-800 underline decoration-gold-400/70 underline-offset-4 transition hover:text-charcoal-950">{r.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+      <article class="legal-prose lg:col-span-9" data-reveal>
+        {lead && <p class="lead max-w-3xl">{lead}</p>}
+        <p class="mt-4 text-sm text-charcoal-600">Last updated: {updated}</p>
+        <slot />
+      </article>
+    </div>
+  </section>
+  <script>
+    // Build "On this page" from the h2 headings.
+    const toc = document.getElementById('legal-toc');
+    document.querySelectorAll<HTMLElement>('.legal-prose h2').forEach((h) => {
+      if (!h.id) h.id = (h.textContent || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.className = '-ml-px inline-flex min-h-11 items-center border-l-2 border-transparent pl-4 text-charcoal-600 transition hover:border-gold-400 hover:text-charcoal-950';
+      li.appendChild(a);
+      toc?.appendChild(li);
+    });
+  </script>
+</PageLayout>

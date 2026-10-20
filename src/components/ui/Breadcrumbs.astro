@@ -8,7 +8,7 @@ const { title, crumb, crumbs } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const pagesThatExist = new Set(['/about', '/services', '/conditions', '/doctors', '/blog', '/locations', '/resources', '/contact']);
 const segLabel: Record<string, string> = { about: 'About Us', services: 'Services', conditions: 'Conditions', doctors: 'Our Team', blog: 'Blog', 'patient-resources': 'Patient Resources', locations: 'Locations', resources: 'Patient Forms' };
-const pageLabel: Record<string, string> = { '/about': 'About Us', '/doctors': 'Our Team', '/about/what-we-do': 'What We Do', '/about/treatment-without-opioids': 'Treatment Without Opioids', '/about/about-privia': 'About Privia', '/patient-resources/faq': 'FAQ', '/patient-resources/covid-19': 'COVID-19', '/patient-resources/returning-patients': 'Returning Patients' };
+const pageLabel: Record<string, string> = { '/about': 'About Us', '/doctors': 'Our Team', '/about/what-we-do': 'What We Do', '/about/treatment-without-opioids': 'Treatment Without Opioids', '/about/about-privia': 'About Privia', '/patient-resources/faq': 'FAQ', '/patient-resources/covid-19': 'COVID-19', '/patient-resources/returning-patients': 'Returning Patients', '/hipaa': 'HIPAA', '/accessibility': 'Accessibility', '/cookie-policy': 'Cookie Policy', '/privacy-policy': 'Privacy Policy', '/terms': 'Terms of Use' };
 
 const segs = path.split('/').filter(Boolean);
 const trail: Crumb[] = [{ label: 'Home', href: '/' }];
