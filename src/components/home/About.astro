@@ -1,5 +1,4 @@
 ---
-import { img } from '@/data/images';
 const facts = [
   {
     t: 'Board certified physicians',
@@ -25,14 +24,23 @@ const facts = [
     <div class="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none" data-reveal>
       <div class="absolute -bottom-5 -left-5 h-3/4 w-3/4 rounded-md bg-cream-200" aria-hidden="true"></div>
       <div class="absolute -right-3 -top-3 h-24 w-24 rounded-md border border-gold-400/70" aria-hidden="true"></div>
-      <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br from-cream-200 to-cream-100">
-        <img src={img.about} alt="A physician speaking with a patient" width="1400" height="945" loading="lazy" class="h-full w-full object-cover transition-transform duration-[1400ms] ease-[var(--ease-lux)] hover:scale-[1.04]" onerror="this.remove()" />
-      </div>
-      <div class="absolute -bottom-6 right-4 max-w-[15rem] rounded-md bg-charcoal-950 p-5 text-cream-50 shadow-[0_24px_50px_-18px_rgba(0,0,0,.5)] sm:right-8">
-        <p class="eyebrow !text-gold-300">Our promise</p>
-        <p class="mt-2 font-display text-[0.95rem] font-semibold leading-snug">Clear answers. Careful treatment. Real relief.</p>
+      <div class="relative aspect-[4/5] overflow-hidden rounded-md bg-charcoal-950">
+        <video id="about-video" class="h-full w-full object-cover" poster="/videos/care-sequence-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Short animation showing how we treat spine pain: image-guided procedures and spinal cord stimulation">
+          <source src="/videos/care-sequence.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
+    <script is:inline>
+      // Respect "reduce motion": show the still poster instead of autoplaying.
+      (function () {
+        var v = document.getElementById('about-video');
+        if (v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          v.removeAttribute('autoplay');
+          v.pause();
+          v.setAttribute('controls', '');
+        }
+      })();
+    </script>
 
     <div class="lg:col-span-7" data-reveal style="--d:120ms">
       <p class="eyebrow flex items-center gap-3"><span class="h-px w-10 bg-gold-600"></span>About us</p>
