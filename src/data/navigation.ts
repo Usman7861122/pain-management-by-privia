@@ -83,7 +83,6 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: 'Contact', href: '/contact' },
-  { label: 'Home 2', href: '/home-2' },
 ];
 
 // Mega menu content (desktop). Groups pick items from the lists above by label.
