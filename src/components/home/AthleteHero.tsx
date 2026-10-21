@@ -113,8 +113,7 @@ export default function AthleteHero({ slides, primary, phone, locations, interva
             <div className="flex flex-1 items-center gap-3 sm:max-w-md" role="group" aria-label="Choose slide">
               {slides.map((s, i) => (
                 <button key={s.sport} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}: ${s.sport}`} aria-current={i === index}
-                  className="group flex min-h-11 flex-1 flex-col justify-center gap-2 text-left">
-                  <span className={`font-display text-[0.65rem] font-semibold uppercase tracking-[0.2em] transition-colors ${i === index ? 'text-gold-300' : 'text-white/50 group-hover:text-white'}`}>{s.sport}</span>
+                  className="group flex min-h-11 flex-1 items-center">
                   <span className="relative block h-[2px] w-full overflow-hidden bg-white/30">
                     {i < index && <span className="absolute inset-0 bg-gold-300" />}
                     {i === index && (

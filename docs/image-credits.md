@@ -67,6 +67,6 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - iovera-treatment.jpg: 2648821251
 
 ## Home 2 hero athletes (Shutterstock)
-- public/images/athletes/running.jpg: 304463792 (cropped, mirrored)
+- public/images/athletes/running.jpg: 2449671025
 - public/images/athletes/swimming.jpg: 2466962703
-- public/images/athletes/exercise.jpg: 2715172581
+- public/images/athletes/exercise.jpg: 2816923675
