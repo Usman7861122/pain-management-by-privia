@@ -83,6 +83,7 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: 'Contact', href: '/contact' },
+  { label: 'Home 2', href: '/home-2' },
 ];
 
 // Mega menu content (desktop). Groups pick items from the lists above by label.
@@ -136,4 +137,5 @@ export const footerNav = [
   { label: 'Become a Patient', href: '/become-a-patient' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Home 2', href: '/home-2' },
 ];
