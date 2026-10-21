@@ -76,11 +76,6 @@ export default function AthleteHero({ slides, primary, phone, locations, interva
           <div className="max-w-2xl" aria-live={stopped ? 'polite' : 'off'}>
             <AnimatePresence mode="wait">
               <motion.div key={index} exit={{ opacity: 0, y: -10, transition: { duration: 0.25 } }}>
-                <motion.p initial={reduce ? false : { opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease }}
-                  className="eyebrow mb-5 flex items-center gap-3 !text-gold-300">
-                  <span className="font-display text-sm tabular-nums text-white/60">{pad(index)} / {pad(slides.length - 1)}</span>
-                  <span className="h-px w-10 bg-gold-300" />{slide.sport}
-                </motion.p>
 
                 <h1 ref={titleRef} className="text-[clamp(2.4rem,1.4rem+4.2vw,5rem)] font-medium leading-[1.04] tracking-tight !text-white">
                   {words.map((w, wi) => (
