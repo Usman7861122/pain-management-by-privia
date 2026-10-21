@@ -70,3 +70,9 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - public/images/athletes/running.jpg: 2449671025
 - public/images/athletes/swimming.jpg: 2466962703
 - public/images/athletes/exercise.jpg: 2816923675
+
+## Home 1 scroll hero images (Shutterstock), replaced the clinic photos
+- public/images/tunnel/hurdler.jpg: 2449671025
+- stretch.jpg: 2520105197; boxer.jpg: 2664917257; plank.jpg: 2816923675
+- swimmer.jpg: 2466962703; warmup.jpg: 2514380073; sprinter.jpg: 304463792 (cropped, mirrored)
+- dumbbell.jpg: 2715172581; soccer.jpg: 2466964267
