@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AthleteHero from '@/components/home/AthleteHero';
+import About from '@/components/home/About.astro';
+import PriviaSection from '@/components/home/PriviaSection.astro';
+import Mission from '@/components/home/Mission.astro';
+import Services from '@/components/home/Services.astro';
+import Conditions from '@/components/home/Conditions.astro';
+import VirtualVisit from '@/components/home/VirtualVisit.astro';
+import Awards from '@/components/home/Awards.astro';
+import Providers from '@/components/home/Providers.astro';
+import ParallaxBand from '@/components/home/ParallaxBand.astro';
+import BlogPreview from '@/components/home/BlogPreview.astro';
+import Locations from '@/components/home/Locations.astro';
+import { site, mapsUrl } from '@/data/site';
+import { img } from '@/data/images';
+import { links } from '@/data/privia';
+
+const slides = [
+  { image: '/images/athletes/boxing.jpg', sport: 'Boxing', eyebrow: '', title: 'Get back in the fight.', text: 'Pain should not decide when you stop. Our physicians treat the cause, so you can train, work and live again.', pos: '50% 30%' },
+  { image: '/images/athletes/swimming.jpg', sport: 'Swimming', eyebrow: '', title: 'Move freely, stroke after stroke.', text: 'Shoulder, neck and back pain can hold any athlete back. Gentle, precise care helps you get moving again.', pos: '50% 30%' },
+  { image: '/images/athletes/soccer.jpg', sport: 'Soccer', eyebrow: '', title: 'Back on the pitch, pain free.', text: 'From old injuries to long-term nerve pain, our team builds a plan around your life and your goals.', pos: '50% 25%' },
+];
+const locations = site.locations.map((l) => ({ ...l, mapsHref: mapsUrl(l) }));
+---
+
+<BaseLayout overlay title="Interventional Pain Management in Rockville & Frederick, MD (Home 2)" description={site.description}>
+  <AthleteHero client:load slides={slides} primary={{ label: 'See My Provider', href: links.seeMyProvider }} phone={site.phone} locations={locations} />
+  <About />
+  <PriviaSection />
+  <Mission />
+  <Services />
+  <Conditions />
+  <VirtualVisit />
+  <Awards />
+  <Providers />
+  <ParallaxBand />
+  <BlogPreview />
+  <Locations />
+</BaseLayout>

@@ -65,3 +65,8 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - spinal-cord-stimulation.jpg: 2359622151
 - reactiv8.jpg: 2324060061
 - iovera-treatment.jpg: 2648821251
+
+## Home 2 hero athletes (Shutterstock)
+- public/images/athletes/boxing.jpg: 2664917257
+- public/images/athletes/swimming.jpg: 2466962703
+- public/images/athletes/soccer.jpg: 2466964267
