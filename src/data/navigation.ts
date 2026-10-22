@@ -136,5 +136,4 @@ export const footerNav = [
   { label: 'Become a Patient', href: '/become-a-patient' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Home 2', href: '/home-2' },
 ];

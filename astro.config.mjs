@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://example.com', // TODO: real domain
+  redirects: { '/home-2': '/' },
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

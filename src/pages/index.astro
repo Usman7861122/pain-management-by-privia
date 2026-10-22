@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import TunnelHero from '@/components/home/TunnelHero';
+import AthleteHero from '@/components/home/AthleteHero';
 import About from '@/components/home/About.astro';
 import PriviaSection from '@/components/home/PriviaSection.astro';
 import Mission from '@/components/home/Mission.astro';
@@ -16,22 +16,16 @@ import { site, mapsUrl } from '@/data/site';
 import { img } from '@/data/images';
 import { links } from '@/data/privia';
 
-const tunnelImages = [
-  { src: '/images/tunnel/hurdler.jpg', title: 'Clear every hurdle' },
-  { src: '/images/tunnel/stretch.jpg', title: 'Move with ease' },
-  { src: '/images/tunnel/boxer.jpg', title: 'Back in the fight' },
-  { src: '/images/tunnel/plank.jpg', title: 'Strong again' },
-  { src: '/images/tunnel/swimmer.jpg', title: 'Stroke after stroke' },
-  { src: '/images/tunnel/warmup.jpg', title: 'Train together' },
-  { src: '/images/tunnel/sprinter.jpg', title: 'Get back to your stride' },
-  { src: '/images/tunnel/dumbbell.jpg', title: 'Lift without pain' },
-  { src: '/images/tunnel/soccer.jpg', title: 'Back on the pitch' },
+const slides = [
+  { image: '/images/athletes/running.jpg', sport: 'Running', eyebrow: '', title: 'Clear every hurdle, pain free.', text: 'Pain should not decide when you stop. Our physicians treat the cause, so you can run, work and live again.', pos: '50% 40%' },
+  { image: '/images/athletes/swimming.jpg', sport: 'Swimming', eyebrow: '', title: 'Move freely, stroke after stroke.', text: 'Shoulder, neck and back pain can hold any athlete back. Gentle, precise care helps you get moving again.', pos: '50% 30%' },
+  { image: '/images/athletes/exercise.jpg', sport: 'Exercise', eyebrow: '', title: 'Strong again, together.', text: 'From old injuries to long-term nerve pain, our team builds a plan so you can train and move with confidence.', pos: '50% 40%' },
 ];
 const locations = site.locations.map((l) => ({ ...l, mapsHref: mapsUrl(l) }));
 ---
 
 <BaseLayout overlay title="Interventional Pain Management in Rockville & Frederick, MD" description={site.description}>
-  <TunnelHero client:load images={tunnelImages} primary={{ label: 'See My Provider', href: links.seeMyProvider }} phone={site.phone} locations={locations} />
+  <AthleteHero client:load slides={slides} primary={{ label: 'See My Provider', href: links.seeMyProvider }} phone={site.phone} locations={locations} />
   <About />
   <PriviaSection />
   <Mission />
