@@ -29,7 +29,7 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
     <PriviaLogo />
 
     <nav aria-label="Main" class="hidden xl:block">
-      <ul class="flex items-center gap-5 2xl:gap-7">
+      <ul class="flex items-center gap-3 min-[1400px]:gap-5 2xl:gap-7">
         {mainNav.map((i) => (
           <li class={`nav-item ${megaMenus[i.label] ? 'has-mega' : 'relative'}`}>
             <a href={i.href} aria-current={i.href && (i.href === '/' ? current === '/' : current.startsWith(i.href)) ? 'page' : undefined} class="nav-link" aria-haspopup={i.children ? 'true' : undefined}>
@@ -60,7 +60,7 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
                       </div>
                     ))}
                     <div class="mega-foot">
-                      <div><p class="font-display text-sm font-semibold text-charcoal-950">Need help choosing?</p><p class="text-xs text-charcoal-600">Call us at {site.phone.display}</p></div>
+                      <div><p class="font-display text-base font-semibold text-charcoal-950">Need help choosing?</p><p class="text-sm text-charcoal-600">Call us at {site.phone.display}</p></div>
                       <a href={m.viewAll.href} class="mega-all">{m.viewAll.label} <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
@@ -68,8 +68,8 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
                     <img src={m.featured.image} alt="" width="400" height="300" loading="lazy" />
                     <div class="p-4">
                       <p class="mega-label !pb-1">{m.featured.eyebrow}</p>
-                      <p class="font-display text-base font-semibold leading-snug text-charcoal-950">{m.featured.title}</p>
-                      <p class="mt-1 text-xs text-charcoal-600">{m.featured.text}</p>
+                      <p class="font-display text-lg font-semibold leading-snug text-charcoal-950">{m.featured.title}</p>
+                      <p class="mt-1 text-sm text-charcoal-600">{m.featured.text}</p>
                       <a href={FIND_A_DOCTOR_URL} class="mega-cta">Find a provider</a>
                     </div>
                   </aside>

@@ -47,8 +47,8 @@ export default function GetCareNow({ options }: { options: Option[] }) {
             {options.map((o) => (
               <li key={o.href}>
                 <a href={o.href} className="flex min-h-11 flex-col rounded-md px-4 py-3 transition hover:bg-cream-100">
-                  <span className="font-display text-sm font-semibold">{o.label}</span>
-                  {o.note && <span className="text-xs text-charcoal-600">{o.note}</span>}
+                  <span className="font-display text-base font-semibold">{o.label}</span>
+                  {o.note && <span className="text-sm text-charcoal-600">{o.note}</span>}
                 </a>
               </li>
             ))}
