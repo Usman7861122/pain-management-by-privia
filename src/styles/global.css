@@ -156,3 +156,6 @@ h1, h2, h3, h4, .h2 { font-family: var(--font-heading); letter-spacing: -0.01em;
   .legal-prose .callout { @apply mt-6 max-w-3xl rounded-md border border-gold-400/60 bg-gold-300/15 p-5; }
   .legal-prose .callout p { @apply mt-0; }
 }
+
+.topbar-pay { background: var(--color-gold-400); border-color: var(--color-gold-400); color: var(--color-charcoal-950); }
+.topbar-pay:hover, .topbar-pay:focus-visible { background: var(--color-gold-300); border-color: var(--color-gold-300); color: var(--color-charcoal-950); }

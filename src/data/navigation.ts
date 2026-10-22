@@ -65,6 +65,7 @@ export const mainNav: NavItem[] = [
         { label: 'Returning Patients', href: '/patient-resources/returning-patients' },
         { label: 'Virtual Visits', href: '/virtual-visits' },
         { label: 'Insurance & Fees', href: '/insurance' },
+      { label: 'Pay Now', href: '/pay-now' },
         { label: 'Frequently Asked Questions', href: '/patient-resources/faq' },
       ] },
       { label: 'Patient Forms', href: '/resources' },
@@ -134,6 +135,7 @@ export const footerNav = [
   { label: 'Providers', href: '/doctors' },
   { label: 'Patient Resources', href: '/resources' },
   { label: 'Become a Patient', href: '/become-a-patient' },
+  { label: 'Pay Now', href: '/pay-now' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];

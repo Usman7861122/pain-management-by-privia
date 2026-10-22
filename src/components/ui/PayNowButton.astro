@@ -1,0 +1,9 @@
+---
+import { PAY_NOW } from '@/data/privia';
+interface Props { label?: string; class?: string; id?: string }
+const { label = 'Pay Now', class: cls = 'topbar-btn', id } = Astro.props;
+---
+<form action={PAY_NOW.action} method="post" id={id} class="inline-flex">
+  <input type="hidden" name="encrypted" value={PAY_NOW.encrypted} />
+  <button type="submit" class={cls}>{label}</button>
+</form>

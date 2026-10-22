@@ -112,3 +112,9 @@ export const footerPriviaLinks = [
   { label: 'Press Room', href: links.pressRoom },
   { label: 'Prospective Doctors', href: links.prospectiveDoctors },
 ];
+
+// Phreesia "Pay Now" form (supplied by the practice). The token is a public, pre-encrypted value that Phreesia gave us.
+export const PAY_NOW = {
+  action: 'https://z1-ppw.phreesia.net/25/patient/Payment.aspx/Start',
+  encrypted: 'HpawrxQp3ZMYske5HtzuOZrBP60mhgek0Vl3hDlyAOEgcq_TXLzuEpWP7r11nL773UtXuMXh2cDpLrU1pCFnjjRC3-vRvkY9cJSbMHshJ0NJkjtTBk0DvQwwyfQwbFrjoCi6uesPmF69XNM0lUdFkvfTgy1_ja51lL3g0w3UgM7aJ3uMUzr8TB_ytmbtKkMRTq8y88zjqa8pEabnd_Zz-dgYmlxpLTsllc1Y5zuD3IhY1LsQbPXz0j9q23iD4t0V0',
+};

@@ -1,0 +1,36 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import PayNowButton from '@/components/ui/PayNowButton.astro';
+import { site } from '@/data/site';
+
+const steps = [
+  { t: 'Select Pay Now', d: 'You will move to a secure payment page run by our payment partner, Phreesia.' },
+  { t: 'Enter your details', d: 'Follow the steps on that page to find your bill and enter your payment information.' },
+  { t: 'Get your receipt', d: 'When you finish, you will see a confirmation of your payment.' },
+];
+---
+
+<PageLayout title="Pay your bill online." eyebrow="Pay Now" lead="Pay a bill from Pain Management Specialists in a few easy steps, any time of day." description="Pay your bill online for Pain Management Specialists, part of Privia Medical Group, in Rockville and Frederick, Maryland.">
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">Simple and secure</p>
+        <h2 class="h2 mt-4">Make a payment.</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">Your payment is handled on a secure page by Phreesia, our payment partner. You will leave our website to complete it.</p>
+        <div class="mt-8"><PayNowButton label="Make a Payment" class="btn btn-gold !px-9" /></div>
+        <p class="mt-6 text-charcoal-600">Questions about a bill? Call us at <a href={`tel:${site.phone.tel}`} class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">{site.phone.display}</a>.</p>
+      </div>
+      <ol class="space-y-4 lg:col-span-6" data-reveal style="--d:120ms">
+        {steps.map((s, i) => (
+          <li class="flex gap-5 rounded-md border border-charcoal-900/10 bg-white p-6">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-sm font-semibold text-gold-300">{i + 1}</span>
+            <div><h3 class="font-display text-lg font-semibold">{s.t}</h3><p class="mt-1 text-charcoal-600">{s.d}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+  <CtaBand slot="after" title="Need help with your account?" />
+</PageLayout>

@@ -2,6 +2,7 @@
 import { mainNav, headerUtility, getCareNow, megaMenus } from '@/data/navigation';
 import { site } from '@/data/site';
 import { FIND_A_DOCTOR_URL } from '@/data/privia';
+import PayNowButton from '@/components/ui/PayNowButton.astro';
 import PriviaLogo from './PriviaLogo.astro';
 import GetCareNow from '@/components/islands/GetCareNow';
 import MobileMenu from '@/components/islands/MobileMenu';
@@ -22,6 +23,7 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
         {headerUtility.map((i) => (
           <a href={i.href} class="topbar-btn">{i.label}</a>
         ))}
+        <PayNowButton class="topbar-btn topbar-pay" />
       </div>
     </div>
   </div>
@@ -108,7 +110,7 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
     </div>
 
     <div class="xl:hidden">
-      <MobileMenu client:idle nav={mainNav} utility={headerUtility} options={getCareNow} />
+      <MobileMenu client:idle nav={mainNav} utility={[...headerUtility, { label: 'Pay Now', href: '/pay-now' }]} options={getCareNow} />
     </div>
   </div>
 </header>
