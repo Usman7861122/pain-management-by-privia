@@ -76,3 +76,5 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - stretch.jpg: 2520105197; boxer.jpg: 2664917257; plank.jpg: 2816923675
 - swimmer.jpg: 2466962703; warmup.jpg: 2514380073; sprinter.jpg: 304463792 (cropped, mirrored)
 - dumbbell.jpg: 2715172581; soccer.jpg: 2466964267
+
+- Landing hero slide 2: public/images/athletes/jogging.jpg: 2509886203 (replaced swimmer)
