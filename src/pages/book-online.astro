@@ -1,0 +1,87 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { site } from '@/data/site';
+import { NEW_PATIENT_URL, RETURNING_LINKS } from '@/data/privia';
+
+const newSteps = [
+  { t: 'Send your request', d: 'Fill in a short online form with your details and the reason for your visit.' },
+  { t: 'We contact you', d: 'Our team reviews your request and reaches out to find a time that works for you.' },
+  { t: 'Come in and feel heard', d: 'Meet your physician, talk through your pain and agree on a plan together.' },
+];
+const ready = ['Your insurance card and photo ID', 'A list of your current medicines', 'Any scans, reports or past records you have', 'A few notes on where and when your pain happens'];
+const groups = ['Office visit', 'Telemedicine'];
+---
+
+<PageLayout title="Book your visit online." crumb="Book Online" highlight={['online']} eyebrow="Book online" lead="Choose the option that fits you. Both take only a few minutes." image="/images/about/team-smile.jpg" imageAlt="A friendly care team member smiling" description="Book an appointment online with Pain Management Specialists in Rockville and Frederick, Maryland. New patients and returning patients.">
+  <section class="section">
+    <div class="container-x">
+      <nav aria-label="Jump to" class="mb-12 flex flex-wrap gap-3" data-reveal>
+        <a href="#new-patients" class="btn btn-dark !min-h-10 !px-5">New patients</a>
+        <a href="#returning-patients" class="btn btn-ghost !min-h-10 !px-5 text-charcoal-950">Returning patients</a>
+      </nav>
+
+      <div id="new-patients" class="scroll-mt-32 grid items-start gap-12 lg:grid-cols-12 lg:gap-20">
+        <div class="lg:col-span-5" data-reveal>
+          <p class="eyebrow">Part one</p>
+          <h2 class="h2 mt-4">New patients</h2>
+          <div class="rule-gold mt-6"></div>
+          <p class="lead mt-6">Welcome. If this is your first visit with us, send an appointment request and our team will take it from there.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href={NEW_PATIENT_URL} target="_blank" rel="noopener" class="btn btn-gold !px-9">Request an appointment</a>
+            <a href="/become-a-patient" class="link-arrow text-gold-700">How to become a patient</a>
+          </div>
+        </div>
+        <div class="lg:col-span-7" data-reveal style="--d:120ms">
+          <ol class="space-y-4">
+            {newSteps.map((s, i) => (
+              <li class="flex gap-5 rounded-md border border-charcoal-900/10 bg-white p-6">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-charcoal-950 font-display text-sm font-semibold text-gold-300" aria-hidden="true">{i + 1}</span>
+                <div><h3 class="font-display text-lg font-semibold">{s.t}</h3><p class="mt-1 text-charcoal-600">{s.d}</p></div>
+              </li>
+            ))}
+          </ol>
+          <div class="mt-6 rounded-md bg-cream-100 p-6">
+            <p class="font-display text-base font-semibold">Helpful to have ready</p>
+            <ul class="mt-3 grid gap-2 text-charcoal-700 sm:grid-cols-2">
+              {ready.map((r) => <li class="flex gap-2.5"><span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" aria-hidden="true"></span>{r}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="returning-patients" class="bg-cream-100 section scroll-mt-24">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Part two</p>
+        <h2 class="h2 mt-4">Returning patients</h2>
+        <p class="lead mt-4">Welcome back. Choose your doctor and the kind of visit you would like to request.</p>
+      </div>
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {groups.map((g, gi) => (
+          <div class="rounded-md border border-charcoal-900/10 bg-cream-50 p-7 sm:p-8" data-reveal style={`--d:${gi * 120}ms`}>
+            <h3 class="font-display text-xl font-semibold">{g === 'Office visit' ? 'In the office' : 'By video (telemedicine)'}</h3>
+            <p class="mt-2 text-charcoal-600">{g === 'Office visit' ? 'For new problems, or after a telemedicine visit.' : 'See your doctor from home, from a private place.'}</p>
+            <div class="mt-6 space-y-3">
+              {RETURNING_LINKS.filter((l) => l.kind === g).map((l) => (
+                <a href={l.href} target="_blank" rel="noopener" class="group flex min-h-[4.5rem] flex-col justify-center rounded-md border border-charcoal-900/10 bg-white px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-[0_16px_30px_-20px_rgba(95,76,0,.5)]">
+                  <span class="flex items-center justify-between gap-3 font-display text-lg font-semibold">Request with {l.doctor}
+                    <svg class="shrink-0 text-gold-600 transition-transform duration-300 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5" /></svg>
+                  </span>
+                  <span class="mt-0.5 text-sm text-charcoal-600">{l.note}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mx-auto mt-10 max-w-3xl space-y-2 text-center text-charcoal-600" data-reveal>
+        <p>Please do not use these links to schedule procedures. Haven't been seen in our office before? <a href="#new-patients" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">Request a new patient appointment</a> instead.</p>
+        <p>Need help? Call <a href={`tel:${site.phone.tel}`} class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">{site.phone.display}</a>. See <a href="/patient-resources/returning-patients" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">more for returning patients</a>.</p>
+      </div>
+    </div>
+  </section>
+  <CtaBand slot="after" title="Ready to feel better?" />
+</PageLayout>
