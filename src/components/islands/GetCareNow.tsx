@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 interface Option { label: string; href: string; note?: string }
 
-/** Privia rule: "Get Care Now" button with two options (See My Provider, Immediate Care). */
+/** Privia rule: "Get Care Now" button; per later client instruction it now reads "Book Online" with New Patients / Returning Patients. */
 export default function GetCareNow({ options }: { options: Option[] }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ export default function GetCareNow({ options }: { options: Option[] }) {
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
       >
-        Get Care Now
+        Book Online
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"
           style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .3s' }}>
           <path d="M2 4.5l4 4 4-4" />

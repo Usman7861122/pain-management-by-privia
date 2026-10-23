@@ -41,3 +41,6 @@ Privia content lives in `src/data/privia.ts`, `forms.ts`, `alerts.ts`. Updates a
 
 ## Items copied from the old website. VERIFY before launch
 - Phone numbers (717 and 419 area codes on Maryland offices), awards, hospital privileges, provider names.
+
+## Client override (2026-10-23)
+- Header "Get Care Now" button now reads "Book Online" with two options: "New Patients" (Find-A-Doctor) and "Returning Patients" (patient portal sign-in). This replaces Privia's "Get Care Now / See My Provider / Immediate Care" wording on the client's instruction. Confirm with Privia.

@@ -125,8 +125,8 @@ export const headerUtility = [
 ];
 
 export const getCareNow = [
-  { label: 'See My Provider', href: links.seeMyProvider, note: 'Find your provider and schedule' },
-  { label: 'Immediate Care', href: links.immediateCare, note: 'Same-day urgent care' },
+  { label: 'New Patients', href: links.seeMyProvider, note: 'Find your provider and book a first visit' },
+  { label: 'Returning Patients', href: links.patientLogin, note: 'Sign in to the portal to book' },
 ];
 
 export const footerNav = [

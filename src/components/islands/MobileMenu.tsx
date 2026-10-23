@@ -99,7 +99,7 @@ export default function MobileMenu({ nav, utility, options }: Props) {
                 ))}
               </div>
 
-              <p className="eyebrow mb-3 mt-8">Get Care Now</p>
+              <p className="eyebrow mb-3 mt-8">Book Online</p>
               <div className="grid gap-3">
                 {options.map((o, n) => (
                   <a key={o.href} href={o.href} className={`btn ${n === 0 ? 'btn-gold' : 'btn-ghost'} w-full`}>{o.label}</a>
