@@ -1,10 +1,11 @@
 ---
 import { mainNav, headerUtility, getCareNow, megaMenus } from '@/data/navigation';
 import { site } from '@/data/site';
-import { FIND_A_DOCTOR_URL } from '@/data/privia';
+import { FIND_A_DOCTOR_URL, RETURNING_LINKS } from '@/data/privia';
 import PayNowButton from '@/components/ui/PayNowButton.astro';
 import PriviaLogo from './PriviaLogo.astro';
 import GetCareNow from '@/components/islands/GetCareNow';
+import ReturningModal from '@/components/islands/ReturningModal';
 import MobileMenu from '@/components/islands/MobileMenu';
 
 const { overlay = false } = Astro.props;
@@ -114,6 +115,7 @@ const hrefOf = (nav: any, label: string) => nav.children.find((c: any) => c.labe
     </div>
   </div>
 </header>
+<ReturningModal client:load links={RETURNING_LINKS} phone={site.phone} />
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-mega]').forEach((m) => {

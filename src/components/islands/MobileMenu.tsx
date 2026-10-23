@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 interface Item { label: string; href: string; note?: string }
 interface Child { label: string; href?: string; external?: boolean; children?: Child[] }
 interface NavEntry { label: string; href?: string; children?: Child[] }
-interface Props { nav: NavEntry[]; utility: Item[]; options: Item[] }
+interface Props { nav: NavEntry[]; utility: Item[]; options: (Item & { modal?: string })[] }
 
 export default function MobileMenu({ nav, utility, options }: Props) {
   const [open, setOpen] = useState(false);
@@ -102,7 +102,7 @@ export default function MobileMenu({ nav, utility, options }: Props) {
               <p className="eyebrow mb-3 mt-8">Book Online</p>
               <div className="grid gap-3">
                 {options.map((o, n) => (
-                  <a key={o.href} href={o.href} className={`btn ${n === 0 ? 'btn-gold' : 'btn-ghost'} w-full`}>{o.label}</a>
+                  <a key={o.href} href={o.href} onClick={o.modal ? (e) => { e.preventDefault(); setOpen(false); setTimeout(() => window.dispatchEvent(new Event('pms:open-returning')), 50); } : undefined} className={`btn ${n === 0 ? 'btn-gold' : 'btn-ghost'} w-full`}>{o.label}</a>
                 ))}
               </div>
             </div>

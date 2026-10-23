@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
-interface Option { label: string; href: string; note?: string }
+interface Option { label: string; href: string; note?: string; modal?: string }
 
 /** Privia rule: "Get Care Now" button; per later client instruction it now reads "Book Online" with New Patients / Returning Patients. */
 export default function GetCareNow({ options }: { options: Option[] }) {
@@ -46,7 +46,7 @@ export default function GetCareNow({ options }: { options: Option[] }) {
           >
             {options.map((o) => (
               <li key={o.href}>
-                <a href={o.href} className="flex min-h-11 flex-col rounded-md px-4 py-3 transition hover:bg-cream-100">
+                <a href={o.href} onClick={o.modal ? (e) => { e.preventDefault(); setOpen(false); window.dispatchEvent(new Event('pms:open-returning')); } : undefined} className="flex min-h-11 flex-col rounded-md px-4 py-3 transition hover:bg-cream-100">
                   <span className="font-display text-base font-semibold">{o.label}</span>
                   {o.note && <span className="text-sm text-charcoal-600">{o.note}</span>}
                 </a>

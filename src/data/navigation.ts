@@ -1,4 +1,4 @@
-import { links, FIND_A_DOCTOR_URL } from './privia';
+import { links, FIND_A_DOCTOR_URL, NEW_PATIENT_URL } from './privia';
 
 // Main menu with dropdowns. Mirrors the old website's menu (painmanagespecialists.com).
 // "columns" tells the desktop dropdown how many columns to use.
@@ -125,8 +125,8 @@ export const headerUtility = [
 ];
 
 export const getCareNow = [
-  { label: 'New Patients', href: links.seeMyProvider, note: 'Find your provider and book a first visit' },
-  { label: 'Returning Patients', href: links.patientLogin, note: 'Sign in to the portal to book' },
+  { label: 'New Patients', href: NEW_PATIENT_URL, note: 'Request your first appointment' },
+  { label: 'Returning Patients', href: '#returning-patients', modal: 'returning', note: 'Choose your doctor and visit type' },
 ];
 
 export const footerNav = [

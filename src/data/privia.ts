@@ -118,3 +118,13 @@ export const PAY_NOW = {
   action: 'https://z1-ppw.phreesia.net/25/patient/Payment.aspx/Start',
   encrypted: 'HpawrxQp3ZMYske5HtzuOZrBP60mhgek0Vl3hDlyAOEgcq_TXLzuEpWP7r11nL773UtXuMXh2cDpLrU1pCFnjjRC3-vRvkY9cJSbMHshJ0NJkjtTBk0DvQwwyfQwbFrjoCi6uesPmF69XNM0lUdFkvfTgy1_ja51lL3g0w3UgM7aJ3uMUzr8TB_ytmbtKkMRTq8y88zjqa8pEabnd_Zz-dgYmlxpLTsllc1Y5zuD3IhY1LsQbPXz0j9q23iD4t0V0',
 };
+
+// Book Online (client instruction, Oct 2026). New patients use the Phreesia request form;
+// returning patients pick one of four request links (from the old site's Request Appointment page).
+export const NEW_PATIENT_URL = 'https://z1-rpw.phreesia.net/ApptRequestForm.App/#/form/4c6a43ee-8e60-4386-b8d9-a2f2b0efb443';
+export const RETURNING_LINKS = [
+  { kind: 'Office visit', doctor: 'Dr. Peruvemba', href: 'https://phreesia.me/EstablishedPeruvemba', note: 'Request an in-office appointment.' },
+  { kind: 'Office visit', doctor: 'Dr. Hough', href: 'https://phreesia.me/EstablishedHough', note: 'Request an in-office appointment.' },
+  { kind: 'Telemedicine', doctor: 'Dr. Peruvemba', href: 'https://phreesia.me/TelehealthEstPeruvemba', note: 'You must be in Maryland or Virginia.' },
+  { kind: 'Telemedicine', doctor: 'Dr. Hough', href: 'https://phreesia.me/TelehealthEstHough', note: 'You must be in Maryland.' },
+];
