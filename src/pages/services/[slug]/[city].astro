@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '@/components/services/ServicePage.astro';
+import { CITY_SERVICE_IDS, CITY_SLUGS } from '@/data/cityServices';
+export async function getStaticPaths() {
+  const items = await getCollection('services');
+  return items
+    .filter((e) => CITY_SERVICE_IDS.includes(e.id))
+    .flatMap((entry) => CITY_SLUGS.map((city) => ({ params: { slug: entry.id, city }, props: { entry, all: items, city } })));
+}
+const { entry, all, city } = Astro.props;
+---
+<ServicePage entry={entry} all={all} city={city} />

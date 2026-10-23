@@ -1,0 +1,35 @@
+---
+import { site } from '@/data/site';
+import { locationDetails } from '@/data/locationDetails';
+interface Props { serviceId: string; serviceTitle: string; current?: string }
+const { serviceId, serviceTitle, current } = Astro.props;
+const list = site.locations.filter((l) => l.slug !== current);
+const name = serviceTitle.replace(/ Procedure$/, '');
+---
+<section class={current ? 'bg-cream-100 section' : 'bg-cream-100 section'}>
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="eyebrow">{current ? 'Other office' : 'Find it near you'}</p>
+      <h2 class="h2 mt-4">{current ? `${name} in our other office.` : `${name} in your city.`}</h2>
+      <p class="lead mt-4">{current ? 'Same physicians and same care, at our second Maryland office.' : 'Choose the office that is closest to you to see local details.'}</p>
+    </div>
+    <ul class={`mx-auto mt-12 grid gap-6 ${current ? 'max-w-xl' : 'max-w-4xl md:grid-cols-2'}`}>
+      {list.map((l, i) => {
+        const d = locationDetails[l.slug];
+        return (
+          <li data-reveal style={`--d:${i * 120}ms`}>
+            <a href={`/services/${serviceId}/${l.slug}`} class="group block overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+              <div class="aspect-[16/8] overflow-hidden bg-charcoal-900"><img src={d.heroImage} alt={`${l.city}, Maryland`} loading="lazy" width="1200" height="600" class="h-full w-full object-cover transition-transform duration-[1400ms] ease-[var(--ease-lux)] group-hover:scale-[1.05]" /></div>
+              <div class="p-7">
+                <h3 class="font-display text-xl font-semibold">{name} in {l.city}, {l.state}</h3>
+                <p class="mt-2 text-charcoal-600">{d.county}: {d.serves.slice(1, 4).join(', ')} and nearby.</p>
+                <span class="link-arrow mt-4 text-gold-700">See {l.city} details</span>
+              </div>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    {current && <p class="mt-8 text-center" data-reveal><a href={`/services/${serviceId}`} class="link-arrow text-gold-700">{name} in Rockville and Frederick</a></p>}
+  </div>
+</section>
