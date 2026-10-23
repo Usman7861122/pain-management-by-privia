@@ -25,7 +25,7 @@ const locations = site.locations.map((l) => ({ ...l, mapsHref: mapsUrl(l) }));
 ---
 
 <BaseLayout overlay title="Interventional Pain Management in Rockville & Frederick, MD" description={site.description}>
-  <AthleteHero client:load slides={slides} primary={{ label: 'See My Provider', href: '/book-online' }} phone={site.phone} locations={locations} />
+  <AthleteHero client:load slides={slides} primary={{ label: 'Book Online', href: '/book-online' }} phone={site.phone} locations={locations} />
   <About />
   <PriviaSection />
   <Mission />
