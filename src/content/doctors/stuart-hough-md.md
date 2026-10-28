@@ -11,7 +11,7 @@ education:
   - { year: "1993", text: "Doctor of Medicine, University of Rochester School of Medicine and Dentistry (Rochester, NY)" }
   - { year: "1994", text: "Internship in internal medicine, Winthrop University Hospital (Mineola, NY)" }
   - { year: "1997–1998", text: "Anesthesiology residency and pain management fellowship, Harvard Medical School / Beth Israel Deaconess Medical Center (Boston, MA)" }
-affiliations: ["Frederick Memorial Hospital", "Holy Cross Hospital (Silver Spring)", "Shady Grove Adventist Hospital"]
+affiliations: ["Holy Cross Hospital (Silver Spring)", "Shady Grove Adventist Hospital"]
 memberships: ["American Medical Association (AMA)", "American Society of Anesthesiologists (ASA)", "International Association for the Study of Pain (IASP)", "Maryland State Medical Society (MedChi)"]
 leadership: ["Chair, Division of Pain Management, Shady Grove Medical Center", "Co-Chair, Pharmacy and Therapeutics Committee, Shady Grove Medical Center"]
 awards: ["Washingtonian Magazine Top Doctor", "Bethesda Magazine Top Doctors", "Top Pain Management Doctor, Consumers’ Checkbook"]

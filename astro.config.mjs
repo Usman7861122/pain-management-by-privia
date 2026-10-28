@@ -6,7 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://example.com', // TODO: real domain
-  redirects: { '/home-2': '/' },
+  redirects: { '/home-2': '/',
+    '/services/intracept-procedure': '/services/basivertebral-nerve-ablation' },
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

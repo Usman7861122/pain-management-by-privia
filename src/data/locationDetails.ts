@@ -49,7 +49,7 @@ export const locationDetails: Record<string, LocationDetail> = {
 
 // The same service groups shown on the Services page, reused on the office pages.
 export const serviceGroups = [
-  { id: 'interventional', title: 'Interventional procedures', href: '/services/interventional-procedures', items: ['interventional-pain-management', 'epidural-steroid-injections', 'radiofrequency-ablation', 'nerve-blocks', 'cortisone-injections', 'kyphoplasty', 'intracept-procedure', 'mild-procedure'] },
+  { id: 'interventional', title: 'Interventional procedures', href: '/services/interventional-procedures', items: ['interventional-pain-management', 'epidural-steroid-injections', 'radiofrequency-ablation', 'nerve-blocks', 'cortisone-injections', 'prp-injections', 'kyphoplasty', 'basivertebral-nerve-ablation', 'mild-procedure'] },
   { id: 'neuromodulation', title: 'Neuromodulation & devices', href: '/services/neuromodulation-and-devices', items: ['neuromodulation', 'spinal-cord-stimulation', 'reactiv8', 'iovera-treatment'] },
   { id: 'medicine', title: 'Medicine & care', href: '/services/medicine-and-care', items: ['pain-management', 'pain-medicine'] },
 ];

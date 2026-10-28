@@ -28,7 +28,10 @@ relief: "Pain after the procedure is usually mild and short. Many people begin t
 risksTitle: "Safety and coverage"
 risksIntro: "The safety profile is similar to epidural steroid injections, but the results last longer."
 risks: ["Medicare covers the procedure nationwide, including Medicare Advantage", "The VA, U.S. Military and IHS also cover it", "Coverage from private insurance varies, so please check with your plan"]
-related: ["epidural-steroid-injections", "intracept-procedure", "kyphoplasty"]
+linksIntro: "Learn more about the mild® Procedure from the device maker."
+links:
+  - { label: "mild® Procedure (Stryker)", href: "https://patients.stryker.com/us/en/ivs/treatments/mild.html", note: "Patient website" }
+related: ["epidural-steroid-injections", "basivertebral-nerve-ablation", "kyphoplasty"]
 ---
 
 The mild® Procedure, also called **percutaneous interlaminar decompression**, is a short outpatient procedure for lumbar spinal stenosis. It removes the thickened tissue that crowds the spinal canal. It does not need general anesthesia, and the small cuts are covered with bandages.

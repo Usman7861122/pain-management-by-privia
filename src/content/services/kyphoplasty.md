@@ -31,7 +31,10 @@ risksTitle: "Risks to know about"
 risksIntro: "Most people do well, but serious problems can happen. Your doctor will go over them with you."
 risks: ["Serious events such as heart attack, stroke or a blood, fat or cement clot reaching the lungs or heart", "Infection", "Cement leaking near the spinal cord, which could cause nerve injury and, rarely, paralysis", "Cement leaking into blood vessels, which could harm the vessels, lungs or heart"]
 alternatives: ["Pain medicine", "Bed rest", "Back braces", "Physical therapy", "Surgery"]
-related: ["mild-procedure", "intracept-procedure", "epidural-steroid-injections"]
+linksIntro: "Learn more about balloon kyphoplasty from the device maker."
+links:
+  - { label: "Balloon kyphoplasty (Medtronic)", href: "https://www.medtronic.com/en-us/l/patients/treatments-therapies/balloon-kyphoplasty.html", note: "Patient website" }
+related: ["mild-procedure", "basivertebral-nerve-ablation", "epidural-steroid-injections"]
 ---
 
 Balloon kyphoplasty treats back pain caused by a broken vertebra. Bone cement stabilizes the fracture, and the balloon can restore lost height and ease the curve in the spine. It has been used since the 1990s, mostly for fractures from osteoporosis and cancer.

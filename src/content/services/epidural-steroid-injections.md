@@ -12,7 +12,7 @@ facts:
   - { k: "Guidance", v: "Real-time X-ray (fluoroscopy)" }
   - { k: "How many", v: "Only as many as you need" }
 conditionsTitle: "Conditions it can help"
-conditions: ["Bulging or herniated discs", "Spinal stenosis", "Degenerative disc disease", "Osteoarthritis", "Rheumatoid arthritis", "Sciatica"]
+conditions: ["Bulging or herniated discs", "Spinal stenosis", "Degenerative disc disease", "Sciatica"]
 steps:
   - { t: "Get comfortable", d: "You lie face down on a special X-ray table." }
   - { t: "Numb the skin", d: "The doctor numbs your back with a local anesthetic." }

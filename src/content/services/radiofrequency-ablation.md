@@ -25,7 +25,7 @@ fitTitle: "Am I a candidate?"
 goodFit: ["You have pain from spinal facet joints or arthritic knees", "A diagnostic nerve block eased your pain", "A board certified pain physician agrees after your exam"]
 reliefTitle: "When will I feel relief?"
 relief: "Results vary. Many people start to feel better in about 10 days. It can take up to a month. Relief can last from six months to two years, and the procedure can be repeated when pain returns."
-related: ["nerve-blocks", "epidural-steroid-injections", "intracept-procedure"]
+related: ["nerve-blocks", "epidural-steroid-injections", "basivertebral-nerve-ablation"]
 ---
 
 Radiofrequency ablation, also called **rhizotomy**, uses radiofrequency energy to interrupt the nerves that carry pain signals from arthritic joints to the brain. The goal is long-term relief.

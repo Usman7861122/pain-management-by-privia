@@ -57,7 +57,7 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - radiofrequency-ablation.jpg: 791852362
 - nerve-blocks.jpg: 1573947112
 - mild-procedure.jpg: 2537383347
-- intracept-procedure.jpg: 2324191319
+- basivertebral-nerve-ablation.jpg: 2324191319
 - kyphoplasty.jpg: 1337363225
 
 ## Neuromodulation & devices pages (Shutterstock), public/images/services/hero/
@@ -78,3 +78,4 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 - dumbbell.jpg: 2715172581; soccer.jpg: 2466964267
 
 - Landing hero slide 2: public/images/athletes/jogging.jpg: 2509886203 (replaced swimmer)
+- prp-injections.jpg: 2089848889

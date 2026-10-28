@@ -37,6 +37,7 @@ treatmentsTitle: "How we treat it"
 treatmentsIntro: "We offer treatments that aim to lower pain and help you stay active. Your plan may include one or more of these."
 treatments:
   - "cortisone-injections"
+  - "prp-injections"
   - "radiofrequency-ablation"
   - "nerve-blocks"
   - "pain-medicine"

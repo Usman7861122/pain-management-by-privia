@@ -42,6 +42,9 @@ const services = defineCollection({
     risksIntro: z.string().optional(),
     alternatives: z.array(z.string()).default([]),
     notice: z.string().optional(),
+    linksTitle: z.string().default('Official patient information'),
+    linksIntro: z.string().optional(),
+    links: z.array(z.object({ label: z.string(), href: z.string().optional(), note: z.string().optional() })).default([]),
     related: z.array(z.string()).default([]),
   }),
 });

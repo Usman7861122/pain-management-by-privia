@@ -1,11 +1,11 @@
 ---
-title: "Intracept Procedure"
+title: "Basivertebral Nerve Ablation"
 summary: "A minimally invasive option for chronic low back pain from the vertebral endplate."
 order: 9
 featured: false
 carveOut: false
 lead: "A minimally invasive treatment for chronic low back pain. It quiets the nerve that carries pain from damaged discs and bone endplates to your brain."
-heroImage: "/images/services/hero/intracept-procedure.jpg"
+heroImage: "/images/services/hero/basivertebral-nerve-ablation.jpg"
 heroAlt: "A man sitting at a desk holding his lower back in pain"
 facts:
   - { k: "Time", v: "40 to 80 minutes" }
@@ -26,9 +26,15 @@ fitTitle: "Am I a candidate?"
 goodFit: ["Your back pain is worse when you sit, lift or bend forward", "Your lower spine discs are damaged", "Your MRI or SPECT CT shows endplate (Modic) changes", "A board certified pain physician agrees after your exam"]
 reliefTitle: "When will I feel relief?"
 relief: "Pain after the procedure is usually mild and short. Relief from your usual back pain often begins two to six weeks later. Studies show relief lasting at least five years, and the procedure usually does not need to be repeated."
+linksTitle: "Available systems"
+linksIntro: "Basivertebral nerve ablation can be done with different devices. These are the systems on the market today."
+links:
+  - { label: "Boston Scientific Intracept", href: "https://www.intracept.com/the-intracept-procedure.html", note: "Patient website" }
+  - { label: "Stryker OptABLATE", href: "https://patients.stryker.com/us/en/ivs/treatments/basivertebral-nerve-ablation.html", note: "Patient website" }
+  - { label: "Medtronic ViaVerte", note: "No patient website yet" }
 related: ["radiofrequency-ablation", "mild-procedure", "kyphoplasty"]
 ---
 
-The Intracept Procedure, also called **basivertebral nerve ablation**, uses radiofrequency energy to disrupt the nerve that carries pain signals from damaged discs in the lower back.
+**Basivertebral nerve ablation** (BVN ablation) uses radiofrequency energy to disrupt the nerve that carries pain signals from damaged discs in the lower back.
 
 Dr. Stuart Hough and Dr. Ramani Peruvemba are fellowship-trained in it and were among the first in Maryland to offer it. Few local pain practices are trained to evaluate and treat patients with this procedure.

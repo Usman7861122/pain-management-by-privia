@@ -9,8 +9,8 @@ const all = await getCollection('services');
 const byId = (id: string) => all.find((x) => x.id === id)!;
 
 const groups = [
-  { eyebrow: 'Calm inflamed nerves', title: 'Injections that ease nerve and joint pain', text: 'Targeted medicine, placed exactly where the pain starts.', ids: ['epidural-steroid-injections', 'nerve-blocks', 'cortisone-injections'] },
-  { eyebrow: 'Quiet pain signals', title: 'Treatments that stop pain from reaching the brain', text: 'Gentle heat that quiets the nerves carrying long-term pain.', ids: ['radiofrequency-ablation', 'intracept-procedure'] },
+  { eyebrow: 'Calm inflamed nerves', title: 'Injections that ease nerve and joint pain', text: 'Targeted medicine, placed exactly where the pain starts.', ids: ['epidural-steroid-injections', 'nerve-blocks', 'cortisone-injections', 'prp-injections'] },
+  { eyebrow: 'Quiet pain signals', title: 'Treatments that stop pain from reaching the brain', text: 'Gentle heat that quiets the nerves carrying long-term pain.', ids: ['radiofrequency-ablation', 'basivertebral-nerve-ablation'] },
   { eyebrow: 'Treat the spine itself', title: 'Procedures that help the bones and the spinal canal', text: 'Minimally invasive options for fractures and narrowing of the spine.', ids: ['kyphoplasty', 'mild-procedure'] },
 ];
 const overview = byId('interventional-pain-management');
