@@ -1,0 +1,52 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Needed for GitHub's OIDC identity provider (no AWS keys are stored in GitHub).
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-s3
+  cancel-in-progress: true
+
+env:
+  S3_BUCKET: pain-management-by-privia-website
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx astro build
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      # Hashed files and images can be cached for a long time.
+      - name: Upload assets
+        run: |
+          aws s3 sync dist "s3://${S3_BUCKET}" --delete \
+            --exclude "*.html" --exclude "sitemap*.xml" --exclude "robots.txt" \
+            --cache-control "public,max-age=31536000,immutable"
+
+      # Pages are checked fresh every time so updates show quickly.
+      - name: Upload pages
+        run: |
+          aws s3 sync dist "s3://${S3_BUCKET}" --delete \
+            --exclude "*" --include "*.html" --include "sitemap*.xml" --include "robots.txt" \
+            --cache-control "public,max-age=0,must-revalidate"
