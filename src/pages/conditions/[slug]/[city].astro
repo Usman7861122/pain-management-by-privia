@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import ConditionPage from '@/components/conditions/ConditionPage.astro';
+import { CITY_SLUGS } from '@/data/cityServices';
+export async function getStaticPaths() {
+  const items = await getCollection('conditions');
+  const services = await getCollection('services');
+  return items.flatMap((entry) => CITY_SLUGS.map((city) => ({ params: { slug: entry.id, city }, props: { entry, all: items, services, city } })));
+}
+const { entry, all, services, city } = Astro.props;
+---
+<ConditionPage entry={entry} all={all} services={services} city={city} />

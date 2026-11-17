@@ -1,0 +1,98 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import OfficesSection from '@/components/ui/OfficesSection.astro';
+import { nearbyAreasHtml, site } from '@/data/site';
+import { locationDetails } from '@/data/locationDetails';
+import CityCards from '@/components/services/CityCards.astro';
+
+const { city } = Astro.props as { city?: 'rockville' | 'frederick' };
+const cityName = city ? site.locations.find((l) => l.slug === city)!.city : '';
+const title = city ? `Interventional Pain Management in ${cityName}, MD.` : 'Interventional Pain Management';
+const crumbs = city ? [{ label: 'Services', href: '/services' }, { label: 'Interventional Pain Management', href: '/services/interventional-pain-management' }, { label: cityName }] : [{ label: 'Services', href: '/services' }];
+const nearbyHtml = city ? locationDetails[city].nearby : nearbyAreasHtml;
+const metaDesc = city ? `Interventional pain management in ${cityName}, Maryland with board certified physicians Stuart Hough, MD and Ramani Peruvemba, MD.` : 'Interventional pain management in Rockville and Frederick, Maryland with board certified physicians Stuart Hough, MD and Ramani Peruvemba, MD.';
+
+const conditionTiles = [
+  { t: 'Spinal stenosis', img: '/images/conditions/spinal-stenosis.jpg', href: '/conditions/spinal-stenosis' },
+  { t: 'Herniated discs', img: '/images/conditions/herniated-discs.jpg', href: '/conditions/herniated-discs' },
+  { t: 'Sciatica', img: '/images/conditions/sciatica.jpg', href: '/conditions/sciatica' },
+  { t: 'Neuropathic pain', img: '/images/conditions/neuropathy.jpg', href: '/conditions/neuropathy' },
+  { t: 'Degenerative disc disease', img: '/images/conditions/back-pain.jpg', href: '/conditions/back-pain' },
+  { t: 'Complex regional pain syndrome (CRPS)', img: '/images/conditions/neck-pain.jpg', href: '/conditions/complex-regional-pain-syndrome' },
+];
+const alsoHelps = ['Osteoarthritis', 'Fibromyalgia', 'Bursitis', 'Post-surgical pain'];
+
+const treatments = [
+  { t: 'Epidural steroid injections', d: 'Anti-inflammatory medicine placed near irritated nerves. It can help with pinched nerves, spinal stenosis, sciatica and herniated discs.', href: '/services/epidural-steroid-injections', img: '/images/services/epidural-steroid-injections.jpg' },
+  { t: 'Radiofrequency ablation', d: 'A thin needle uses gentle heat on the small nerves that carry arthritis pain from the facet joints. Relief can last many months.', href: '/services/radiofrequency-ablation', img: '/images/services/radiofrequency-ablation.jpg' },
+  { t: 'Spinal cord stimulation', d: 'A small implanted device sends mild pulses that interrupt pain signals before they reach the brain.', href: '/services/spinal-cord-stimulation', img: '/images/services/spinal-cord-stimulation.jpg' },
+  { t: 'Dorsal root ganglion (DRG) stimulation', d: 'A newer kind of stimulation aimed at clusters of nerves. It is often used for CRPS and nerve injuries.', href: '/services/neuromodulation', img: '/images/interventional/xray-lumbar.jpg' },
+  { t: 'mild® procedure', d: 'A minimally invasive treatment for pain from lumbar spinal stenosis.', href: '/services/mild-procedure', img: '/images/interventional/mri-lumbar.jpg' },
+];
+---
+
+<PageLayout crumb="Interventional Pain Management" crumbs={crumbs} highlight={city ? [cityName] : []} title={title} nearby={nearbyHtml} eyebrow="Interventional pain management" lead="Board certified pain physicians offer precise, minimally invasive treatments at two Maryland offices, close to where you live." image="/images/interventional/spine-injection.jpg" imageAlt="A doctor giving a targeted injection to a patient with back pain" description={metaDesc}>
+  <section class="section">
+    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="eyebrow">The basics</p>
+        <h2 class="h2 mt-4">What is interventional pain management?</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="lead mt-6">It is a way to find and treat the source of acute or long-term pain using small, precise procedures. These are part of a wider care plan that can also include therapy, education and medicine.</p>
+        <p class="lead mt-4">Many primary care visits rely on medicine alone. Interventional care can lower or even remove the need for pain pills, along with their side effects and risk of dependence.</p>
+        <p class="lead mt-4">Dr. Stuart Hough and Dr. Ramani Peruvemba are board certified by the American Board of Anesthesiology. They have many years of experience and want you to take an active part in your own recovery.</p>
+      </div>
+      <div class="lg:col-span-6" data-reveal style="--d:120ms">
+        <p class="eyebrow">Conditions that can benefit</p>
+        <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {conditionTiles.map((c) => (
+            <li>
+              <a href={c.href} class="group relative block aspect-[4/5] overflow-hidden rounded-md bg-charcoal-900">
+                <img src={c.img} alt="" loading="lazy" width="600" height="750" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.08]" />
+                <span class="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/20 to-transparent transition-opacity duration-500 group-hover:from-charcoal-950/95" aria-hidden="true"></span>
+                <span class="absolute inset-x-0 bottom-0 p-4">
+                  <span class="block h-px w-6 bg-gold-400 transition-all duration-500 group-hover:w-12"></span>
+                  <span class="mt-2 block font-display text-sm font-semibold leading-snug text-cream-50">{c.t}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-sm text-charcoal-600"><span class="font-semibold text-charcoal-950">Also helps with:</span> {alsoHelps.join(', ')}.</p>
+        <p class="mt-3 text-charcoal-600">Not sure if your pain is on the list? <a href="/conditions" class="font-semibold text-charcoal-950 underline decoration-gold-400 underline-offset-4">See all conditions we treat</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-100 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <p class="eyebrow">Treatments</p>
+        <h2 class="h2 mt-4">Common interventional treatments.</h2>
+      </div>
+      <ul class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {treatments.map((t, i) => (
+          <li data-reveal style={`--d:${i * 80}ms`}>
+            <a href={t.href} class="group block h-full overflow-hidden rounded-md border border-charcoal-900/10 bg-cream-50 transition duration-500 ease-[var(--ease-lux)] hover:-translate-y-1.5 hover:border-gold-400 hover:bg-white hover:shadow-[0_22px_40px_-24px_rgba(95,76,0,.45)]">
+              <div class="aspect-[16/10] overflow-hidden bg-charcoal-900">
+                <img src={t.img} alt="" loading="lazy" width="800" height="500" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-lux)] group-hover:scale-[1.06]" />
+              </div>
+              <div class="p-7">
+                <h3 class="font-display text-lg font-semibold">{t.t}</h3>
+                <p class="mt-3 text-charcoal-600">{t.d}</p>
+                <span class="link-arrow mt-5 text-gold-700">Learn more</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-10 text-center text-charcoal-600" data-reveal>Every treatment plan is personal. Your physician will explain which options fit you and why.</p>
+    </div>
+  </section>
+
+  <CityCards serviceId="interventional-pain-management" serviceTitle="Interventional Pain Management" current={city} />
+  <OfficesSection city={city} serviceTitle="Interventional Pain Management" />
+
+  <CtaBand slot="after" title={city ? `Ready to talk to a pain specialist in ${cityName}?` : 'Ready to talk to a pain specialist?'} />
+</PageLayout>
