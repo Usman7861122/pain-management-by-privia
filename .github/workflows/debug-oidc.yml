@@ -1,0 +1,40 @@
+name: Debug OIDC
+
+# Run this by hand (Actions > Debug OIDC > Run workflow).
+# It prints the claims GitHub sends to AWS, so you can match the role's trust policy.
+# It does NOT print the token itself, only the readable claims.
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show OIDC claims
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value)
+          PAYLOAD=$(echo "$TOKEN" | cut -d. -f2 | tr '_-' '/+')
+          while [ $(( ${#PAYLOAD} % 4 )) -ne 0 ]; do PAYLOAD="${PAYLOAD}="; done
+          CLAIMS=$(echo "$PAYLOAD" | base64 -d | jq '{iss, aud, sub, repository, ref, ref_type, job_workflow_ref, environment}')
+          echo "$CLAIMS"
+          {
+            echo "### OIDC claims sent to AWS"
+            echo '```json'
+            echo "$CLAIMS"
+            echo '```'
+            echo "The role trust policy must allow this exact \`sub\` and \`aud\`."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Try to assume the role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Who am I in AWS
+        run: aws sts get-caller-identity
