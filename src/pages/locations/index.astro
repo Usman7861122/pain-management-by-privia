@@ -38,7 +38,7 @@ const both = [
                   <p class="mt-4 text-charcoal-600">Serving {d.serves.join(', ')}.</p>
                   <div class="mt-6 flex flex-wrap items-center gap-3">
                     <a href={`/locations/${l.slug}`} class="btn btn-dark !min-h-10 !px-5">Office details</a>
-                    <a href={FIND_A_DOCTOR_URL} class="btn btn-ghost !min-h-10 !px-5 !text-charcoal-950">Book in {l.city}</a>
+                    <a href="/book-online" class="btn btn-ghost !min-h-10 !px-5 !text-charcoal-950">Book in {l.city}</a>
                     <a href={mapsUrl(l)} class="link-arrow text-gold-700" target="_blank" rel="noopener">Directions</a>
                   </div>
                 </div>
