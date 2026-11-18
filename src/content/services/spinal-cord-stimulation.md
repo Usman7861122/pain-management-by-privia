@@ -6,7 +6,7 @@ featured: true
 carveOut: false
 lead: "A small device, like a pacemaker for pain, sends mild electrical pulses that interrupt pain signals on their way to the brain."
 heroImage: "/images/services/hero/spinal-cord-stimulation.jpg"
-heroAlt: "A clinician holding a handheld controller for a spinal cord stimulator"
+heroAlt: "A doctor pointing to a spine model while explaining spinal cord stimulation"
 facts:
   - { k: "Try before you commit", v: "A short trial of about one week" }
   - { k: "Surgery", v: "About an hour, usually same-day" }

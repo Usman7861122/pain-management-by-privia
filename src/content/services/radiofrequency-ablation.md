@@ -6,7 +6,7 @@ featured: true
 carveOut: false
 lead: "A minimally invasive treatment for long-term neck, back and joint pain. Gentle heat quiets the nerves that carry pain from worn joints to the brain."
 heroImage: "/images/services/hero/radiofrequency-ablation.jpg"
-heroAlt: "A doctor placing a needle in a patient's back during a procedure"
+heroAlt: "X-ray of the lower spine, used to guide radiofrequency ablation"
 facts:
   - { k: "Time", v: "20 to 40 minutes" }
   - { k: "Where", v: "Outpatient surgery center" }

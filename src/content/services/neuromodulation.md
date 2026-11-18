@@ -6,7 +6,7 @@ featured: false
 carveOut: false
 lead: "Gentle electrical stimulation that changes how your nerves send pain signals, for people whose nerve pain has not improved with other care."
 heroImage: "/images/services/hero/neuromodulation.jpg"
-heroAlt: "A clinician placing a nerve stimulation device on a patient's back"
+heroAlt: "A spine model on a doctor desk, used to explain nerve stimulation"
 facts:
   - { k: "First step", v: "A short trial before any implant" }
   - { k: "You stay in control", v: "A handheld device adjusts the stimulation" }

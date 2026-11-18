@@ -13,7 +13,7 @@ Full-size originals are in ~/Downloads as shutterstock_<ID>.jpg. Web copies are 
 | sections/mission | 2741021223 (cropped) |
 | sections/virtual-visit | 2199807371 |
 | sections/parallax | 2600273731 |
-| locations/rockville | 2701688707 |
+| locations/rockville | 1038444847 (downtown Washington, DC) |
 | locations/frederick | 345972197 |
 | services/interventional-pain-management | 1394904065 |
 | services/spinal-cord-stimulation | 1401527759 |
@@ -79,3 +79,5 @@ Extra downloaded but unused: 2181868495, 2829173821 (too wide).
 
 - Landing hero slide 2: public/images/athletes/jogging.jpg: 2509886203 (replaced swimmer)
 - prp-injections.jpg: 2089848889
+
+Update (Dr. Hough feedback): services/hero/epidural-steroid-injections 2317625935; spinal-cord-stimulation 2677119885; neuromodulation 2642391821; radiofrequency-ablation reuses interventional/xray-lumbar; locations/frederick reuses interventional/frederick-town (downtown Frederick).

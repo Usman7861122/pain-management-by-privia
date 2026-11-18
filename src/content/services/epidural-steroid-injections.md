@@ -6,7 +6,7 @@ featured: true
 carveOut: false
 lead: "A precise injection of anti-inflammatory medicine that calms irritated spinal nerves, so back and neck pain that spreads into your arms or legs can ease."
 heroImage: "/images/services/hero/epidural-steroid-injections.jpg"
-heroAlt: "A doctor giving an injection to a patient's lower back"
+heroAlt: "A doctor guiding an epidural needle toward a patient lower back"
 facts:
   - { k: "Time", v: "A few minutes" }
   - { k: "Guidance", v: "Real-time X-ray (fluoroscopy)" }
