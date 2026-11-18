@@ -80,6 +80,31 @@ const tools = ['Medicines', 'Physical therapy', 'Chiropractic care', 'Electrical
     </div>
   </section>
 
+  <section class="on-dark bg-charcoal-950 section">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl text-center" data-reveal>
+        <p class="eyebrow">How we measure care</p>
+        <h2 class="h2 mt-4">Why we measure more than just a number</h2>
+        <div class="rule-gold mx-auto mt-6"></div>
+        <p class="lead mt-6">Unlike conditions evaluated through blood panels or imaging scans, pain cannot be captured by a lab test. Asking for a pain score from 0 to 10 gives a quick snapshot, but a single number cannot reflect how pain truly affects your day-to-day life, your ability to move, your sleep, or your emotional well-being.</p>
+        <p class="mt-4 text-cream-200">To provide meaningful care, our practice uses scientifically validated screening tools and patient-reported outcome measures (PROMs). These tools allow us to:</p>
+      </div>
+      <ul class="mt-12 grid gap-5 md:grid-cols-3">
+        {[
+          { t: 'Capture the full picture', d: 'Assess how pain interferes with your physical function, mobility, work, and overall quality of life.' },
+          { t: 'Deliver personalized care', d: 'Uncover underlying factors that influence recovery, such as movement confidence, emotional health, and nerve sensitivity, so we can tailor a treatment plan specifically for you.' },
+          { t: 'Track real, meaningful progress', d: 'Measure objective functional improvements after treatments and procedures, moving beyond simple pain scores or general satisfaction to ensure your care is delivering genuine, lasting results.' },
+        ].map((x, i) => (
+          <li data-reveal style={`--d:${i * 100}ms`} class="rounded-md border border-white/10 bg-white/[0.04] p-8 transition duration-500 hover:-translate-y-1.5 hover:border-gold-300/60 hover:bg-white/[0.07]">
+            <h3 class="font-display text-xl font-semibold text-cream-50">{x.t}</h3>
+            <p class="mt-3 text-cream-200">{x.d}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="mx-auto mt-10 max-w-3xl text-center text-cream-200" data-reveal>By tracking your progress with these validated assessments, we partner with you to focus on what matters most: restoring your function and helping you reclaim your life.</p>
+    </div>
+  </section>
+
   <section class="bg-cream-100 section">
     <div class="container-x grid gap-12 lg:grid-cols-2">
       <div data-reveal>
