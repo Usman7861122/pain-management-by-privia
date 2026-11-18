@@ -15,6 +15,7 @@ export const mainNav: NavItem[] = [
         { label: 'Team', href: '/doctors' },
         { label: 'Stuart Hough, MD', href: '/doctors/stuart-hough-md' },
         { label: 'Ramani Peruvemba, MD', href: '/doctors/ramani-peruvemba-md' },
+        { label: 'Esther Ozor, NP', href: '/doctors/esther-ozor-np' },
       ] },
       { label: 'About Privia', href: '/about/about-privia' },
     ],

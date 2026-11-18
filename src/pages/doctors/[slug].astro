@@ -37,11 +37,24 @@ const groups = [
           </div>
           <h2 class="mt-10 font-display text-3xl font-semibold">{d.name}</h2>
           <p class="mt-1 text-charcoal-600">{d.title}</p>
-          <p class="mt-4 text-sm text-charcoal-600">Accepting new patients. Virtual visits available.</p>
-          <div class="mt-6 flex flex-col gap-3">
-            <a href={FIND_A_DOCTOR_URL} class="btn btn-gold">Schedule online</a>
-            <a href={`tel:${site.phone.tel}`} class="btn border border-charcoal-950/30 text-charcoal-950 hover:border-gold-600 hover:bg-cream-200">Call {site.phone.display}</a>
-          </div>
+          {d.establishedOnly ? (
+            <>
+              <p class="mt-4 text-sm text-charcoal-600">Sees established patients only. No new patient visits.</p>
+              <div class="mt-6 flex flex-col gap-3">
+                {d.officeUrl && <a href={d.officeUrl} target="_blank" rel="noopener" class="btn btn-gold">Request an office visit</a>}
+                {d.telehealthUrl && <a href={d.telehealthUrl} target="_blank" rel="noopener" class="btn border border-charcoal-950/30 text-charcoal-950 hover:border-gold-600 hover:bg-cream-200">Request a telehealth visit</a>}
+                <a href={`tel:${site.phone.tel}`} class="btn border border-charcoal-950/30 text-charcoal-950 hover:border-gold-600 hover:bg-cream-200">Call {site.phone.display}</a>
+              </div>
+            </>
+          ) : (
+            <>
+              <p class="mt-4 text-sm text-charcoal-600">Accepting new patients. Virtual visits available.</p>
+              <div class="mt-6 flex flex-col gap-3">
+                <a href={FIND_A_DOCTOR_URL} class="btn btn-gold">Schedule online</a>
+                <a href={`tel:${site.phone.tel}`} class="btn border border-charcoal-950/30 text-charcoal-950 hover:border-gold-600 hover:bg-cream-200">Call {site.phone.display}</a>
+              </div>
+            </>
+          )}
         </div>
       </aside>
 

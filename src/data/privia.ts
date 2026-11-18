@@ -124,6 +124,8 @@ export const NEW_PATIENT_URL = 'https://z1-rpw.phreesia.net/ApptRequestForm.App/
 export const RETURNING_LINKS = [
   { kind: 'Office visit', doctor: 'Dr. Peruvemba', href: 'https://phreesia.me/EstablishedPeruvemba', note: 'Request an in-office appointment.' },
   { kind: 'Office visit', doctor: 'Dr. Hough', href: 'https://phreesia.me/EstablishedHough', note: 'Request an in-office appointment.' },
+  { kind: 'Office visit', doctor: 'Esther Ozor, NP', href: 'https://phreesia.me/EstablishedOzor', note: 'Request an in-office appointment.' },
   { kind: 'Telemedicine', doctor: 'Dr. Peruvemba', href: 'https://phreesia.me/TelehealthEstPeruvemba', note: 'You must be in Maryland or Virginia.' },
   { kind: 'Telemedicine', doctor: 'Dr. Hough', href: 'https://phreesia.me/TelehealthEstHough', note: 'You must be in Maryland.' },
+  { kind: 'Telemedicine', doctor: 'Esther Ozor, NP', href: 'https://phreesia.me/TelehealthEstOzor', note: 'You must be in Maryland.' },
 ];

@@ -13,10 +13,10 @@ const initials = (n: string) => n.replace(/,.*$/, '').split(' ').filter((w) => !
       <p class="eyebrow">Our providers</p>
       <h2 class="h2 mt-4">Choose your provider.</h2>
       <div class="rule-gold mx-auto mt-6"></div>
-      <p class="lead mt-6">Meet the physicians who will guide your care, and schedule online when you are ready.</p>
+      <p class="lead mt-6">Meet the providers who will guide your care, and schedule online when you are ready.</p>
     </div>
 
-    <div class="mx-auto mt-16 grid max-w-4xl gap-x-10 gap-y-14 sm:grid-cols-2">
+    <div class="mx-auto mt-16 grid max-w-6xl gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
       {docs.map((d, i) => (
         <article data-reveal style={`--d:${i * 120}ms`} class="group relative">
           <!-- offset yellow frame that slides on hover -->

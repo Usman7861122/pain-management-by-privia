@@ -7,12 +7,12 @@ import { FIND_A_DOCTOR_URL } from '@/data/privia';
 const docs = (await getCollection('doctors')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<PageLayout title="Meet our physicians." eyebrow="Our team" lead="Two board certified pain physicians who take the time to listen. Both are accepting new patients and offer virtual visits." image="/images/about/team-tablet.jpg" imageAlt="Healthcare professionals discussing care together" description="Meet the board certified pain physicians at Pain Management Specialists.">
+<PageLayout title="Meet our providers." eyebrow="Our team" lead="Two board certified pain physicians and a nurse practitioner who take the time to listen. Our physicians are accepting new patients and offer virtual visits." image="/images/about/team-tablet.jpg" imageAlt="Healthcare professionals discussing care together" description="Meet the board certified pain physicians at Pain Management Specialists.">
   <AboutSubnav />
 
   <section class="section">
     <div class="container-x">
-      <ul class="mx-auto grid max-w-5xl gap-x-10 gap-y-14 md:grid-cols-2">
+      <ul class="mx-auto grid max-w-6xl gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
         {docs.map((d, i) => (
           <li data-reveal style={`--d:${i * 120}ms`}>
             <article class="group relative">
