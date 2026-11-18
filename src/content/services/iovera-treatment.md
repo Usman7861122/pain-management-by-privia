@@ -30,7 +30,7 @@ relief: "Relief is usually quick, though nerve irritation can last up to two wee
 risksTitle: "Risks and coverage"
 risksIntro: "The safety profile is similar to nerve blocks, but the results last longer."
 risks: ["Common: numbness, bruising and short-term extra pain", "Rare (less than 1 in 1,000): infection, bleeding or permanent nerve injury", "Possible: frostbite, skin color changes or skin dimpling", "Medicare Part B covers it nationwide. Medicare Advantage and private plans vary."]
-related: ["mild-procedure", "nerve-blocks", "neuromodulation"]
+related: ["percutaneous-interlaminar-decompression", "nerve-blocks", "neuromodulation"]
 ---
 
 iovera® is a short outpatient procedure called **percutaneous cryoneurolysis**. It uses extreme cold to temporarily interrupt the sensory nerves that carry pain from areas such as the knee. It needs no general anesthesia and no cuts.

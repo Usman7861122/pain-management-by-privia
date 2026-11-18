@@ -1,6 +1,5 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import FormsList from '@/components/ui/FormsList.astro';
 import CtaBand from '@/components/ui/CtaBand.astro';
 
 const helpers = [
@@ -12,25 +11,7 @@ const helpers = [
 ];
 ---
 
-<PageLayout title="Patient forms and resources." crumb="Resources" highlight={['forms']} eyebrow="Resources" lead="Download the forms you need and find answers about visits, coverage and care." image="/images/about/exam-senior.jpg" imageAlt="A clinician speaking with a patient during an exam" description="Patient forms and office policies, plus helpful guides for new and returning patients of Pain Management Specialists.">
-  <section class="section">
-    <div class="container-x grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
-      <div class="lg:col-span-8">
-        <div data-reveal>
-          <p class="eyebrow">Forms and policies</p>
-          <h2 class="h2 mt-4">Patient forms and office policies</h2>
-          <div class="rule-gold mt-6"></div>
-          <p class="lead mt-6 max-w-2xl">Download the forms below. English and Spanish versions are provided when available.</p>
-        </div>
-        <div class="mt-10" data-reveal><FormsList /></div>
-      </div>
-      <div class="relative hidden lg:col-span-4 lg:block" data-reveal style="--d:120ms">
-        <div class="absolute -bottom-4 -right-4 h-full w-full rounded-md border border-gold-400/50" aria-hidden="true"></div>
-        <div class="relative aspect-[3/5] overflow-hidden rounded-md bg-charcoal-800"><img src="/images/tunnel/diagnosis.jpg" alt="" width="600" height="1000" loading="lazy" class="h-full w-full object-cover" /></div>
-      </div>
-    </div>
-  </section>
-
+<PageLayout title="Patient resources." crumb="Resources" highlight={['resources']} eyebrow="Resources" lead="Find answers about visits, coverage and care." image="/images/about/exam-senior.jpg" imageAlt="A clinician speaking with a patient during an exam" description="Patient forms and office policies, plus helpful guides for new and returning patients of Pain Management Specialists.">
   <section class="bg-cream-100 section">
     <div class="container-x">
       <div class="mx-auto max-w-2xl text-center" data-reveal>
@@ -51,5 +32,5 @@ const helpers = [
     </div>
   </section>
 
-  <CtaBand slot="after" title="Need a hand with your forms?" text="Our team is happy to help. Call us or choose your provider to schedule." />
+  <CtaBand slot="after" title="Need a hand?" text="Our team is happy to help. Call us or book online." />
 </PageLayout>

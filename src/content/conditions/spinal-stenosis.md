@@ -36,7 +36,7 @@ diagnosis:
   - { t: "Other tests", d: "Sometimes a diagnostic injection or nerve test helps find the exact source." }
 treatmentsTitle: "How we treat spinal stenosis"
 treatmentsIntro: "Our goal is to ease pressure and pain so you can move more. Your doctor will explain which options fit you."
-treatments: ["epidural-steroid-injections", "mild-procedure", "interventional-pain-management", "pain-management", "spinal-cord-stimulation"]
+treatments: ["epidural-steroid-injections", "percutaneous-interlaminar-decompression", "interventional-pain-management", "pain-management", "spinal-cord-stimulation"]
 seekTitle: "When to see a pain specialist"
 seekIntro: "Spinal stenosis often gets worse slowly. Book a visit if:"
 seek:

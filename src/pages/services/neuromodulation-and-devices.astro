@@ -7,7 +7,7 @@ import { nearbyAreasHtml } from '@/data/site';
 
 const all = await getCollection('services');
 const byId = (id: string) => all.find((x) => x.id === id)!;
-const ids = ['neuromodulation', 'spinal-cord-stimulation', 'reactiv8', 'iovera-treatment'];
+const ids = ['neuromodulation', 'spinal-cord-stimulation', 'reactiv8'];
 ---
 
 <PageLayout title="Neuromodulation & Devices in Rockville and Frederick, MD." crumb="Neuromodulation & Devices" highlight={['Rockville', 'Frederick']} eyebrow="Services" lead="Advanced implants and nerve therapies that work with your nervous system, so pain signals are quieted at the source." image="/images/services/hero/spinal-cord-stimulation.jpg" imageAlt="A clinician holding a handheld controller for a nerve stimulation device" description="Neuromodulation, spinal cord stimulation, Reactiv8 and iovera at Pain Management Specialists in Rockville and Frederick, Maryland." nearby={nearbyAreasHtml}>

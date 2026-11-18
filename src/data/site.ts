@@ -14,18 +14,16 @@ export const site = {
       city: 'Rockville',
       state: 'MD',
       zip: '20852',
-      // NOTE: area code differs from the address. Confirm this is the correct line.
-      phone: { display: '717-616-2523', tel: '+17176162523' },
+      phone: { display: '240-453-9182', tel: '+12404539182' },
     },
     {
       slug: 'frederick',
       name: 'Frederick',
-      street: '198 Thomas Johnson Drive, Suite 16',
+      street: '198 Thomas Johnson Drive, Suite 17',
       city: 'Frederick',
       state: 'MD',
       zip: '21702',
-      // NOTE: area code differs from the address. Confirm this is the correct line.
-      phone: { display: '419-452-4691', tel: '+14194524691' },
+      phone: { display: '240-453-9182', tel: '+12404539182' },
     },
   ],
   hours: [] as { day: string; time: string }[], // TODO: not on old site homepage
@@ -38,4 +36,4 @@ export const mapsUrl = (l: (typeof site.locations)[number]) =>
 
 // Hero strip: towns near each office (shown on service pages). VERIFY the town lists with the practice.
 export const nearbyAreasHtml =
-  'Patients are welcome from across <strong class="font-semibold text-gold-300">Rockville</strong>, Bethesda, Gaithersburg, Potomac and Montgomery County, and from <strong class="font-semibold text-gold-300">Frederick</strong>, Urbana, Walkersville, Thurmont and the greater Frederick County area.';
+  'Patients are welcome from across the Washington, DC metro area, including <strong class="font-semibold text-gold-300">Rockville</strong>, Bethesda, Gaithersburg, Potomac and Silver Spring, and from central and western Maryland and the West Virginia panhandle, including <strong class="font-semibold text-gold-300">Frederick</strong>, Urbana, Walkersville, Thurmont, Hagerstown and Martinsburg.';

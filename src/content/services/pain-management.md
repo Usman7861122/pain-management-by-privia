@@ -40,3 +40,7 @@ related: ["pain-medicine", "epidural-steroid-injections", "spinal-cord-stimulati
 Pain management is the part of medicine that **finds, diagnoses and treats acute and chronic pain**. Our board-certified interventional pain physicians use a "multimodal" approach. That means we combine medicine, injections and other treatments, and we teach healthy habits that help you manage pain every day.
 
 Your care is personal. It may include an exercise program or stress tools that give you more control over your pain and a better quality of life.
+
+**Care for the whole person.** Because chronic pain impacts both the body and the mind, achieving the best possible quality of life requires a whole-person approach. While our practice focuses on advanced physical treatments, we connect our patients with expert behavioral health specialists to fully support the emotional and psychological aspects of pain management.
+
+**Movement is key.** While medical procedures and medications are vital for controlling pain, movement is the ultimate key to reclaiming your quality of life. We strongly encourage targeted exercise and frequently coordinate with physical therapists to ensure your body heals properly and grows stronger alongside the medical treatments we provide.

@@ -45,6 +45,20 @@ const { title, description, overlay = false } = Astro.props;
         );
         els.forEach((el) => io.observe(el));
       } else els.forEach((el) => el.classList.add('is-visible'));
+
+      // Links to other websites (Pay Now, patient portal, Privia, apps) open in a new tab,
+      // so closing them never closes our site.
+      const isOutside = (a: HTMLAnchorElement) => /^https?:$/.test(a.protocol) && a.hostname !== location.hostname;
+      const markOutside = (a: HTMLAnchorElement) => {
+        if (!isOutside(a)) return;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      };
+      document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(markOutside);
+      document.addEventListener('click', (e) => {
+        const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+        if (a) markOutside(a);
+      }, true);
     </script>
   </body>
 </html>

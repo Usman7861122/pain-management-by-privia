@@ -32,9 +32,9 @@ links:
   - { label: "Boston Scientific Intracept", href: "https://www.intracept.com/the-intracept-procedure.html", note: "Patient website" }
   - { label: "Stryker OptABLATE", href: "https://patients.stryker.com/us/en/ivs/treatments/basivertebral-nerve-ablation.html", note: "Patient website" }
   - { label: "Medtronic ViaVerte", note: "No patient website yet" }
-related: ["radiofrequency-ablation", "mild-procedure", "kyphoplasty"]
+related: ["radiofrequency-ablation", "percutaneous-interlaminar-decompression", "vertebral-augmentation"]
 ---
 
-**Basivertebral nerve ablation** (BVN ablation) uses radiofrequency energy to disrupt the nerve that carries pain signals from damaged discs in the lower back.
+**Basivertebral nerve ablation** (BVN ablation) uses radiofrequency energy to disrupt the nerve that carries pain signals from damaged discs in the lower back. Three devices are on the market: **Intracept** (Boston Scientific), **OptABLATE** (Stryker) and **ViaVerte** (Medtronic). Intracept is a brand name, and the procedure itself is basivertebral nerve ablation.
 
 Dr. Stuart Hough and Dr. Ramani Peruvemba are fellowship-trained in it and were among the first in Maryland to offer it. Few local pain practices are trained to evaluate and treat patients with this procedure.

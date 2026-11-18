@@ -7,8 +7,8 @@ import { site } from '@/data/site';
 const steps = [
   { t: 'Find your insurance details', d: 'Have your insurance card handy. It lists your plan name and member ID.' },
   { t: 'Call the office', d: 'Ask whether your plan is accepted and what to expect. Our team is happy to help.' },
-  { t: 'Check with your plan too', d: 'Your insurance company can tell you about your benefits, copays and any deductible.' },
-  { t: 'Ask about approvals', d: 'Some tests and procedures may need prior authorization from your plan. Ask us if one applies to you.' },
+  { t: 'Check your deductible and copay', d: 'Call your insurance company to check the status of your deductible and your specialist copay, so there are no surprises at your visit.' },
+  { t: 'Bring a way to pay', d: 'Please have a method of payment with you for your visit, such as a credit or debit card, or an HSA or FSA card.' },
 ];
 ---
 
@@ -21,21 +21,21 @@ const steps = [
         <p class="eyebrow">Before you come in</p>
         <h2 class="h2 mt-4">Please check your coverage first.</h2>
         <div class="rule-gold mt-6"></div>
-        <p class="lead mt-6">Insurance plans are different, and they can change. The best way to know if your plan is accepted is to call the office before your visit.</p>
+        <p class="lead mt-6">Insurance plans are different, and they can change. The best way to know if your plan is accepted is to call the office before your visit. Please also check the status of your deductible and your specialist copay with your insurance company.</p>
         <ul class="mt-8 space-y-3 text-lg text-charcoal-800">
           <li class="flex gap-3"><Check /><span>Bring your insurance card and a photo ID to every visit</span></li>
           <li class="flex gap-3"><Check /><span>Tell us right away if your insurance changes</span></li>
-          <li class="flex gap-3"><Check /><span>Ask if a test or procedure needs prior authorization</span></li>
+          <li class="flex gap-3"><Check /><span>Bring a method of payment to your visit</span></li>
+          <li class="flex gap-3"><Check /><span>Our team handles prior authorization for tests and procedures that need it</span></li>
         </ul>
       </div>
       <div class="lg:col-span-6" data-reveal style="--d:120ms">
         <div class="rounded-md border border-gold-400/50 bg-gradient-to-br from-white via-cream-50 to-cream-100 p-8 shadow-[0_30px_60px_-40px_rgba(95,76,0,.45)] sm:p-10">
           <p class="eyebrow">Call us</p>
           <p class="mt-4 font-display text-2xl font-semibold leading-snug text-charcoal-950">Questions about coverage or billing?</p>
-          <p class="mt-3 text-charcoal-600">Our team can help. Call the main line or your office.</p>
+          <p class="mt-3 text-charcoal-600">Our team can help. Call us at the number below.</p>
           <ul class="mt-6 space-y-2 text-lg">
-            <li><a href={`tel:${site.phone.tel}`} class="inline-flex min-h-11 items-center font-semibold underline decoration-gold-400 underline-offset-4 hover:text-gold-700">Main line: {site.phone.display}</a></li>
-            {site.locations.map((l) => (<li><a href={`tel:${l.phone.tel}`} class="inline-flex min-h-11 items-center font-semibold underline decoration-gold-400 underline-offset-4 hover:text-gold-700">{l.name}: {l.phone.display}</a></li>))}
+            <li><a href={`tel:${site.phone.tel}`} class="inline-flex min-h-11 items-center font-semibold underline decoration-gold-400 underline-offset-4 hover:text-gold-700">{site.phone.display}</a></li>
           </ul>
         </div>
       </div>
@@ -64,8 +64,7 @@ const steps = [
       <div class="mx-auto max-w-3xl rounded-md border border-charcoal-900/10 bg-cream-50 p-8 sm:p-10" data-reveal>
         <p class="eyebrow">Financial policy</p>
         <h2 class="mt-3 font-display text-2xl font-semibold">Please review our Financial Policy.</h2>
-        <p class="mt-4 text-charcoal-600">A Financial Policy applies to all patients. It explains your financial responsibility for the care you receive. You can find it with our other patient forms.</p>
-        <a href="/resources" class="link-arrow mt-4 text-gold-700">Patient forms and policies</a>
+        <p class="mt-4 text-charcoal-600">A Financial Policy applies to all patients. It explains your financial responsibility for the care you receive. Our team will share it with you, or you can ask us for a copy.</p>
       </div>
     </div>
   </section>

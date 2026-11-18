@@ -43,3 +43,7 @@ related: ["pain-management", "nerve-blocks", "epidural-steroid-injections"]
 Pain medicine is a broad group of treatments. It includes **over-the-counter medicines** like acetaminophen and NSAIDs, and **prescription medicines** when those are not enough.
 
 Medicine is only one part of your care. We use a "multimodal" approach, which means several treatments working together, so you can feel better and do more.
+
+**Care for the whole person.** Because chronic pain impacts both the body and the mind, achieving the best possible quality of life requires a whole-person approach. While our practice focuses on advanced physical treatments, we connect our patients with expert behavioral health specialists to fully support the emotional and psychological aspects of pain management.
+
+**Movement is key.** While medical procedures and medications are vital for controlling pain, movement is the ultimate key to reclaiming your quality of life. We strongly encourage targeted exercise and frequently coordinate with physical therapists to ensure your body heals properly and grows stronger alongside the medical treatments we provide.

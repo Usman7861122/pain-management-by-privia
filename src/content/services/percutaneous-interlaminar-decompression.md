@@ -1,11 +1,11 @@
 ---
-title: "mild® Procedure"
+title: "Percutaneous Interlaminar Decompression (mild®)"
 summary: "A minimally invasive approach for pain linked to lumbar spinal stenosis."
 order: 12
 featured: false
 carveOut: false
 lead: "A short, minimally invasive procedure that opens space in the spinal canal, so you can stand and walk with less leg and back pain."
-heroImage: "/images/services/hero/mild-procedure.jpg"
+heroImage: "/images/services/hero/percutaneous-interlaminar-decompression.jpg"
 heroAlt: "A senior woman sitting with a walker in her living room"
 facts:
   - { k: "Time", v: "20 to 30 minutes" }
@@ -28,12 +28,12 @@ relief: "Pain after the procedure is usually mild and short. Many people begin t
 risksTitle: "Safety and coverage"
 risksIntro: "The safety profile is similar to epidural steroid injections, but the results last longer."
 risks: ["Medicare covers the procedure nationwide, including Medicare Advantage", "The VA, U.S. Military and IHS also cover it", "Coverage from private insurance varies, so please check with your plan"]
-linksIntro: "Learn more about the mild® Procedure from the device maker."
+linksIntro: "mild® is the brand name of this procedure. Learn more from the device maker."
 links:
   - { label: "mild® Procedure (Stryker)", href: "https://patients.stryker.com/us/en/ivs/treatments/mild.html", note: "Patient website" }
-related: ["epidural-steroid-injections", "basivertebral-nerve-ablation", "kyphoplasty"]
+related: ["epidural-steroid-injections", "basivertebral-nerve-ablation", "vertebral-augmentation"]
 ---
 
-The mild® Procedure, also called **percutaneous interlaminar decompression**, is a short outpatient procedure for lumbar spinal stenosis. It removes the thickened tissue that crowds the spinal canal. It does not need general anesthesia, and the small cuts are covered with bandages.
+**Percutaneous interlaminar decompression**, known by the brand name **mild®**, is a short outpatient procedure for lumbar spinal stenosis. It removes the thickened tissue that crowds the spinal canal. It does not need general anesthesia, and the small cuts are covered with bandages.
 
-Dr. Stuart Hough and Dr. Ramani Peruvemba are fellowship-trained in the mild® Procedure. Many patients get long-term pain relief.
+Dr. Stuart Hough and Dr. Ramani Peruvemba are fellowship-trained in percutaneous interlaminar decompression (mild®). Many patients get long-term pain relief.

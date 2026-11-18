@@ -10,9 +10,8 @@ import { site } from './site';
 export type PriviaBrand = 'medical-group' | 'provider-network-cf' | 'womens-health';
 export const brand: PriviaBrand = 'medical-group';
 
-// TODO: Replace with the CUSTOM Find-A-Doctor link from the Privia Product Performance team.
-// This is the ONLY online scheduling tool allowed on the site.
-export const FIND_A_DOCTOR_URL = 'https://find-a-doctor.priviamedicalgroup.com/';
+// The practice asked that every booking link opens our own Book Online page (new and returning patients).
+export const FIND_A_DOCTOR_URL = '/book-online';
 
 export const links = {
   mobileApp: 'http://www.myprivia.com',

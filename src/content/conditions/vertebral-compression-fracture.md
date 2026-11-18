@@ -4,7 +4,7 @@ summary: "Minimally invasive care for painful spinal fractures."
 order: 10
 featured: false
 lead: "A vertebral compression fracture is a break in a bone of the spine that can cause sudden, sharp back pain. We offer care to ease pain and help you get moving again."
-heroImage: "/images/services/hero/kyphoplasty.jpg"
+heroImage: "/images/services/hero/vertebral-augmentation.jpg"
 heroAlt: "A doctor holding a spine X-ray and talking with an older woman seated in a wheelchair, with a nurse standing beside them"
 facts:
   - { k: "Often felt in", v: "Middle or lower back" }
@@ -26,7 +26,7 @@ diagnosis:
   - { t: "MRI or CT scan", d: "These scans show more detail. They can show how new the fracture is and how the bone and nerves look." }
 treatmentsTitle: "How we treat it"
 treatmentsIntro: "Some fractures heal with rest, pain care and time. If pain stays strong, a small procedure may help steady the bone and ease pain."
-treatments: ["kyphoplasty", "pain-management", "pain-medicine", "interventional-pain-management"]
+treatments: ["vertebral-augmentation", "pain-management", "pain-medicine", "interventional-pain-management"]
 seekTitle: "When to see a pain specialist"
 seekIntro: "A spine fracture can be serious. Do not wait if you think you may have one."
 seek:
